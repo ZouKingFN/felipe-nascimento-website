@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Felipe Nascimento</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .auth-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--color-bg);
+            padding: 2rem;
+            position: relative;
+        }
+        .auth-container {
+            background-color: var(--color-bg-alt);
+            padding: 3rem;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 450px;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+        .auth-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--color-secondary);
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+        .auth-container h2 {
+            margin-bottom: 0.5rem;
+        }
+        .auth-container p {
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+        .btn-google {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            background-color: #fff;
+            color: #000;
+            padding: 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-family: var(--font-main);
+            border: none;
+            cursor: pointer;
+            transition: opacity var(--transition-fast);
+            margin-bottom: 1.5rem;
+            text-decoration: none;
+        }
+        .btn-google:hover {
+            opacity: 0.9;
+            color: #000;
+        }
+        .btn-google img {
+            width: 20px;
+            height: 20px;
+        }
+        .legal-check {
+            display: flex;
+            align-items: flex-start;
+            text-align: left;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+        .legal-check input {
+            margin-top: 4px;
+            accent-color: var(--color-secondary);
+        }
+        .legal-check label {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            line-height: 1.4;
+        }
+        .legal-check a {
+            color: var(--color-secondary);
+            text-decoration: underline;
+        }
+        .back-link {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-text-muted);
+            font-weight: 600;
+        }
+        .back-link:hover {
+            color: var(--color-secondary);
+        }
+    </style>
+</head>
+<body>
+    <section class="auth-section">
+        <a href="index.html" class="back-link"><i class="ph ph-arrow-left"></i> Voltar</a>
+        <div class="auth-container fade-in-section">
+            <a href="index.html" class="auth-logo">FNZ</a>
+            <h2>Bem-vindo(a)</h2>
+            <p>Acesse o portal exclusivo de alunos e assinantes.</p>
+
+            <form id="loginForm">
+                <!-- Legal requirements -->
+                <div class="legal-check">
+                    <input type="checkbox" id="termsCheck" required>
+                    <label for="termsCheck">Li e concordo com os <a href="#">Termos de Uso</a> e a <a href="#">Política de Privacidade</a>.</label>
+                </div>
+                <div class="legal-check" style="margin-bottom: 2rem;">
+                    <input type="checkbox" id="marketingCheck">
+                    <label for="marketingCheck">Aceito receber promoções, informações sobre novos cursos e conteúdo VIP no meu e-mail (Opcional).</label>
+                </div>
+
+                <button type="button" class="btn-google" onclick="handleGoogleLogin()">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google">
+                    Entrar com o Google
+                </button>
+            </form>
+            <p id="errorMsg" style="color: #ff5555; font-size: 0.85rem; display: none; margin-top: 1rem;">Por questões de segurança e privacidade, você precisa aceitar os Termos de Uso antes de continuar.</p>
+        </div>
+    </section>
+
+    <!-- Google Translate Widget (Oculto) -->
+    <div id="google_translate_element" style="display:none;"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'pt', includedLanguages: 'en', autoDisplay: false}, 'google_translate_element');
+        }
+        function handleGoogleLogin() {
+            const terms = document.getElementById('termsCheck').checked;
+            const marketing = document.getElementById('marketingCheck').checked;
+            const errorMsg = document.getElementById('errorMsg');
+            
+            if(!terms) {
+                errorMsg.style.display = 'block';
+            } else {
+                errorMsg.style.display = 'none';
+                /*
+                  Aqui ocorre o flow (fluxo) de autorização OAuth do Google (ex: Firebase Auth, NextAuth, etc).
+                  Como este é o ambiente de UI Estático, simularemos o sucesso.
+                */
+                let msg = 'Autenticação via Google iniciada!\nTermos aceitos: Sim.';
+                msg += '\nReceber e-mails marketing: ' + (marketing ? 'Sim.' : 'Não.');
+                alert(msg);
+            }
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

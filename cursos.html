@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos | Felipe Nascimento</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .page-header {
+            padding-top: 10rem;
+            padding-bottom: 4rem;
+            background-color: var(--color-bg-alt);
+            text-align: center;
+        }
+        .page-header h1 {
+            color: var(--color-secondary);
+            font-size: 3rem;
+        }
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        .course-card {
+            background-color: var(--color-bg-alt);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+        }
+        .course-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--color-secondary);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+        .course-img-wrapper {
+            position: relative;
+            height: 240px;
+            overflow: hidden;
+        }
+        .course-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-smooth);
+        }
+        .course-card:hover .course-img {
+            transform: scale(1.05);
+        }
+        .course-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--color-secondary);
+            color: #000;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 2;
+        }
+        .course-info {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .course-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        .course-features {
+            margin: 1.5rem 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 1rem;
+        }
+        .course-features li {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .course-features i {
+            color: var(--color-secondary);
+        }
+        .course-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .course-price {
+            color: var(--color-secondary);
+            font-weight: 800;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container navbar">
+            <div class="nav-left">
+                <div class="menu-toggle"><span></span><span></span><span></span></div>
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.png" alt="FNZ Logo" onerror="this.src=''; this.alt='FNZ'; this.style.fontSize='1.8rem'; this.style.color='var(--color-secondary)';">
+                </a>
+            </div>
+            <div class="nav-right">
+                <nav class="desktop-menu">
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="cursos.html">Cursos</a></li>
+                        <li><a href="loja.html">Loja</a></li>
+                        <li><a href="aulas.html">Aulas Particulares</a></li>
+                        <li><a href="dj.html">Sets de DJ</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                        <li><a href="contrate-me.html" style="color: var(--color-secondary); font-weight: 800;">Contrate-me</a></li>
+                    </ul>
+                </nav>
+                <div class="nav-actions">
+                    <a href="#" class="lang-btn"><i class="ph ph-globe"></i> EN</a>
+                    <a href="login.html" class="action-btn"><i class="ph ph-user"></i> <span>Login</span></a>
+                    <a href="#" class="action-btn"><i class="ph ph-shopping-cart"></i> <span>Cart</span></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="fullscreen-menu">
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="cursos.html">Cursos</a></li>
+            <li><a href="loja.html">Loja</a></li>
+            <li><a href="aulas.html">Aulas Particulares</a></li>
+            <li><a href="dj.html">Sets de DJ</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="contrate-me.html" style="color: var(--color-secondary); font-weight: 800;">Contrate-me</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container fade-in-section">
+            <h1>Cursos de Formação</h1>
+            <p>Do fundamento à fluidez. Programas completos para você destravar sua dança.</p>
+        </div>
+    </section>
+
+    <!-- Courses Grid -->
+    <section class="section">
+        <div class="container fade-in-section">
+            <div class="courses-grid">
+                
+                <!-- Course 1 -->
+                <div class="course-card">
+                    <div class="course-img-wrapper">
+                        <span class="course-badge">Master</span>
+                        <img src="assets/master.png" alt="Social Master Zouk" class="course-img">
+                    </div>
+                    <div class="course-info">
+                        <h3>Social Master Zouk</h3>
+                        <p>Independentemente do seu nível, torne-se um mestre na pista de dança. A essência real do Zouk Brasileiro para todos.</p>
+                        <ul class="course-features">
+                            <li><i class="ph-fill ph-video-camera"></i> Acesso na Hotmart</li>
+                            <li><i class="ph-fill ph-users"></i> Para todos os níveis de experiência</li>
+                            <li><i class="ph-fill ph-check-circle"></i> Curso Validado e Elogiado</li>
+                        </ul>
+                        <div class="course-footer">
+                            <span class="course-price">Premium</span>
+                            <a href="https://pay.hotmart.com/B85068976H" target="_blank" class="btn btn-primary" style="padding: 0.8rem 1.5rem; font-size: 0.9rem;">Comprar o Curso</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="course-card">
+                    <div class="course-img-wrapper">
+                        <span class="course-badge" style="background-color: #fff; color: #000;">Avançado</span>
+                        <img src="https://images.unsplash.com/photo-1518834107812-67b0b7c58434?q=80&w=600&auto=format&fit=crop" alt="Movimentação & Flow" class="course-img">
+                    </div>
+                    <div class="course-info">
+                        <h3>Mentoria de Movimento & Flow</h3>
+                        <p>Um mergulho na consciência corporal. Elimine as pausas mecânicas e una a dança num fluir único.</p>
+                        <ul class="course-features">
+                            <li><i class="ph-fill ph-users"></i> Mentoria em grupo (Ao vivo)</li>
+                            <li><i class="ph-fill ph-brain"></i> Exercícios de Musicalidade</li>
+                            <li><i class="ph-fill ph-infinity"></i> Acesso garantido por 1 ano</li>
+                        </ul>
+                        <div class="course-footer">
+                            <span class="course-price">R$ 597</span>
+                            <a href="#" class="btn btn-outline" style="background-color: #fff; color: #000; padding: 0.8rem 1.5rem; font-size: 0.9rem;">Inscrever-se</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom" style="border: none; padding-top: 0;">
+                <p>&copy; 2026 Felipe Nascimento. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lenis Library -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <!-- Google Translate Widget (Oculto) -->
+    <div id="google_translate_element" style="display:none;"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'pt', includedLanguages: 'en', autoDisplay: false}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contrate-me | Felipe Nascimento</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .page-header {
+            padding-top: 8rem;
+            padding-bottom: 1rem;
+            background-color: var(--color-bg-alt);
+            text-align: center;
+        }
+        .page-header h1 {
+            color: var(--color-secondary);
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .service-card {
+            background-color: var(--color-bg-alt);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all var(--transition-smooth);
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--color-secondary);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        }
+        .service-card i {
+            font-size: 4rem;
+            color: var(--color-secondary);
+            margin-bottom: 1.5rem;
+        }
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-box {
+            background: linear-gradient(135deg, rgba(26,11,46,0.5) 0%, rgba(5,5,5,0.9) 100%);
+            border: 1px solid var(--color-secondary);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            margin-top: 2rem;
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.1);
+        }
+        .contact-box h2 {
+            margin-bottom: 1rem;
+        }
+        .contact-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .contact-actions .btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container navbar">
+            <div class="nav-left">
+                <div class="menu-toggle"><span></span><span></span><span></span></div>
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.png" alt="FNZ Logo" onerror="this.src=''; this.alt='FNZ'; this.style.fontSize='1.8rem'; this.style.color='var(--color-secondary)';">
+                </a>
+            </div>
+            <div class="nav-right">
+                <nav class="desktop-menu">
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="cursos.html">Cursos</a></li>
+                        <li><a href="loja.html">Loja</a></li>
+                        <li><a href="aulas.html">Aulas Particulares</a></li>
+                        <li><a href="dj.html">Sets de DJ</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                        <li><a href="contrate-me.html" style="color: var(--color-secondary);">Contrate-me</a></li>
+                    </ul>
+                </nav>
+                <div class="nav-actions">
+                    <a href="#" class="lang-btn"><i class="ph ph-globe"></i> EN</a>
+                    <a href="login.html" class="action-btn"><i class="ph ph-user"></i> <span>Login</span></a>
+                    <a href="#" class="action-btn"><i class="ph ph-shopping-cart"></i> <span>Cart</span></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="fullscreen-menu">
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="cursos.html">Cursos</a></li>
+            <li><a href="loja.html">Loja</a></li>
+            <li><a href="aulas.html">Aulas Particulares</a></li>
+            <li><a href="dj.html">Sets de DJ</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="contrate-me.html" style="color: var(--color-secondary);">Contrate-me</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container fade-in-section">
+            <h1>Leve o Evento a Outro Nível</h1>
+            <p>Experiência técnica e entrega artística completa para a sua pista ou congresso.</p>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section class="section">
+        <div class="container fade-in-section">
+            <h2 style="text-align: center; color: var(--color-secondary);">Minhas Especialidades</h2>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto;">Como multicriador, atuo de ponta a ponta na engrenagem dos eventos.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="ph-fill ph-chalkboard-teacher"></i>
+                    <h3>Professor de Zouk Brasileiro</h3>
+                    <p>Workshops intensivos e imersões focadas em Fundamentos, Movimentação e Flow de Zouk Brasileiro.</p>
+                </div>
+                
+                <div class="service-card">
+                    <i class="ph-fill ph-headphones"></i>
+                    <h3>DJ de Zouk</h3>
+                    <p>Line-ups afiados para elevar a energia da pista, transitando por diversos estilos!</p>
+                </div>
+
+                <div class="service-card">
+                    <i class="ph-fill ph-gavel"></i>
+                    <h3>Jurado Oficial de J&J</h3>
+                    <p>Avaliação técnica, ética e certificada para qualificar participantes de competições de Jack & Jill.</p>
+                </div>
+
+                <div class="service-card">
+                    <i class="ph-fill ph-medal"></i>
+                    <h3>Organizador J&J</h3>
+                    <p>Planejamento de chaves, heat lists e coordenação oficial do campeonato no seu próprio evento.</p>
+                </div>
+            </div>
+
+            <!-- Proposta / Contato -->
+            <div class="contact-box fade-in-section">
+                <h2>Faça uma Proposta</h2>
+                <p>Mande detalhes sobre o nome do seu evento, data prevista e para quais áreas você precisa de mim.</p>
+                
+                <div class="contact-actions">
+                    <a href="https://w.app/xwniez" target="_blank" class="btn btn-primary">
+                        <i class="ph-fill ph-whatsapp-logo" style="font-size: 1.3rem;"></i> Whatsapp
+                    </a>
+                    <a href="https://www.instagram.com/felipenascimento_zouk/" target="_blank" class="btn btn-outline" style="background-color: #fff; color: #000; border-color: #fff;">
+                        <i class="ph-fill ph-instagram-logo" style="font-size: 1.3rem;"></i> Instagram
+                    </a>
+                    <a href="mailto:fmachadonascimento@gmail.com" class="btn btn-outline">
+                        <i class="ph-fill ph-envelope" style="font-size: 1.3rem;"></i> E-mail Direto
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom" style="border: none; padding-top: 0;">
+                <p>&copy; 2026 Felipe Nascimento. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <div id="google_translate_element" style="display:none;"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'pt', includedLanguages: 'en', autoDisplay: false}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

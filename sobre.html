@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre | Felipe Nascimento</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .page-header {
+            padding-top: 10rem;
+            padding-bottom: 4rem;
+            background-color: var(--color-bg-alt);
+            text-align: center;
+        }
+        .page-header h1 {
+            color: var(--color-secondary);
+        }
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+        .about-image {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        .about-text h2 {
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+        }
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #d0d0d0;
+        }
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            .about-text {
+                order: -1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container navbar">
+            <div class="nav-left">
+                <div class="menu-toggle"><span></span><span></span><span></span></div>
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.png" alt="FNZ Logo" onerror="this.src=''; this.alt='FNZ'; this.style.fontSize='1.8rem'; this.style.color='var(--color-secondary)';">
+                </a>
+            </div>
+            <div class="nav-right">
+                <nav class="desktop-menu">
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="cursos.html">Cursos</a></li>
+                        <li><a href="loja.html">Loja</a></li>
+                        <li><a href="aulas.html">Aulas Particulares</a></li>
+                        <li><a href="dj.html">Sets de DJ</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                        <li><a href="contrate-me.html" style="color: var(--color-secondary); font-weight: 800;">Contrate-me</a></li>
+                    </ul>
+                </nav>
+                <div class="nav-actions">
+                    <a href="#" class="lang-btn"><i class="ph ph-globe"></i> EN</a>
+                    <a href="login.html" class="action-btn"><i class="ph ph-user"></i> <span>Login</span></a>
+                    <a href="#" class="action-btn"><i class="ph ph-shopping-cart"></i> <span>Cart</span></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="fullscreen-menu">
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="cursos.html">Cursos</a></li>
+            <li><a href="loja.html">Loja</a></li>
+            <li><a href="aulas.html">Aulas Particulares</a></li>
+            <li><a href="dj.html">Sets de DJ</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="contrate-me.html" style="color: var(--color-secondary); font-weight: 800;">Contrate-me</a></li>
+        </ul>
+    </nav>
+
+    <section class="page-header">
+        <div class="container fade-in-section">
+            <h1>Conheça Felipe Nascimento</h1>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container fade-in-section">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Felipe Nascimento</h2>
+                    <p><strong style="color: var(--color-secondary); font-size: 1.2rem;">Felipe Nascimento não é apenas um professor de dança.<br>Ele é uma experiência em movimento.</strong></p>
+                    <p>Criador, educador físico, dançarino e estrategista digital, Felipe construiu sua trajetória unindo técnica, expressão e presença. Seu trabalho vai além de ensinar passos — ele desenvolve consciência corporal, musicalidade e identidade em cada aluno.</p>
+                    <p>Especialista em zouk brasileiro, sua abordagem mistura biomechanics, controle, fluidez e intenção, transformando a dança em uma linguagem real de conexão.</p>
+                    <p>Mas sua visão não para na pista.</p>
+                    <p>Felipe também atua como criador de conteúdo e produtor, expandindo a dança para o digital e construindo pontes entre arte, educação e performance. Seus projetos envolvem desde cursos online até experiências presenciais, sempre com o mesmo objetivo: formar pessoas que não apenas dancem… mas se expressem de verdade.</p>
+                    <p style="border-left: 3px solid var(--color-secondary); padding-left: 1rem; margin: 2rem 0;">
+                        Sua metodologia é direta:<br>
+                        menos automático, mais presença.<br>
+                        menos repetição, mais consciência.<br>
+                        menos forma, mais essência.
+                    </p>
+                    <p>Se você chegou até aqui, talvez não esteja buscando só aprender a dançar.</p>
+                    <p><em style="font-size: 1.2rem; color: #fff;">Talvez esteja buscando se encontrar no movimento.</em></p>
+                </div>
+                <div>
+                    <!-- Imagem atualizada para o formato exato que foi salvo -->
+                    <img src="assets/felipe.jpeg" alt="Felipe Nascimento" class="about-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom" style="border: none; padding-top: 0;">
+                <p>&copy; 2026 Felipe Nascimento. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lenis Library -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <!-- Google Translate Widget (Oculto) -->
+    <div id="google_translate_element" style="display:none;"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'pt', includedLanguages: 'en', autoDisplay: false}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
