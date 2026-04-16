@@ -1,6 +1,7 @@
 :root {
     --color-bg: #050505;
     --color-bg-alt: #111111;
+    --color-bg-light: #161616; /* Fundo suave para os depoimentos */
     --color-primary: #1a0b2e;
     --color-primary-light: #2d144e;
     --color-secondary: #d4af37; /* Gold */
@@ -126,11 +127,12 @@ p {
 }
 
 .header.scrolled {
-    background-color: rgba(5, 5, 5, 0.95);
-    backdrop-filter: blur(10px);
-    padding: 1rem 0;
+    background-color: rgba(5, 5, 5, 0.7);
+    backdrop-filter: blur(15px) saturate(180%);
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    padding: 0.8rem 0;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .navbar {
@@ -451,16 +453,20 @@ body {
 }
 
 .fade-in-section {
-    opacity: 0;
-    transform: translateY(20vh);
-    visibility: hidden;
+    opacity: 1; /* Fallback: visível por padrão */
+    transform: none;
     transition: opacity 1s ease-out, transform 1s ease-out;
-    will-change: opacity, visibility;
 }
 
-.fade-in-section.is-visible {
+body.js-enabled .fade-in-section {
+    opacity: 0;
+    transform: translateY(30px);
+    visibility: hidden;
+}
+
+body.js-enabled .fade-in-section.is-visible {
     opacity: 1;
-    transform: none;
+    transform: translateY(0);
     visibility: visible;
 }
 
@@ -521,17 +527,42 @@ footer {
     background-color: #111;
     cursor: pointer;
     text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all var(--transition-smooth);
+}
+
+.portfolio-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 50%, rgba(212, 175, 55, 0.2) 100%);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
 }
 
 .portfolio-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform var(--transition-smooth);
+    transition: transform var(--transition-smooth), filter var(--transition-smooth);
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px);
+    border-color: var(--color-secondary);
+    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.1);
 }
 
 .portfolio-item:hover .portfolio-img {
-    transform: scale(1.05);
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+.portfolio-item:hover::after {
+    opacity: 1;
 }
 
 /* WhatsApp Float Widget */
@@ -725,5 +756,51 @@ footer {
     .btn {
         padding: 0.85rem 1.75rem;
         font-size: 0.9rem;
+    }
+}
+/* Testimonials Section Styles */
+.section-light-alt {
+    background-color: var(--color-bg-light);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+}
+
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    transition: var(--transition-smooth);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--color-secondary);
+}
+
+.testimonial-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    font-style: italic;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.testimonial-author {
+    display: block;
+    color: var(--color-secondary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    .testimonials-grid {
+        gap: 1.5rem;
     }
 }

@@ -1,11 +1,20 @@
+<!-- Sincronizado com o Mac via Git - Teste 1 -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="assets/logo.PNG">
-    <title>Felipe Nascimento | Criador, Professor de Dança & DJ</title>
+    <title>Felipe Nascimento | Zouk Brasileiro e Lambada</title>
     <meta name="description" content="Site oficial de Felipe Nascimento. Aulas de dança exclusivas, sets de DJ e cursos premium. Zouk Brasileiro para todos.">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Felipe Nascimento | Zouk Brasileiro e Lambada">
+    <meta property="og:description" content="Aulas de dança exclusivas, sets de DJ e cursos premium. Eleve sua dança com Felipe Nascimento.">
+    <meta property="og:image" content="assets/felipe.jpeg">
+    <meta property="og:url" content="https://felipenascimento.com.br">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +39,7 @@
 
                 <!-- Logo -->
                 <a href="index.html" class="logo">
-                    <img src="assets/logo.png" alt="FNZ Logo" onerror="this.src=''; this.alt='FNZ'; this.style.fontSize='1.8rem'; this.style.color='var(--color-secondary)';">
+                    <img src="assets/logo.PNG" alt="FNZ Logo" onerror="this.src=''; this.alt='FNZ'; this.style.fontSize='1.8rem'; this.style.color='var(--color-secondary)';">
                 </a>
             </div>
 
@@ -81,7 +90,8 @@
                 autoplay 
                 muted 
                 loop 
-                playsinline>
+                playsinline
+                poster="assets/felipe.jpeg">
             </video>
         </div>
         
@@ -105,17 +115,41 @@
             
             <div class="portfolio-grid">
                 <a href="dj.html" class="portfolio-item">
-                    <img src="assets/1.png" alt="Sets de DJ" class="portfolio-img">
+                    <img src="assets/1.png" alt="Sets de DJ" class="portfolio-img" data-pt="Sets de DJ" data-en="DJ Sets">
+                </a>
+                <a href="loja.html" class="portfolio-item">
+                    <img src="assets/2.png" alt="Loja" class="portfolio-img" data-pt="Loja" data-en="Store">
                 </a>
                 <a href="aulas.html" class="portfolio-item">
-                    <img src="assets/2.png" alt="Aulas Particulares" class="portfolio-img">
-                </a>
-                <a href="cursos.html" class="portfolio-item">
-                    <img src="assets/3.png" alt="Cursos de Dança" class="portfolio-img">
+                    <img src="assets/3.png" alt="Aulas Particulares" class="portfolio-img" data-pt="Cursos de Dança" data-en="Dance Courses">
                 </a>
                 <a href="contrate-me.html" class="portfolio-item">
-                    <img src="assets/4.png" alt="Contrate-me" class="portfolio-img">
+                    <img src="assets/4.png" alt="Contrate-me" class="portfolio-img" data-pt="Contrate-me" data-en="Hire Me">
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section section-light-alt">
+        <div class="container fade-in-section">
+            <h2 style="text-align: center; color: var(--color-secondary); margin-bottom: 3rem;" data-pt="O que dizem os alunos" data-en="Student Testimonials">O que dizem os alunos</h2>
+            <div class="testimonials-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text" data-pt='"As aulas do Felipe mudaram completamente a minha conexão na dança. O foco na musicalidade e na intenção de cada movimento é algo único."' data-en='"Felipe&apos;s classes completely changed my connection in dance. The focus on musicality and the intention of each movement is something unique."'>"As aulas do Felipe mudaram completamente a minha conexão na dança. O foco na musicalidade e na intenção de cada movimento é algo único."</p>
+                    <span class="testimonial-author">@aluno_exemplo_1</span>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text" data-pt='"Incrível como a técnica da Lambada é explicada de forma simples e visceral. Recomendo para todos que querem elevar o nível."' data-en='"Incredible how the Lambada technique is explained in a simple and visceral way. I recommend it to everyone who wants to level up."'>"Incrível como a técnica da Lambada é explicada de forma simples e visceral. Recomendo para todos que querem elevar o nível."</p>
+                    <span class="testimonial-author">@aluno_exemplo_2</span>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text" data-pt='"Além de um professor incrível, o Felipe é um DJ que entende a pista. Aprendi a ouvir a música de outra maneira."' data-en='"Besides being an incredible teacher, Felipe is a DJ who understands the floor. I learned to hear music in another way."'>"Além de um professor incrível, o Felipe é um DJ que entende a pista. Aprendi a ouvir a música de outra maneira."</p>
+                    <span class="testimonial-author">@aluno_exemplo_3</span>
+                </div>
             </div>
         </div>
     </section>
@@ -126,19 +160,19 @@
             <div class="footer-content fade-in-section">
                 <div>
                     <a href="index.html" class="footer-logo">FNZ</a>
-                    <p>Transformando a maneira como você se expressa através da dança e da música.</p>
+                    <p data-pt="Transformando a maneira como você se expressa através da dança e da música." data-en="Transforming the way you express yourself through dance and music.">Transformando a maneira como você se expressa através da dança e da música.</p>
                 </div>
                 <div class="footer-links">
-                    <h4>Navegação</h4>
+                    <h4 data-pt="Navegação" data-en="Navigation">Navegação</h4>
                     <ul>
-                        <li><a href="cursos.html">Cursos</a></li>
-                        <li><a href="loja.html">Loja</a></li>
-                        <li><a href="aulas.html">Aulas Particulares</a></li>
-                        <li><a href="dj.html">Sets de DJ</a></li>
+                        <li><a href="cursos.html" data-pt="Cursos" data-en="Courses">Cursos</a></li>
+                        <li><a href="loja.html" data-pt="Loja" data-en="Store">Loja</a></li>
+                        <li><a href="aulas.html" data-pt="Aulas Particulares" data-en="Private Lessons">Aulas Particulares</a></li>
+                        <li><a href="dj.html" data-pt="Sets de DJ" data-en="DJ Sets">Sets de DJ</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
-                    <h4>Contato</h4>
+                    <h4 data-pt="Contato" data-en="Contact">Contato</h4>
                     <ul>
                         <li><a href="mailto:fmachadonascimento@gmail.com">fmachadonascimento@gmail.com</a></li>
                         <li><a href="https://www.instagram.com/felipenascimento_zouk/" target="_blank">Instagram</a></li>
@@ -148,7 +182,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Felipe Nascimento. Todos os direitos reservados.</p>
+                <p data-pt="&copy; 2026 Felipe Nascimento. Todos os direitos reservados." data-en="&copy; 2026 Felipe Nascimento. All rights reserved.">&copy; 2026 Felipe Nascimento. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
@@ -156,15 +190,12 @@
     <!-- Lenis Library for ultra smooth premium scrolling -->
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <!-- Scripts -->
-    <!-- Google Translate Widget (Oculto) -->
-    <div id="google_translate_element" style="display:none;"></div>
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({pageLanguage: 'pt', includedLanguages: 'en', autoDisplay: false}, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+    <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
+    
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/5561981266368?text=Olá%20Felipe!%20Vim%20pelo%20site%20e%20gostaria de%20mais%20informações." class="whatsapp-float" target="_blank" aria-label="Falar no WhatsApp">
+        <i class="ph ph-whatsapp-logo"></i>
+    </a>
 </body>
 </html>
