@@ -60,37 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(raf);
     } // Fim de verificações Lenis
 
-    // Lógica do botão de Idioma (Tradução Automática)
-    const langBtns = document.querySelectorAll('.lang-btn');
-    if (langBtns.length > 0) {
-        // Verifica pelos cookies do Google Translate se o site está em inglês
-        const isEnglish = document.cookie.includes('googtrans=/pt/en');
-        
-        langBtns.forEach(btn => {
-            if (isEnglish) {
-                btn.innerHTML = '<i class="ph ph-globe"></i> PT';
-                btn.title = 'Voltar para o original';
-            } else {
-                btn.innerHTML = '<i class="ph ph-globe"></i> EN';
-                btn.title = 'Traduzir para Inglês';
-            }
-
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                if (isEnglish) {
-                    // Limpar cookies e forçar volta pro Português (pt/pt anula tradução)
-                    document.cookie = 'googtrans=/pt/pt; path=/';
-                    document.cookie = 'googtrans=/pt/pt; domain=' + window.location.hostname + '; path=/';
-                } else {
-                    // Forçar o google Translate para modo pt-BR -> EN
-                    document.cookie = 'googtrans=/pt/en; path=/';
-                    document.cookie = 'googtrans=/pt/en; domain=' + window.location.hostname + '; path=/';
-                }
-                // Recarrega a página para iniciar script o tradutor
-                window.location.reload();
-            });
-        });
-    }
+    // Nota: A lógica de tradução PT<->EN agora está em js/i18n.js
 
     // Floating WhatsApp Widget
     const waFloat = document.createElement('a');

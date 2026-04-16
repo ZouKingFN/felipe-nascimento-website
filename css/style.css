@@ -513,11 +513,14 @@ footer {
 }
 
 .portfolio-item {
+    display: block;
     border-radius: 12px;
     overflow: hidden;
     position: relative;
     aspect-ratio: 4/5;
     background-color: #111;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .portfolio-img {
@@ -554,31 +557,173 @@ footer {
     color: #fff;
 }
 
-/* Responsive */
+/* ============================================
+   RESPONSIVE — Breakpoints completos
+   ============================================ */
+
+/* --- Tablet grande / laptop pequeno (≤ 1024px) --- */
 @media (max-width: 1024px) {
     .desktop-menu {
         display: none;
     }
+
     .nav-right {
         gap: 1rem;
     }
+
     .nav-actions .action-btn span {
-        display: none; /* Oculta o texto em telas menores para focar no ícone */
+        display: none;
     }
+
     .nav-actions .action-btn {
         padding: 0.5rem;
         border-radius: 50%;
     }
+
+    .section {
+        padding: 4rem 0;
+    }
 }
 
+/* --- Tablet / Mobile grande (≤ 768px) --- */
 @media (max-width: 768px) {
-    .hero-content h1 {
-        font-size: 2.5rem;
+    .container {
+        padding: 0 1.25rem;
     }
+
+    .section {
+        padding: 3rem 0;
+    }
+
+    /* Hero */
+    .hero-content {
+        padding-top: 3rem;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(2rem, 8vw, 2.8rem);
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
     .hero-actions {
         flex-direction: column;
+        gap: 1rem;
     }
+
+    .hero-actions .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Menu fullscreen */
     .fullscreen-menu a {
+        font-size: 1.8rem;
+    }
+
+    .fullscreen-menu li {
+        margin: 1.2rem 0;
+    }
+
+    /* Animação de fade — menor deslocamento em mobile */
+    .fade-in-section {
+        transform: translateY(40px);
+    }
+
+    /* Footer */
+    .footer-content {
+        gap: 2rem;
+    }
+
+    /* Portfolio grid — 2 colunas em tablet */
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    /* WhatsApp float — menor em mobile */
+    .whatsapp-float {
+        width: 52px;
+        height: 52px;
         font-size: 2rem;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+/* --- Mobile pequeno (≤ 480px) — iPhone SE, Galaxy A, etc. --- */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    h1 {
+        font-size: clamp(1.8rem, 9vw, 2.4rem);
+    }
+
+    h2 {
+        font-size: clamp(1.5rem, 7vw, 2rem);
+    }
+
+    .section {
+        padding: 2.5rem 0;
+    }
+
+    /* Navbar — mais compacto */
+    .nav-left {
+        gap: 1rem;
+    }
+
+    .logo img {
+        height: 32px;
+    }
+
+    .nav-actions {
+        gap: 0.5rem;
+    }
+
+    .lang-btn {
+        font-size: 0.75rem;
+        margin-right: 0;
+    }
+
+    /* Hero */
+    .hero-content h1 {
+        font-size: clamp(1.8rem, 9vw, 2.4rem);
+    }
+
+    .hero-content p {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-actions .btn {
+        padding: 0.85rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    /* Fullscreen menu */
+    .fullscreen-menu a {
+        font-size: 1.5rem;
+    }
+
+    /* Portfolio — 1 coluna em mobile pequeno */
+    .portfolio-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+    }
+
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    /* Botões gerais */
+    .btn {
+        padding: 0.85rem 1.75rem;
+        font-size: 0.9rem;
     }
 }
