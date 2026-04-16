@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('js-enabled');
     // Mobile Menu Toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const fullscreenMenu = document.querySelector('.fullscreen-menu');
@@ -9,7 +10,34 @@ document.addEventListener('DOMContentLoaded', () => {
             fullscreenMenu.classList.toggle('open');
             // Prevent body scroll when menu is open
             document.body.style.overflow = fullscreenMenu.classList.contains('open') ? 'hidden' : '';
+        
+    // Destacar o menu atual
+    const paths = window.location.pathname.split('/');
+    let currentPage = paths[paths.length - 1];
+    if (!currentPage || currentPage === '') currentPage = 'index.html';
+    
+    document.querySelectorAll('.desktop-menu a, .fullscreen-menu a').forEach(link => {
+        const linkHref = link.getAttribute('href');
+        if (linkHref === currentPage) {
+            link.style.color = 'var(--color-secondary)';
+        }
+    });
+
+    // Estado de Login
+    if (localStorage.getItem('fnz_user') === 'true') {
+        document.querySelectorAll('.action-btn').forEach(btn => {
+            if (btn.getAttribute('href') === 'login.html') {
+                btn.setAttribute('href', 'index.html');
+                const span = btn.querySelector('span');
+                if (span) {
+                    span.textContent = 'Meu Perfil';
+                    span.removeAttribute('data-pt');
+                    span.removeAttribute('data-en');
+                }
+            }
         });
+    }
+});
     }
 
     // Header scroll effect
@@ -21,7 +49,34 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             header.classList.remove('scrolled');
         }
+    
+    // Destacar o menu atual
+    const paths = window.location.pathname.split('/');
+    let currentPage = paths[paths.length - 1];
+    if (!currentPage || currentPage === '') currentPage = 'index.html';
+    
+    document.querySelectorAll('.desktop-menu a, .fullscreen-menu a').forEach(link => {
+        const linkHref = link.getAttribute('href');
+        if (linkHref === currentPage) {
+            link.style.color = 'var(--color-secondary)';
+        }
     });
+
+    // Estado de Login
+    if (localStorage.getItem('fnz_user') === 'true') {
+        document.querySelectorAll('.action-btn').forEach(btn => {
+            if (btn.getAttribute('href') === 'login.html') {
+                btn.setAttribute('href', 'index.html');
+                const span = btn.querySelector('span');
+                if (span) {
+                    span.textContent = 'Meu Perfil';
+                    span.removeAttribute('data-pt');
+                    span.removeAttribute('data-en');
+                }
+            }
+        });
+    }
+});
 
     // Intersection Observer for scroll animations (fade in elements)
     const observerOptions = {
@@ -36,7 +91,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 entry.target.classList.add('is-visible');
                 observer.unobserve(entry.target);
             }
+        
+    // Destacar o menu atual
+    const paths = window.location.pathname.split('/');
+    let currentPage = paths[paths.length - 1];
+    if (!currentPage || currentPage === '') currentPage = 'index.html';
+    
+    document.querySelectorAll('.desktop-menu a, .fullscreen-menu a').forEach(link => {
+        const linkHref = link.getAttribute('href');
+        if (linkHref === currentPage) {
+            link.style.color = 'var(--color-secondary)';
+        }
+    });
+
+    // Estado de Login
+    if (localStorage.getItem('fnz_user') === 'true') {
+        document.querySelectorAll('.action-btn').forEach(btn => {
+            if (btn.getAttribute('href') === 'login.html') {
+                btn.setAttribute('href', 'index.html');
+                const span = btn.querySelector('span');
+                if (span) {
+                    span.textContent = 'Meu Perfil';
+                    span.removeAttribute('data-pt');
+                    span.removeAttribute('data-en');
+                }
+            }
         });
+    }
+});
     }, observerOptions);
 
     const fadeElements = document.querySelectorAll('.fade-in-section');
@@ -50,7 +132,34 @@ document.addEventListener('DOMContentLoaded', () => {
             smooth: true,
             mouseMultiplier: 1,
             smoothTouch: false, // Maintain native touch behavior on mobile
+        
+    // Destacar o menu atual
+    const paths = window.location.pathname.split('/');
+    let currentPage = paths[paths.length - 1];
+    if (!currentPage || currentPage === '') currentPage = 'index.html';
+    
+    document.querySelectorAll('.desktop-menu a, .fullscreen-menu a').forEach(link => {
+        const linkHref = link.getAttribute('href');
+        if (linkHref === currentPage) {
+            link.style.color = 'var(--color-secondary)';
+        }
+    });
+
+    // Estado de Login
+    if (localStorage.getItem('fnz_user') === 'true') {
+        document.querySelectorAll('.action-btn').forEach(btn => {
+            if (btn.getAttribute('href') === 'login.html') {
+                btn.setAttribute('href', 'index.html');
+                const span = btn.querySelector('span');
+                if (span) {
+                    span.textContent = 'Meu Perfil';
+                    span.removeAttribute('data-pt');
+                    span.removeAttribute('data-en');
+                }
+            }
         });
+    }
+});
 
         function raf(time) {
             lenis.raf(time);
@@ -62,11 +171,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Nota: A lógica de tradução PT<->EN agora está em js/i18n.js
 
-    // Floating WhatsApp Widget
-    const waFloat = document.createElement('a');
-    waFloat.href = 'https://w.app/xwniez';
-    waFloat.target = '_blank';
-    waFloat.className = 'whatsapp-float';
-    waFloat.innerHTML = '<i class="ph-fill ph-whatsapp-logo"></i>';
-    document.body.appendChild(waFloat);
+
+    // Destacar o menu atual
+    const paths = window.location.pathname.split('/');
+    let currentPage = paths[paths.length - 1];
+    if (!currentPage || currentPage === '') currentPage = 'index.html';
+    
+    document.querySelectorAll('.desktop-menu a, .fullscreen-menu a').forEach(link => {
+        const linkHref = link.getAttribute('href');
+        if (linkHref === currentPage) {
+            link.style.color = 'var(--color-secondary)';
+        }
+    });
+
+    // Estado de Login
+    if (localStorage.getItem('fnz_user') === 'true') {
+        document.querySelectorAll('.action-btn').forEach(btn => {
+            if (btn.getAttribute('href') === 'login.html') {
+                btn.setAttribute('href', 'index.html');
+                const span = btn.querySelector('span');
+                if (span) {
+                    span.textContent = 'Meu Perfil';
+                    span.removeAttribute('data-pt');
+                    span.removeAttribute('data-en');
+                }
+            }
+        });
+    }
 });

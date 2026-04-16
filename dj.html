@@ -4,7 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="assets/logo.PNG">
-    <title>Sets de DJ | Felipe Nascimento</title>
+    <title>Sets de DJ | Felipe Nascimento - Zouk Brasileiro e Lambada</title>
+    <meta name="description" content="Mergulhe na atmosfera musical de Felipe Nascimento (DJ FNZ). Sets exclusivos de Zouk Brasileiro e Lambada.">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Sets de DJ | Felipe Nascimento - Zouk Brasileiro e Lambada">
+    <meta property="og:description" content="Ouça os mixes exclusivos de Felipe Nascimento para a pista de dança.">
+    <meta property="og:image" content="assets/felipe.jpeg">
+    <meta property="og:url" content="https://fnzouk.com.br/dj.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -12,7 +20,7 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
         .page-header {
-            padding-top: 10rem;
+            padding-top: 7rem;
             padding-bottom: 4rem;
             background-color: var(--color-bg-alt);
             text-align: center;
@@ -20,42 +28,58 @@
         .page-header h1 {
             color: var(--color-secondary);
         }
-        .music-player-container {
-            background-color: var(--color-bg-alt);
-            border-radius: 12px;
-            padding: 2rem;
-            border: 1px solid rgba(255,255,255,0.05);
-            margin-bottom: 2rem;
+        
+        /* Custom Player Styles */
+        .player-list {
             display: flex;
-            align-items: center;
-            gap: 2rem;
+            flex-direction: column;
+            gap: 3rem;
+            max-width: 900px;
+            margin: 0 auto;
         }
-        .cover-art {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--color-secondary);
+        .premium-player-card {
+            display: block; /* Mudando para bloco simples sem colunas */
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.4s ease, border-color 0.4s ease;
+            max-width: 800px; /* Reduzindo um pouco a largura pra não ficar "longo demais" */
+            margin: 0 auto;
         }
-        .track-info h3 {
+        .premium-player-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-secondary);
+        }
+        .player-content {
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .player-info h3 {
+            font-size: 1.8rem;
             margin-bottom: 0.5rem;
-            font-size: 1.5rem;
-        }
-        .controls {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-            font-size: 2rem;
             color: var(--color-secondary);
-            cursor: pointer;
+            text-align: center; /* Centralizando o título */
         }
+        .player-info p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 2rem;
+            text-align: center; /* Centralizando a descrição */
+        }
+        .mixcloud-frame {
+            border-radius: 12px;
+            overflow: hidden;
+            height: 120px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3); /* Dando mais profundidade ao player */
+        }
+
         @media (max-width: 768px) {
-            .music-player-container {
-                flex-direction: column;
-                text-align: center;
-            }
-            .controls {
-                justify-content: center;
+            .player-content {
+                padding: 1.5rem;
             }
         }
         @media (max-width: 480px) {
@@ -71,25 +95,25 @@
             <div class="nav-left">
                 <div class="menu-toggle"><span></span><span></span><span></span></div>
                 <a href="index.html" class="logo">
-                    <img src="assets/logo.png" alt="FNZ Logo" onerror="this.src=''; this.alt='FNZ'; this.style.fontSize='1.8rem'; this.style.color='var(--color-secondary)';">
+                    <img src="assets/logo.PNG" alt="FNZ Logo" onerror="this.src=''; this.alt='FNZ'; this.style.fontSize='1.8rem'; this.style.color='var(--color-secondary)';">
                 </a>
             </div>
             <div class="nav-right">
                 <nav class="desktop-menu">
                     <ul>
                         <li><a href="index.html">Início</a></li>
-                        <li><a href="cursos.html">Cursos</a></li>
-                        <li><a href="loja.html">Loja</a></li>
-                        <li><a href="aulas.html">Aulas Particulares</a></li>
-                        <li><a href="dj.html">Sets de DJ</a></li>
-                        <li><a href="sobre.html">Sobre</a></li>
-                        <li><a href="contrate-me.html" style="color: var(--color-secondary); font-weight: 800;">Contrate-me</a></li>
+                        <li><a href="cursos.html" data-pt="Cursos" data-en="Courses">Cursos</a></li>
+                        <li><a href="loja.html" data-pt="Loja" data-en="Store">Loja</a></li>
+                        <li><a href="aulas.html" data-pt="Aulas Particulares" data-en="Private Lessons">Aulas Particulares</a></li>
+                        <li><a href="dj.html" data-pt="Sets de DJ" data-en="DJ Sets">Sets de DJ</a></li>
+                        <li><a href="sobre.html" data-pt="Sobre" data-en="About">Sobre</a></li>
+                        <li><a href="contrate-me.html" style="color: var(--color-secondary); font-weight: 800;" data-pt="Contrate-me" data-en="Hire Me">Contrate-me</a></li>
                     </ul>
                 </nav>
                 <div class="nav-actions">
                     <a href="#" class="lang-btn"><i class="ph ph-globe"></i> EN</a>
-                    <a href="login.html" class="action-btn"><i class="ph ph-user"></i> <span>Login</span></a>
-                    <a href="#" class="action-btn"><i class="ph ph-shopping-cart"></i> <span>Cart</span></a>
+                    <a href="login.html" class="action-btn"><i class="ph ph-user"></i> <span data-pt="Login" data-en="Log In">Login</span></a>
+                    <a href="#" class="action-btn"><i class="ph ph-shopping-cart"></i> <span data-pt="Carrinho" data-en="Cart">Cart</span></a>
                 </div>
             </div>
         </div>
@@ -98,12 +122,12 @@
     <nav class="fullscreen-menu">
         <ul>
             <li><a href="index.html">Início</a></li>
-            <li><a href="cursos.html">Cursos</a></li>
-            <li><a href="loja.html">Loja</a></li>
-            <li><a href="aulas.html">Aulas Particulares</a></li>
-            <li><a href="dj.html">Sets de DJ</a></li>
-            <li><a href="sobre.html">Sobre</a></li>
-            <li><a href="contrate-me.html" style="color: var(--color-secondary); font-weight: 800;">Contrate-me</a></li>
+            <li><a href="cursos.html" data-pt="Cursos" data-en="Courses">Cursos</a></li>
+            <li><a href="loja.html" data-pt="Loja" data-en="Store">Loja</a></li>
+            <li><a href="aulas.html" data-pt="Aulas Particulares" data-en="Private Lessons">Aulas Particulares</a></li>
+            <li><a href="dj.html" data-pt="Sets de DJ" data-en="DJ Sets">Sets de DJ</a></li>
+            <li><a href="sobre.html" data-pt="Sobre" data-en="About">Sobre</a></li>
+            <li><a href="contrate-me.html" style="color: var(--color-secondary); font-weight: 800;" data-pt="Contrate-me" data-en="Hire Me">Contrate-me</a></li>
         </ul>
     </nav>
 
@@ -116,44 +140,90 @@
 
     <section class="section">
         <div class="container fade-in-section">
-            <!-- Trocamos o flex column para um Grid (usando a mesma classe útil dos cursos) para colocar lado a lado -->
-            <div class="courses-grid" style="gap: 2rem;">
-                <!-- Set 1 -->
-                <div class="mixcloud-widget-container" style="background-color: var(--color-bg-alt); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-                    <iframe width="100%" height="280" src="https://www.mixcloud.com/widget/iframe/?hide_cover=0&light=0&feed=%2FZouKing%2Fmix-vibes-brazilian-zouk-brazilian-funk-rb-hip-hop-traditional-lambada%2F" frameborder="0" allow="autoplay"></iframe>
+            <div class="player-list">
+                <!-- Player 1 -->
+                <div class="premium-player-card">
+                    <div class="player-content">
+                        <div class="player-info">
+                            <h3>Brazilian Zouk & Lambada Mix</h3>
+                            <p>Uma jornada visceral pelos ritmos brasileiros, fundindo o Zouk tradicional com a energia da Lambada.</p>
+                        </div>
+                        <div class="mixcloud-frame">
+                            <iframe width="100%" height="120" src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&light=0&feed=%2FZouKing%2Fmix-vibes-brazilian-zouk-brazilian-funk-rb-hip-hop-traditional-lambada%2F" frameborder="0" ></iframe>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Set 2 -->
-                <div class="mixcloud-widget-container" style="background-color: var(--color-bg-alt); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-                    <iframe width="100%" height="280" src="https://www.mixcloud.com/widget/iframe/?hide_cover=0&light=0&feed=%2FZouKing%2Fdj-zouking-zoukmx-chill-experimental-rnb-vibes%2F" frameborder="0" allow="autoplay"></iframe>
+                <!-- Player 2 -->
+                <div class="premium-player-card">
+                    <div class="player-content">
+                        <div class="player-info">
+                            <h3>Chillhouse & R&B Vibes</h3>
+                            <p>Mix experimental focado em texturas suaves, perfeito para flow e conexão profunda.</p>
+                        </div>
+                        <div class="mixcloud-frame">
+                            <iframe width="100%" height="120" src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&light=0&feed=%2FZouKing%2Fdj-zouking-zoukmx-chill-experimental-rnb-vibes%2F" frameborder="0" ></iframe>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Set 3 -->
-                <div class="mixcloud-widget-container" style="background-color: var(--color-bg-alt); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-                    <iframe width="100%" height="280" src="https://www.mixcloud.com/widget/iframe/?hide_cover=0&light=0&feed=%2FZouKing%2Fdj-zouking-zoukmx-2023-beach-party-set%2F" frameborder="0" allow="autoplay"></iframe>
+                <!-- Player 3 -->
+                <div class="premium-player-card">
+                    <div class="player-content">
+                        <div class="player-info">
+                            <h3>ZoukMX Beach Party Set</h3>
+                            <p>A energia das praias do México capturada em um set solar e contagiante.</p>
+                        </div>
+                        <div class="mixcloud-frame">
+                            <iframe width="100%" height="120" src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&light=0&feed=%2FZouKing%2Fdj-zouking-zoukmx-2023-beach-party-set%2F" frameborder="0" ></iframe>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-bottom" style="border: none; padding-top: 0;">
+            <div class="footer-content fade-in-section">
+                <div>
+                    <a href="index.html" class="footer-logo">FNZ</a>
+                    <p>Transformando a maneira como você se expressa através da dança e da música.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="cursos.html" data-pt="Cursos" data-en="Courses">Cursos</a></li>
+                        <li><a href="loja.html" data-pt="Loja" data-en="Store">Loja</a></li>
+                        <li><a href="aulas.html" data-pt="Aulas Particulares" data-en="Private Lessons">Aulas Particulares</a></li>
+                        <li><a href="dj.html" data-pt="Sets de DJ" data-en="DJ Sets">Sets de DJ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><a href="mailto:fmachadonascimento@gmail.com">fmachadonascimento@gmail.com</a></li>
+                        <li><a href="https://www.instagram.com/felipenascimento_zouk/" target="_blank">Instagram</a></li>
+                        <li><a href="https://www.youtube.com/@FelipeNascimentozouk" target="_blank">YouTube</a></li>
+                        <li><a href="https://open.spotify.com/user/22nzji5jmqee4u5tgceipxi3y?si=08b86d07da2f4d62" target="_blank">Spotify</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
                 <p>&copy; 2026 Felipe Nascimento. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/5561981266368?text=Olá%20Felipe!%20Vim%20pelo%20site%20e%20gostaria de%20mais%20informações." class="whatsapp-float" target="_blank" aria-label="Falar no WhatsApp">
+        <i class="ph ph-whatsapp-logo"></i>
+    </a>
+
     <!-- Lenis Library -->
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-    <!-- Google Translate Widget (Oculto) -->
-    <div id="google_translate_element" style="display:none;"></div>
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({pageLanguage: 'pt', includedLanguages: 'en', autoDisplay: false}, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    
 
     <script src="js/main.js"></script>
 </body>

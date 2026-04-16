@@ -1,11 +1,20 @@
+<!-- Sincronizado com o Mac via Git - Teste 1 -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="assets/logo.PNG">
-    <title>Felipe Nascimento | Criador, Professor de Dança & DJ</title>
+    <title>Felipe Nascimento | Zouk Brasileiro e Lambada</title>
     <meta name="description" content="Site oficial de Felipe Nascimento. Aulas de dança exclusivas, sets de DJ e cursos premium. Zouk Brasileiro para todos.">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Felipe Nascimento | Zouk Brasileiro e Lambada">
+    <meta property="og:description" content="Aulas de dança exclusivas, sets de DJ e cursos premium. Eleve sua dança com Felipe Nascimento.">
+    <meta property="og:image" content="assets/felipe.jpeg">
+    <meta property="og:url" content="https://fnzouk.com.br">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,6 +23,7 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- Phosphor Icons (for premium lightweight icons) -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 </head>
 <body>
 
@@ -30,7 +40,7 @@
 
                 <!-- Logo -->
                 <a href="index.html" class="logo">
-                    <img src="assets/logo.png" alt="FNZ Logo" onerror="this.src=''; this.alt='FNZ'; this.style.fontSize='1.8rem'; this.style.color='var(--color-secondary)';">
+                    <img src="assets/logo.PNG" alt="FNZ Logo" onerror="this.src=''; this.alt='FNZ'; this.style.fontSize='1.8rem'; this.style.color='var(--color-secondary)';">
                 </a>
             </div>
 
@@ -38,19 +48,19 @@
                 <nav class="desktop-menu">
                     <ul>
                         <li><a href="index.html">Início</a></li>
-                        <li><a href="cursos.html">Cursos</a></li>
-                        <li><a href="loja.html">Loja</a></li>
-                        <li><a href="aulas.html">Aulas Particulares</a></li>
-                        <li><a href="dj.html">Sets de DJ</a></li>
-                        <li><a href="sobre.html">Sobre</a></li>
-                        <li><a href="contrate-me.html" style="color: var(--color-secondary); font-weight: 800;">Contrate-me</a></li>
+                        <li><a href="cursos.html" data-pt="Cursos" data-en="Courses">Cursos</a></li>
+                        <li><a href="loja.html" data-pt="Loja" data-en="Store">Loja</a></li>
+                        <li><a href="aulas.html" data-pt="Aulas Particulares" data-en="Private Lessons">Aulas Particulares</a></li>
+                        <li><a href="dj.html" data-pt="Sets de DJ" data-en="DJ Sets">Sets de DJ</a></li>
+                        <li><a href="sobre.html" data-pt="Sobre" data-en="About">Sobre</a></li>
+                        <li><a href="contrate-me.html" style="color: var(--color-secondary); font-weight: 800;" data-pt="Contrate-me" data-en="Hire Me">Contrate-me</a></li>
                     </ul>
                 </nav>
                 <!-- Login / Carrinho -->
                 <div class="nav-actions">
                     <a href="#" class="lang-btn"><i class="ph ph-globe"></i> EN</a>
-                    <a href="login.html" class="action-btn"><i class="ph ph-user"></i> <span>Login</span></a>
-                    <a href="#" class="action-btn"><i class="ph ph-shopping-cart"></i> <span>Cart</span></a>
+                    <a href="login.html" class="action-btn"><i class="ph ph-user"></i> <span data-pt="Login" data-en="Log In">Login</span></a>
+                    <a href="#" class="action-btn"><i class="ph ph-shopping-cart"></i> <span data-pt="Carrinho" data-en="Cart">Cart</span></a>
                 </div>
             </div>
         </div>
@@ -60,12 +70,12 @@
     <nav class="fullscreen-menu">
         <ul>
             <li><a href="index.html">Início</a></li>
-            <li><a href="cursos.html">Cursos</a></li>
-            <li><a href="loja.html">Loja</a></li>
-            <li><a href="aulas.html">Aulas Particulares</a></li>
-            <li><a href="dj.html">Sets de DJ</a></li>
-            <li><a href="sobre.html">Sobre</a></li>
-            <li><a href="contrate-me.html" style="color: var(--color-secondary); font-weight: 800;">Contrate-me</a></li>
+            <li><a href="cursos.html" data-pt="Cursos" data-en="Courses">Cursos</a></li>
+            <li><a href="loja.html" data-pt="Loja" data-en="Store">Loja</a></li>
+            <li><a href="aulas.html" data-pt="Aulas Particulares" data-en="Private Lessons">Aulas Particulares</a></li>
+            <li><a href="dj.html" data-pt="Sets de DJ" data-en="DJ Sets">Sets de DJ</a></li>
+            <li><a href="sobre.html" data-pt="Sobre" data-en="About">Sobre</a></li>
+            <li><a href="contrate-me.html" style="color: var(--color-secondary); font-weight: 800;" data-pt="Contrate-me" data-en="Hire Me">Contrate-me</a></li>
         </ul>
     </nav>
 
@@ -81,7 +91,8 @@
                 autoplay 
                 muted 
                 loop 
-                playsinline>
+                playsinline
+                >
             </video>
         </div>
         
@@ -105,40 +116,60 @@
             
             <div class="portfolio-grid">
                 <a href="dj.html" class="portfolio-item">
-                    <img src="assets/1.png" alt="Sets de DJ" class="portfolio-img">
+                    <img src="assets/1.png" alt="Sets de DJ" class="portfolio-img" data-pt="Sets de DJ" data-en="DJ Sets">
+                </a>
+                <a href="loja.html" class="portfolio-item">
+                    <img src="assets/2.png" alt="Loja" class="portfolio-img" data-pt="Loja" data-en="Store">
                 </a>
                 <a href="aulas.html" class="portfolio-item">
-                    <img src="assets/2.png" alt="Aulas Particulares" class="portfolio-img">
-                </a>
-                <a href="cursos.html" class="portfolio-item">
-                    <img src="assets/3.png" alt="Cursos de Dança" class="portfolio-img">
+                    <img src="assets/3.png" alt="Aulas Particulares" class="portfolio-img" data-pt="Cursos de Dança" data-en="Dance Courses">
                 </a>
                 <a href="contrate-me.html" class="portfolio-item">
-                    <img src="assets/4.png" alt="Contrate-me" class="portfolio-img">
+                    <img src="assets/4.png" alt="Contrate-me" class="portfolio-img" data-pt="Contrate-me" data-en="Hire Me">
                 </a>
             </div>
         </div>
     </section>
 
+        <!-- Testimonials Section -->
+    <section class="section section-light-alt" style="overflow: hidden;">
+        <div class="container fade-in-section">
+            <h2 style="text-align: center; color: var(--color-secondary); margin-bottom: 3rem;" data-pt="O que dizem os alunos" data-en="Student Testimonials">O que dizem os alunos</h2>
+            <div class="swiper mySwiper" style="padding-bottom: 2rem;">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><div class="testimonial-card"><p class="testimonial-text">"As aulas do Felipe mudaram completamente a minha conexÃ£o na danÃ§a."</p><span class="testimonial-author">@aluno_exemplo_1</span></div></div>
+                    <div class="swiper-slide"><div class="testimonial-card"><p class="testimonial-text">"IncrÃ­vel como a tÃ©cnica da Lambada Ã© explicada de forma simples e visceral."</p><span class="testimonial-author">@aluno_exemplo_2</span></div></div>
+                    <div class="swiper-slide"><div class="testimonial-card"><p class="testimonial-text">"AlÃ©m de um professor incrÃ­vel, o Felipe Ã© um DJ que entende a pista."</p><span class="testimonial-author">@aluno_exemplo_3</span></div></div>
+                    <div class="swiper-slide"><div class="testimonial-card"><p class="testimonial-text">"Uma experiÃªncia transformadora para a minha danÃ§a!"</p><span class="testimonial-author">@aluno_4</span></div></div>
+                    <div class="swiper-slide"><div class="testimonial-card"><p class="testimonial-text">"Aulas muito dinÃ¢micas e focadas na essÃªncia do movimento."</p><span class="testimonial-author">@aluno_5</span></div></div>
+                    <div class="swiper-slide"><div class="testimonial-card"><p class="testimonial-text">"DidÃ¡tica impecÃ¡vel, super recomendo os cursos online."</p><span class="testimonial-author">@aluno_6</span></div></div>
+                    <div class="swiper-slide"><div class="testimonial-card"><p class="testimonial-text">"Melhorei muito a minha musicalidade sÃ³ acompanhando os sets."</p><span class="testimonial-author">@aluno_7</span></div></div>
+                    <div class="swiper-slide"><div class="testimonial-card"><p class="testimonial-text">"Melhor investimento que fiz para a minha evoluÃ§Ã£o na danÃ§a."</p><span class="testimonial-author">@aluno_8</span></div></div>
+                    <div class="swiper-slide"><div class="testimonial-card"><p class="testimonial-text">"AtenÃ§Ã£o aos detalhes que fazem toda a diferenÃ§a."</p><span class="testimonial-author">@aluno_9</span></div></div>
+                    <div class="swiper-slide"><div class="testimonial-card"><p class="testimonial-text">"Mudei minha percepÃ§Ã£o sobre conduÃ§Ã£o e resposta na danÃ§a a dois."</p><span class="testimonial-author">@aluno_10</span></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content fade-in-section">
                 <div>
                     <a href="index.html" class="footer-logo">FNZ</a>
-                    <p>Transformando a maneira como você se expressa através da dança e da música.</p>
+                    <p data-pt="Transformando a maneira como você se expressa através da dança e da música." data-en="Transforming the way you express yourself through dance and music.">Transformando a maneira como você se expressa através da dança e da música.</p>
                 </div>
                 <div class="footer-links">
-                    <h4>Navegação</h4>
+                    <h4 data-pt="Navegação" data-en="Navigation">Navegação</h4>
                     <ul>
-                        <li><a href="cursos.html">Cursos</a></li>
-                        <li><a href="loja.html">Loja</a></li>
-                        <li><a href="aulas.html">Aulas Particulares</a></li>
-                        <li><a href="dj.html">Sets de DJ</a></li>
+                        <li><a href="cursos.html" data-pt="Cursos" data-en="Courses">Cursos</a></li>
+                        <li><a href="loja.html" data-pt="Loja" data-en="Store">Loja</a></li>
+                        <li><a href="aulas.html" data-pt="Aulas Particulares" data-en="Private Lessons">Aulas Particulares</a></li>
+                        <li><a href="dj.html" data-pt="Sets de DJ" data-en="DJ Sets">Sets de DJ</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
-                    <h4>Contato</h4>
+                    <h4 data-pt="Contato" data-en="Contact">Contato</h4>
                     <ul>
                         <li><a href="mailto:fmachadonascimento@gmail.com">fmachadonascimento@gmail.com</a></li>
                         <li><a href="https://www.instagram.com/felipenascimento_zouk/" target="_blank">Instagram</a></li>
@@ -148,7 +179,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Felipe Nascimento. Todos os direitos reservados.</p>
+                <p data-pt="&copy; 2026 Felipe Nascimento. Todos os direitos reservados." data-en="&copy; 2026 Felipe Nascimento. All rights reserved.">&copy; 2026 Felipe Nascimento. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
@@ -156,15 +187,25 @@
     <!-- Lenis Library for ultra smooth premium scrolling -->
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <!-- Scripts -->
-    <!-- Google Translate Widget (Oculto) -->
-    <div id="google_translate_element" style="display:none;"></div>
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({pageLanguage: 'pt', includedLanguages: 'en', autoDisplay: false}, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+    <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
+    
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/5561981266368?text=Olá%20Felipe!%20Vim%20pelo%20site%20e%20gostaria de%20mais%20informações." class="whatsapp-float" target="_blank" aria-label="Falar no WhatsApp">
+        <i class="ph ph-whatsapp-logo"></i>
+    </a>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var swiper = new Swiper('.mySwiper', {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                loop: true,
+                autoplay: { delay: 3000, disableOnInteraction: true },
+                breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } },
+                grabCursor: true
+            });
+        });
+    </script>
 </body>
 </html>
