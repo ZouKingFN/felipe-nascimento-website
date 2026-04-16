@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('js-enabled');
     // Mobile Menu Toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const fullscreenMenu = document.querySelector('.fullscreen-menu');
@@ -92,11 +93,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Floating WhatsApp Widget
-    const waFloat = document.createElement('a');
-    waFloat.href = 'https://w.app/xwniez';
-    waFloat.target = '_blank';
-    waFloat.className = 'whatsapp-float';
-    waFloat.innerHTML = '<i class="ph-fill ph-whatsapp-logo"></i>';
-    document.body.appendChild(waFloat);
 });
