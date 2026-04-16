@@ -1,6 +1,7 @@
 :root {
     --color-bg: #050505;
     --color-bg-alt: #111111;
+    --color-bg-light: #161616; /* Fundo suave para os depoimentos */
     --color-primary: #1a0b2e;
     --color-primary-light: #2d144e;
     --color-secondary: #d4af37; /* Gold */
@@ -610,5 +611,51 @@ footer {
     }
     .fullscreen-menu a {
         font-size: 2rem;
+    }
+}
+/* Testimonials Section Styles */
+.section-light-alt {
+    background-color: var(--color-bg-light);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+}
+
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    transition: var(--transition-smooth);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--color-secondary);
+}
+
+.testimonial-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    font-style: italic;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.testimonial-author {
+    display: block;
+    color: var(--color-secondary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    .testimonials-grid {
+        gap: 1.5rem;
     }
 }
