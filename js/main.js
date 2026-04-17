@@ -63,4 +63,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Nota: A lógica de tradução PT<->EN agora está em js/i18n.js
 
+    // Konami-like easter egg: Up Up Down Down Left Right P K
+    const konamiSequence = ['arrowup', 'arrowup', 'arrowdown', 'arrowdown', 'arrowleft', 'arrowright', 'p', 'k'];
+    const keyBuffer = [];
+
+    window.addEventListener('keydown', (event) => {
+        const key = event.key.toLowerCase();
+        keyBuffer.push(key);
+
+        if (keyBuffer.length > konamiSequence.length) {
+            keyBuffer.shift();
+        }
+
+        const matched = konamiSequence.every((expectedKey, index) => keyBuffer[index] === expectedKey);
+        if (matched) {
+            alert('PabloKiryu was Here!');
+            keyBuffer.length = 0;
+        }
+    });
 });

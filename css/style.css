@@ -75,6 +75,10 @@ p {
     padding: 6rem 0;
 }
 
+.page-header + .section {
+    padding-top: 1rem;
+}
+
 .section-dark {
     background-color: var(--color-bg-alt);
 }
