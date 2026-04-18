@@ -1090,3 +1090,21 @@ body.page-exit {
     margin-bottom: 1.5rem;
     display: inline-block;
 }
+
+/* Ajuste Mobile para LAB Teaser */
+@media (max-width: 768px) {
+    .lab-teaser {
+        padding: 4rem 0;
+    }
+    .lab-teaser-card {
+        padding: 3rem 1.5rem;
+        border-radius: 16px;
+    }
+    .lab-teaser-card h3 {
+        font-size: 1.8rem;
+    }
+    .lab-teaser-card p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+}
