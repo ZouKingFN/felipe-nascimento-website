@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/logo.PNG">
+    <title>LAB | Felipe Nascimento - Treino e Evolução</title>
+    <meta name="description" content="LAB Premium: Treine, ajuste e evolua sua dança com direcionamentos práticos.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .page-header {
+            padding-top: 7rem;
+            padding-bottom: 2rem;
+            background-color: var(--color-bg-alt);
+            text-align: center;
+        }
+        .page-header h1 {
+            color: var(--color-secondary);
+            font-size: clamp(2rem, 8vw, 4rem);
+            letter-spacing: 4px;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            color: var(--color-text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+
+        /* LAB Specific Styles */
+        .lab-section {
+            padding: 4rem 0;
+        }
+        .lab-section h2 {
+            font-size: 1.2rem;
+            color: var(--color-text-muted);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+        .lab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+            gap: 20px;
+        }
+        .lab-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 16px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100px;
+        }
+        .lab-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            padding: 1px;
+            background: linear-gradient(120deg, var(--color-secondary), transparent, var(--color-secondary-dark));
+            -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: 0.4s;
+        }
+        .lab-card:hover::before {
+            opacity: 1;
+        }
+        .lab-card:hover {
+            transform: translateY(-5px);
+            background: rgba(212, 175, 55, 0.05);
+            border-color: rgba(212, 175, 55, 0.2);
+        }
+        .lab-card.active {
+            background: rgba(212, 175, 55, 0.08);
+            border-color: var(--color-secondary);
+        }
+        .lab-card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .lab-card-title i {
+            transition: transform 0.4s;
+            color: var(--color-secondary);
+        }
+        .lab-card.active .lab-card-title i {
+            transform: rotate(180deg);
+        }
+
+        .lab-content {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.5s cubic-bezier(1, 0, 0, 1);
+        }
+        .lab-content.active {
+            max-height: 800px;
+            opacity: 1;
+            transform: translateY(0);
+            margin-top: 2rem;
+        }
+
+        .lab-block {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .lab-block:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .lab-block strong {
+            display: block;
+            color: var(--color-secondary);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .lab-small {
+            font-size: 1rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
+        iframe {
+            border-radius: 12px;
+            margin-top: 1rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .lab-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container navbar">
+            <div class="nav-left">
+                <div class="menu-toggle"><span></span><span></span><span></span></div>
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.PNG" alt="FNZ Logo" onerror="this.src=''; this.alt='FNZ'; this.style.fontSize='1.8rem'; this.style.color='var(--color-secondary)';">
+                </a>
+            </div>
+            <div class="nav-right">
+                <nav class="desktop-menu">
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="lab.html" class="active">LAB</a></li>
+                        <li><a href="cursos.html" data-pt="Cursos" data-en="Courses">Cursos</a></li>
+                        <li><a href="loja.html" data-pt="Loja" data-en="Store">Loja</a></li>
+                        <li><a href="aulas.html" data-pt="Aulas Particulares" data-en="Private Lessons">Aulas Particulares</a></li>
+                        <li><a href="dj.html" data-pt="Sets de DJ" data-en="DJ Sets">Sets de DJ</a></li>
+                        <li><a href="sobre.html" data-pt="Sobre" data-en="About">Sobre mim</a></li>
+                        <li><a href="contrate-me.html" style="color: var(--color-secondary); font-weight: 800;" data-pt="Contrate-me" data-en="Hire Me">Contrate-me</a></li>
+                    </ul>
+                </nav>
+                <div class="nav-actions">
+                    <a href="#" class="lang-btn"><i class="ph ph-globe"></i> EN</a>
+                    <a href="login.html" class="action-btn"><i class="ph ph-user"></i> <span data-pt="Login" data-en="Log In">Login</span></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="fullscreen-menu">
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="lab.html">LAB</a></li>
+            <li><a href="cursos.html" data-pt="Cursos" data-en="Courses">Cursos</a></li>
+            <li><a href="loja.html" data-pt="Loja" data-en="Store">Loja</a></li>
+            <li><a href="aulas.html" data-pt="Aulas Particulares" data-en="Private Lessons">Aulas Particulares</a></li>
+            <li><a href="dj.html" data-pt="Sets de DJ" data-en="DJ Sets">Sets de DJ</a></li>
+            <li><a href="sobre.html" data-pt="Sobre" data-en="About">Sobre mim</a></li>
+            <li><a href="contrate-me.html" style="color: var(--color-secondary); font-weight: 800;" data-pt="Contrate-me" data-en="Hire Me">Contrate-me</a></li>
+        </ul>
+    </nav>
+
+    <section class="page-header">
+        <div class="container fade-in-section">
+            <h1 data-pt="LAB" data-en="LAB">LAB</h1>
+            <p class="subtitle" data-pt="Treine. Ajuste. Evolua." data-en="Train. Adjust. Evolve.">Treine. Ajuste. Evolua.</p>
+        </div>
+    </section>
+
+    <section class="lab-section">
+        <div class="container fade-in-section">
+            <h2 data-pt="O que você quer treinar hoje?" data-en="What do you want to train today?">O que você quer treinar hoje?</h2>
+
+            <div class="lab-grid">
+
+                <!-- Musicalidade -->
+                <div class="lab-card" onclick="toggleLab(this)">
+                    <div class="lab-card-title">
+                        <span data-pt="Musicalidade" data-en="Musicality">Musicalidade</span>
+                        <i class="ph ph-caret-down"></i>
+                    </div>
+
+                    <div class="lab-content">
+                        <div class="lab-block">
+                            <strong data-pt="🎧 Treinar com:" data-en="🎧 Train with:">🎧 Treinar com:</strong>
+                            <iframe width="100%" height="200"
+                            src="https://www.youtube.com/embed/tgbNymZ7vqY"
+                            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+
+                        <div class="lab-block">
+                            <strong data-pt="🧠 Observe:" data-en="🧠 Observe:">🧠 Observe:</strong>
+                            <p class="lab-small" data-pt="Pausas, energia e viradas." data-en="Pauses, energy and peaks.">Pausas, energia e viradas.</p>
+                        </div>
+
+                        <div class="lab-block">
+                            <strong data-pt="🎯 Faça:" data-en="🎯 Do:">🎯 Faça:</strong>
+                            <p class="lab-small" data-pt="Dance focando nas transições e na interpretação dos silêncios." data-en="Dance focusing on transitions and interpreting silences.">Dance focando nas transições e na interpretação dos silêncios.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controle -->
+                <div class="lab-card" onclick="toggleLab(this)">
+                    <div class="lab-card-title">
+                        <span data-pt="Controle" data-en="Control">Controle</span>
+                        <i class="ph ph-caret-down"></i>
+                    </div>
+
+                    <div class="lab-content">
+                        <div class="lab-block">
+                            <strong data-pt="🧠 Foco:" data-en="🧠 Focus:">🧠 Foco:</strong>
+                            <p class="lab-small" data-pt="Estabilidade e precisão do eixo." data-en="Stability and axis precision.">Estabilidade e precisão do eixo.</p>
+                        </div>
+
+                        <div class="lab-block">
+                            <strong data-pt="🎯 Faça:" data-en="🎯 Do:">🎯 Faça:</strong>
+                            <p class="lab-small" data-pt="Reduza a força física e refine a intenção do movimento. Menos é mais." data-en="Reduce physical force and refine movement intention. Less is more.">Reduza a força física e refine a intenção do movimento. Menos é mais.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conexão -->
+                <div class="lab-card" onclick="toggleLab(this)">
+                    <div class="lab-card-title">
+                        <span data-pt="Conexão" data-en="Connection">Conexão</span>
+                        <i class="ph ph-caret-down"></i>
+                    </div>
+
+                    <div class="lab-content">
+                        <div class="lab-block">
+                            <strong data-pt="🧠 Conceito:" data-en="🧠 Concept:">🧠 Conceito:</strong>
+                            <p class="lab-small" data-pt="Reaja ao parceiro em tempo real, não antecipe movimentos decorados." data-en="React to your partner in real-time, do not anticipate memorized movements.">Reaja ao parceiro em tempo real, não antecipe movimentos decorados.</p>
+                        </div>
+                        <div class="lab-block">
+                            <strong data-pt="🎯 Prática:" data-en="🎯 Practice:">🎯 Prática:</strong>
+                            <p class="lab-small" data-pt="Feche os olhos por alguns instantes (se estiver em ambiente seguro) e sinta o peso e a direção da conexão." data-en="Close your eyes for a few moments (if in a safe environment) and feel the weight and direction of the connection.">Feche os olhos por alguns instantes (se estiver em ambiente seguro) e sinta o peso e a direção da conexão.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fluidez -->
+                <div class="lab-card" onclick="toggleLab(this)">
+                    <div class="lab-card-title">
+                        <span data-pt="Fluidez" data-en="Fluidity">Fluidez</span>
+                        <i class="ph ph-caret-down"></i>
+                    </div>
+
+                    <div class="lab-content">
+                        <div class="lab-block">
+                            <strong data-pt="🧠 Foco:" data-en="🧠 Focus:">🧠 Foco:</strong>
+                            <p class="lab-small" data-pt="Movimento contínuo. Evite travar entre uma sequência e outra." data-en="Continuous movement. Avoid locking between sequences.">Movimento contínuo. Evite travar entre uma sequência e outra.</p>
+                        </div>
+                        <div class="lab-block">
+                            <strong data-pt="🎯 Dica:" data-en="🎯 Tip:">🎯 Dica:</strong>
+                            <p class="lab-small" data-pt="Imagine que você está dançando embaixo d'água. Cada movimento deve gerar o próximo organicamente." data-en="Imagine you are dancing underwater. Each movement should generate the next one organically.">Imagine que você está dançando embaixo d'água. Cada movimento deve gerar o próximo organicamente.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <a href="index.html" class="footer-logo">FNZ</a>
+                    <p>Treine com inteligência. Evolua com consciência.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="lab.html">LAB</a></li>
+                        <li><a href="cursos.html" data-pt="Cursos" data-en="Courses">Cursos</a></li>
+                        <li><a href="loja.html" data-pt="Loja" data-en="Store">Loja</a></li>
+                        <li><a href="aulas.html" data-pt="Aulas Particulares" data-en="Private Lessons">Aulas Particulares</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Felipe Nascimento. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/5561981266368?text=Olá%20Felipe!%20Vim%20pelo%20site%20e%20gostaria de%20mais%20informações." class="whatsapp-float" target="_blank" aria-label="Falar no WhatsApp">
+        <i class="ph ph-whatsapp-logo"></i>
+    </a>
+
+    <!-- Lenis Library -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script>
+        function toggleLab(card) {
+            const content = card.querySelector('.lab-content');
+            
+            // Fechar outros cards se quiser (opcional)
+            /*
+            document.querySelectorAll('.lab-card').forEach(c => {
+                if(c !== card) {
+                    c.classList.remove('active');
+                    c.querySelector('.lab-content').classList.remove('active');
+                }
+            });
+            */
+
+            card.classList.toggle('active');
+            content.classList.toggle('active');
+        }
+    </script>
+    <script src="js/i18n.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
