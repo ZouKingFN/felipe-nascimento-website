@@ -881,7 +881,7 @@ body {
    Seção Pelo Mundo (Sobre)
    ========================================================================== */
 .world-section {
-    padding: 8rem 0;
+    padding: 6rem 0;
     background-color: var(--color-bg);
     position: relative;
     overflow: hidden;
@@ -893,14 +893,14 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 15vw;
+    font-size: 10vw;
     font-weight: 900;
-    color: rgba(255, 255, 255, 0.02);
+    color: rgba(255, 255, 255, 0.015);
     white-space: nowrap;
     z-index: 0;
     pointer-events: none;
     text-transform: uppercase;
-    letter-spacing: 20px;
+    letter-spacing: 15px;
 }
 
 .marquee-container {
@@ -909,29 +909,29 @@ body {
     display: flex;
     overflow: hidden;
     user-select: none;
-    gap: 4rem;
-    padding: 2rem 0;
+    gap: 3rem;
+    padding: 1.5rem 0;
 }
 
 .marquee-content {
     flex-shrink: 0;
     display: flex;
     justify-content: space-around;
-    gap: 4rem;
+    gap: 3rem;
     min-width: 100%;
-    animation: scroll-marquee 50s linear infinite;
+    animation: scroll-marquee 60s linear infinite;
 }
 
 .marquee-item {
-    font-size: clamp(1.5rem, 4vw, 2.8rem);
+    font-size: clamp(1.2rem, 3vw, 2.2rem);
     font-weight: 800;
     color: #fff;
     white-space: nowrap;
     display: flex;
     align-items: center;
-    gap: 4rem;
+    gap: 3rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
 .marquee-item::after {
