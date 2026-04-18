@@ -41,18 +41,19 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
             
+            const host = window.location.hostname.replace(/^www\./, '');
             if (currentLang === 'PT') {
                 // Mudar para o Inglês
                 document.cookie = "googtrans=/pt/en; path=/";
-                document.cookie = `googtrans=/pt/en; path=/; domain=${window.location.hostname}`;
+                document.cookie = `googtrans=/pt/en; path=/; domain=.${host}`;
             } else {
                 // Voltar para Português (limpar cookies)
                 document.cookie = "googtrans=/pt/pt; path=/";
-                document.cookie = `googtrans=/pt/pt; path=/; domain=${window.location.hostname}`;
+                document.cookie = `googtrans=/pt/pt; path=/; domain=.${host}`;
                 
                 // Excluir os cookies para forçar o fallback natural orgânico
                 document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-                document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${window.location.hostname}`;
+                document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.${host}`;
             }
             
             // Recarregar a página para o script do Google ler o novo cookie e traduzir 100% da DOM
