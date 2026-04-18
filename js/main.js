@@ -10,34 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
             fullscreenMenu.classList.toggle('open');
             // Prevent body scroll when menu is open
             document.body.style.overflow = fullscreenMenu.classList.contains('open') ? 'hidden' : '';
-        
-    // Destacar o menu atual
-    const paths = window.location.pathname.split('/');
-    let currentPage = paths[paths.length - 1];
-    if (!currentPage || currentPage === '') currentPage = 'index.html';
-    
-    document.querySelectorAll('.desktop-menu a, .fullscreen-menu a').forEach(link => {
-        const linkHref = link.getAttribute('href');
-        if (linkHref === currentPage) {
-            link.style.color = 'var(--color-secondary)';
-        }
-    });
-
-    // Estado de Login
-    if (localStorage.getItem('fnz_user') === 'true') {
-        document.querySelectorAll('.action-btn').forEach(btn => {
-            if (btn.getAttribute('href') === 'login.html') {
-                btn.setAttribute('href', 'index.html');
-                const span = btn.querySelector('span');
-                if (span) {
-                    span.textContent = 'Meu Perfil';
-                    span.removeAttribute('data-pt');
-                    span.removeAttribute('data-en');
-                }
-            }
         });
-    }
-});
     }
 
     // Header scroll effect
@@ -49,34 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             header.classList.remove('scrolled');
         }
-    
-    // Destacar o menu atual
-    const paths = window.location.pathname.split('/');
-    let currentPage = paths[paths.length - 1];
-    if (!currentPage || currentPage === '') currentPage = 'index.html';
-    
-    document.querySelectorAll('.desktop-menu a, .fullscreen-menu a').forEach(link => {
-        const linkHref = link.getAttribute('href');
-        if (linkHref === currentPage) {
-            link.style.color = 'var(--color-secondary)';
-        }
     });
-
-    // Estado de Login
-    if (localStorage.getItem('fnz_user') === 'true') {
-        document.querySelectorAll('.action-btn').forEach(btn => {
-            if (btn.getAttribute('href') === 'login.html') {
-                btn.setAttribute('href', 'index.html');
-                const span = btn.querySelector('span');
-                if (span) {
-                    span.textContent = 'Meu Perfil';
-                    span.removeAttribute('data-pt');
-                    span.removeAttribute('data-en');
-                }
-            }
-        });
-    }
-});
 
     // Intersection Observer for scroll animations (fade in elements)
     const observerOptions = {
@@ -91,34 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 entry.target.classList.add('is-visible');
                 observer.unobserve(entry.target);
             }
-        
-    // Destacar o menu atual
-    const paths = window.location.pathname.split('/');
-    let currentPage = paths[paths.length - 1];
-    if (!currentPage || currentPage === '') currentPage = 'index.html';
-    
-    document.querySelectorAll('.desktop-menu a, .fullscreen-menu a').forEach(link => {
-        const linkHref = link.getAttribute('href');
-        if (linkHref === currentPage) {
-            link.style.color = 'var(--color-secondary)';
-        }
-    });
-
-    // Estado de Login
-    if (localStorage.getItem('fnz_user') === 'true') {
-        document.querySelectorAll('.action-btn').forEach(btn => {
-            if (btn.getAttribute('href') === 'login.html') {
-                btn.setAttribute('href', 'index.html');
-                const span = btn.querySelector('span');
-                if (span) {
-                    span.textContent = 'Meu Perfil';
-                    span.removeAttribute('data-pt');
-                    span.removeAttribute('data-en');
-                }
-            }
         });
-    }
-});
     }, observerOptions);
 
     const fadeElements = document.querySelectorAll('.fade-in-section');
@@ -132,34 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             smooth: true,
             mouseMultiplier: 1,
             smoothTouch: false, // Maintain native touch behavior on mobile
-        
-    // Destacar o menu atual
-    const paths = window.location.pathname.split('/');
-    let currentPage = paths[paths.length - 1];
-    if (!currentPage || currentPage === '') currentPage = 'index.html';
-    
-    document.querySelectorAll('.desktop-menu a, .fullscreen-menu a').forEach(link => {
-        const linkHref = link.getAttribute('href');
-        if (linkHref === currentPage) {
-            link.style.color = 'var(--color-secondary)';
-        }
-    });
-
-    // Estado de Login
-    if (localStorage.getItem('fnz_user') === 'true') {
-        document.querySelectorAll('.action-btn').forEach(btn => {
-            if (btn.getAttribute('href') === 'login.html') {
-                btn.setAttribute('href', 'index.html');
-                const span = btn.querySelector('span');
-                if (span) {
-                    span.textContent = 'Meu Perfil';
-                    span.removeAttribute('data-pt');
-                    span.removeAttribute('data-en');
-                }
-            }
         });
-    }
-});
 
         function raf(time) {
             lenis.raf(time);
@@ -171,20 +63,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Nota: A lógica de tradução PT<->EN agora está em js/i18n.js
 
+});
 
-    // Destacar o menu atual
-    const paths = window.location.pathname.split('/');
-    let currentPage = paths[paths.length - 1];
-    if (!currentPage || currentPage === '') currentPage = 'index.html';
+document.addEventListener('DOMContentLoaded', () => {
+    // Destacar o menu atual (corrigido para funcionar com/sem .html)
+    let currentPath = window.location.pathname;
+    if (currentPath === '/' || currentPath.endsWith('index.html')) currentPath = 'index.html';
     
     document.querySelectorAll('.desktop-menu a, .fullscreen-menu a').forEach(link => {
         const linkHref = link.getAttribute('href');
-        if (linkHref === currentPage) {
+        if (!linkHref || linkHref === '#') return;
+        
+        const cleanHref = linkHref.replace('.html', '');
+        const cleanPath = currentPath.replace('.html', '');
+        
+        if (cleanPath.endsWith(cleanHref) || (cleanPath === '/' && linkHref === 'index.html')) {
             link.style.color = 'var(--color-secondary)';
+            link.style.fontWeight = 'bold';
+            link.style.textShadow = '0 0 10px rgba(212, 175, 55, 0.5)';
         }
     });
 
-    // Estado de Login
+    // Estado do Login
     if (localStorage.getItem('fnz_user') === 'true') {
         document.querySelectorAll('.action-btn').forEach(btn => {
             if (btn.getAttribute('href') === 'login.html') {
