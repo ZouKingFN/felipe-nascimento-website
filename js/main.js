@@ -129,3 +129,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// Intercetar cliques para Transição de Saída Suave
+document.addEventListener('click', (e) => {
+    const target = e.target.closest('a');
+    if (!target) return;
+
+    const href = target.getAttribute('href');
+    const isInternalLink = href && !href.startsWith('http') && !href.startsWith('#') && !target.hasAttribute('target');
+
+    if (isInternalLink) {
+        e.preventDefault();
+        document.body.classList.add('page-exit');
+        
+        setTimeout(() => {
+            window.location.href = href;
+        }, 500); // Aguarda a animação de fade-out
+    }
+});
