@@ -1,62 +1,62 @@
-/**
- * i18n.js — Motor de tradução PT <-> EN
- * Funciona lendo atributos data-pt e data-en nos elementos HTML.
- * O idioma ativo é salvo no localStorage para persistir entre páginas.
- */
+// js/i18n.js - Tradução Automática Universal (Invisível)
 
-const I18N_KEY = 'fnz_lang';
-
-/**
- * Aplica o idioma especificado a todos os elementos com data-pt / data-en.
- * @param {'pt'|'en'} lang
- */
-function applyLang(lang) {
-    document.documentElement.lang = lang === 'en' ? 'en' : 'pt-BR';
-
-    document.querySelectorAll('[data-pt]').forEach(el => {
-        const text = el.getAttribute(`data-${lang}`);
-        if (text !== null) {
-            // Preserva filhos que não sejam nós de texto (ex: ícones <i>)
-            const children = Array.from(el.childNodes).filter(n => n.nodeType === Node.ELEMENT_NODE);
-            el.textContent = text;
-            // Re-insere filhos anteriores no início (ex: ícone do botão)
-            children.forEach(child => el.prepend(child));
-        }
-    });
-
-    // Atualiza o botão de idioma
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.innerHTML = lang === 'en'
-            ? '<i class="ph ph-globe"></i> PT'
-            : '<i class="ph ph-globe"></i> EN';
-        btn.title = lang === 'en' ? 'Voltar para Português' : 'Translate to English';
-    });
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+        pageLanguage: 'pt', 
+        includedLanguages: 'en,pt', 
+        autoDisplay: false
+    }, 'google_translate_element');
 }
 
-/**
- * Inicializa o sistema de tradução:
- * - Lê o idioma salvo no localStorage
- * - Aplica o idioma
- * - Conecta o evento de clique nos botões .lang-btn
- */
-function initI18n() {
-    const savedLang = localStorage.getItem(I18N_KEY) || 'pt';
-    applyLang(savedLang);
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Injetar a div oculta do Google Tradutor
+    const div = document.createElement('div');
+    div.id = 'google_translate_element';
+    div.style.display = 'none';
+    document.body.appendChild(div);
 
-    document.querySelectorAll('.lang-btn').forEach(btn => {
+    // 2. Injetar o script do Google Tradutor nativo
+    const script = document.createElement('script');
+    script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+    document.body.appendChild(script);
+
+    // 3. Detectar a linguagem atual baseada no cookie 'googtrans'
+    function getCurrentLang() {
+        if (document.cookie.includes('googtrans=/pt/en') || document.cookie.includes('googtrans=/auto/en')) {
+            return 'EN';
+        }
+        return 'PT';
+    }
+
+    const currentLang = getCurrentLang();
+
+    // 4. Configurar os botões de idioma do site
+    const langBtns = document.querySelectorAll('.lang-btn');
+    
+    langBtns.forEach(btn => {
+        // Se a página estiver em PT, o botão mostra a opção de EN. 
+        // Se estiver em EN, mostra a opção de voltar pra PT.
+        btn.innerHTML = `<i class="ph ph-globe"></i> ${currentLang === 'EN' ? 'PT' : 'EN'}`;
+        
         btn.addEventListener('click', (e) => {
             e.preventDefault();
-            const currentLang = localStorage.getItem(I18N_KEY) || 'pt';
-            const newLang = currentLang === 'pt' ? 'en' : 'pt';
-            localStorage.setItem(I18N_KEY, newLang);
-            applyLang(newLang);
+            
+            if (currentLang === 'PT') {
+                // Mudar para o Inglês
+                document.cookie = "googtrans=/pt/en; path=/";
+                document.cookie = `googtrans=/pt/en; path=/; domain=${window.location.hostname}`;
+            } else {
+                // Voltar para Português (limpar cookies)
+                document.cookie = "googtrans=/pt/pt; path=/";
+                document.cookie = `googtrans=/pt/pt; path=/; domain=${window.location.hostname}`;
+                
+                // Excluir os cookies para forçar o fallback natural orgânico
+                document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+                document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${window.location.hostname}`;
+            }
+            
+            // Recarregar a página para o script do Google ler o novo cookie e traduzir 100% da DOM
+            window.location.reload();
         });
     });
-}
-
-// Auto-inicializa quando o DOM estiver pronto
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initI18n);
-} else {
-    initI18n();
-}
+});

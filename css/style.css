@@ -804,3 +804,36 @@ footer {
         gap: 1.5rem;
     }
 }
+
+/* ==========================================================================
+   Google Translate Invisível (Hack para remover a barra e artefatos)
+   ========================================================================== */
+.goog-te-banner-frame.skiptranslate, 
+.goog-te-gadget-icon,
+.goog-te-gadget-simple,
+#google_translate_element {
+    display: none !important;
+}
+
+body {
+    top: 0px !important; 
+    position: static !important;
+}
+
+.goog-tooltip {
+    display: none !important;
+}
+
+.goog-tooltip:hover {
+    display: none !important;
+}
+
+.goog-text-highlight {
+    background-color: transparent !important;
+    border: none !important; 
+    box-shadow: none !important;
+}
+
+#goog-gt-tt {
+    display: none !important;
+}
