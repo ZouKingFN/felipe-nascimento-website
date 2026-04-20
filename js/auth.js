@@ -11,6 +11,8 @@ async function handleEmailLogin() {
     const emailInput = document.getElementById('userEmail');
     const termsCheck = document.getElementById('termsCheck');
     const errorMsg = document.getElementById('errorMsg');
+    const inputState = document.getElementById('inputState');
+    const successState = document.getElementById('successState');
 
     if (termsCheck && !termsCheck.checked) {
         if (errorMsg) errorMsg.style.display = 'block';
@@ -24,18 +26,32 @@ async function handleEmailLogin() {
 
     if (errorMsg) errorMsg.style.display = 'none';
 
+    // Desativar botão para evitar cliques múltiplos
+    const btn = document.querySelector('#inputState button');
+    if (btn) {
+        btn.disabled = true;
+        btn.textContent = "Enviando...";
+    }
+
     const { data, error } = await supabaseClient.auth.signInWithOtp({
         email: emailInput.value,
         options: {
-            emailRedirectTo: window.location.href.replace('login.html', 'index.html')
+            // Garante que o redirecionamento mantenha o domínio atual
+            emailRedirectTo: window.location.origin + '/'
         }
     });
 
     if (error) {
         console.error("Erro no login:", error.message);
         alert("Erro ao enviar link: " + error.message);
+        if (btn) {
+            btn.disabled = false;
+            btn.textContent = "Enviar Link de Acesso";
+        }
     } else {
-        alert("Sucesso! Verifique sua caixa de entrada. Enviamos um link de acesso para " + emailInput.value);
+        // Interação Premium: Troca de estados no formulário
+        if (inputState) inputState.style.display = 'none';
+        if (successState) successState.style.display = 'block';
     }
 }
 
@@ -62,8 +78,21 @@ supabaseClient.auth.onAuthStateChanged((event, session) => {
     if (user) {
         localStorage.setItem('fnz_user', 'true');
         syncUserProfile(user);
+        
+        // Se estiver na página de login e acabou de logar, redireciona
+        if (window.location.pathname.includes('login.html')) {
+            window.location.href = 'index.html';
+        }
     } else {
         localStorage.removeItem('fnz_user');
+    }
+});
+
+// Forçar captura de sessão no carregamento (útil para lidar com hash fragments em sites estáticos)
+window.addEventListener('load', async () => {
+    const { data, error } = await supabaseClient.auth.getSession();
+    if (data.session) {
+        updateUI(data.session.user);
     }
 });
 
@@ -79,7 +108,7 @@ async function syncUserProfile(user) {
         .upsert({ 
             id: user.id, 
             email: user.email, 
-            full_name: name, 
+            full_name: name,
             avatar_url: avatar,
             updated_at: new Date()
         }, { onConflict: 'id' });
@@ -96,7 +125,10 @@ function updateUI(user) {
         const span = btn.querySelector('span');
         if (!span) return;
 
-        const isLoginBtn = span.getAttribute('data-pt') === 'Login' || span.textContent.trim() === 'Login' || btn.getAttribute('href') === 'login.html';
+        // Verifica se é o botão de login (pelo texto ou href)
+        const isLoginBtn = span.getAttribute('data-pt') === 'Login' || 
+                          span.textContent.trim() === 'Login' || 
+                          btn.getAttribute('href') === 'login.html';
 
         if (user && isLoginBtn) {
             btn.setAttribute('href', '#');

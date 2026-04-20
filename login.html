@@ -142,12 +142,21 @@
                     <label for="marketingCheck">Aceito receber promoções, informações sobre novos cursos e conteúdo VIP no meu e-mail (Opcional).</label>
                 </div>
 
-                <div style="margin-bottom: 2rem;">
+                <div id="inputState" style="margin-bottom: 2rem;">
                     <input type="email" id="userEmail" placeholder="Seu e-mail" style="width: 100%; padding: 1rem; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); color: #fff; margin-bottom: 1rem; font-family: inherit;">
                     <button type="button" class="btn btn-primary" style="width: 100%; padding: 1rem; border-radius: 50px;" onclick="handleEmailLogin()">
                         Enviar Link de Acesso
                     </button>
                     <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 1rem;">Você receberá um link no seu e-mail para entrar sem precisar de senha.</p>
+                </div>
+
+                <div id="successState" style="display: none; padding: 2rem 1rem; text-align: center; animation: fadeIn 0.5s ease;">
+                    <i class="ph ph-envelope-simple-open" style="font-size: 3rem; color: var(--color-secondary); margin-bottom: 1rem; display: block;"></i>
+                    <h3 style="color: var(--color-secondary); margin-bottom: 0.5rem;">E-mail Enviado!</h3>
+                    <p style="font-size: 0.9rem; color: var(--color-text-muted);">Verifique sua caixa de entrada. Enviamos um link de acesso exclusivo para você.</p>
+                    <button type="button" class="btn-outline" style="margin-top: 1.5rem; padding: 0.5rem 1.5rem; font-size: 0.8rem;" onclick="location.reload()">
+                        Tentar outro e-mail
+                    </button>
                 </div>
             </form>
             <p id="errorMsg" style="color: #ff5555; font-size: 0.85rem; display: none; margin-top: 1rem;">Por questões de segurança e privacidade, você precisa aceitar os Termos de Uso antes de continuar.</p>
