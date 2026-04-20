@@ -84,20 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Estado do Login
-    if (localStorage.getItem('fnz_user') === 'true') {
-        document.querySelectorAll('.action-btn').forEach(btn => {
-            if (btn.getAttribute('href') === 'login.html') {
-                btn.setAttribute('href', 'index.html');
-                const span = btn.querySelector('span');
-                if (span) {
-                    span.textContent = 'Meu Perfil';
-                    span.removeAttribute('data-pt');
-                    span.removeAttribute('data-en');
-                }
-            }
-        });
-    }
+    // O estado do login agora é gerenciado exclusivamente pelo auth.js para evitar conflitos.
 });
 
 // Preloader Logic

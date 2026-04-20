@@ -123,6 +123,7 @@
             <div class="loader-logo">FNZ</div>
         </div>
     </div>
+    
     <section class="auth-section">
         <a href="index.html" class="back-link"><i class="ph ph-arrow-left"></i> Voltar</a>
         <div class="auth-container fade-in-section">
@@ -141,16 +142,20 @@
                     <label for="marketingCheck">Aceito receber promoções, informações sobre novos cursos e conteúdo VIP no meu e-mail (Opcional).</label>
                 </div>
 
-                <button type="button" class="btn-google" onclick="handleGoogleLogin()">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google">
-                    Entrar com o Google
-                </button>
+                <div style="margin-bottom: 2rem;">
+                    <input type="email" id="userEmail" placeholder="Seu e-mail" style="width: 100%; padding: 1rem; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); color: #fff; margin-bottom: 1rem; font-family: inherit;">
+                    <button type="button" class="btn btn-primary" style="width: 100%; padding: 1rem; border-radius: 50px;" onclick="handleEmailLogin()">
+                        Enviar Link de Acesso
+                    </button>
+                    <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 1rem;">Você receberá um link no seu e-mail para entrar sem precisar de senha.</p>
+                </div>
             </form>
             <p id="errorMsg" style="color: #ff5555; font-size: 0.85rem; display: none; margin-top: 1rem;">Por questões de segurança e privacidade, você precisa aceitar os Termos de Uso antes de continuar.</p>
         </div>
     </section>
 
-    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/auth.js"></script>
     <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
 
