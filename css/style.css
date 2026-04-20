@@ -1108,3 +1108,20 @@ body.page-exit {
         margin-bottom: 2rem;
     }
 }
+
+/* Mobile Auth Item */
+.mobile-auth-item {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    list-style: none;
+    text-align: center;
+}
+.mobile-auth-item .action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.2rem;
+    color: var(--color-secondary);
+    font-weight: 600;
+}
