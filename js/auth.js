@@ -36,7 +36,6 @@ async function handleEmailLogin() {
     const { data, error } = await supabaseClient.auth.signInWithOtp({
         email: emailInput.value,
         options: {
-            // Garante que o redirecionamento mantenha o domínio atual
             emailRedirectTo: window.location.origin + '/'
         }
     });
@@ -49,7 +48,6 @@ async function handleEmailLogin() {
             btn.textContent = "Enviar Link de Acesso";
         }
     } else {
-        // Interação Premium: Troca de estados no formulário
         if (inputState) inputState.style.display = 'none';
         if (successState) successState.style.display = 'block';
     }
@@ -73,13 +71,11 @@ async function handleLogout() {
  */
 supabaseClient.auth.onAuthStateChanged((event, session) => {
     const user = session?.user;
-    updateUI(user);
-    
     if (user) {
         localStorage.setItem('fnz_user', 'true');
         syncUserProfile(user);
+        startUIProtection(user);
         
-        // Se estiver na página de login e acabou de logar, redireciona
         if (window.location.pathname.includes('login.html')) {
             window.location.href = 'index.html';
         }
@@ -88,13 +84,31 @@ supabaseClient.auth.onAuthStateChanged((event, session) => {
     }
 });
 
-// Forçar captura de sessão no carregamento (útil para lidar com hash fragments em sites estáticos)
+// Forçar captura de sessão no carregamento
 window.addEventListener('load', async () => {
-    const { data, error } = await supabaseClient.auth.getSession();
-    if (data.session) {
-        updateUI(data.session.user);
+    const { data } = await supabaseClient.auth.getSession();
+    if (data && data.session) {
+        startUIProtection(data.session.user);
     }
 });
+
+/**
+ * Mantém a UI atualizada com o nome do usuário, combatendo scripts de tradução/redirecionamento
+ */
+function startUIProtection(user) {
+    if (!user) return;
+    
+    // Executa imediatamente
+    updateUI(user);
+    
+    // Repete a cada 500ms pelos primeiros 5 segundos para garantir que o nome "vença"
+    let attempts = 0;
+    const interval = setInterval(() => {
+        updateUI(user);
+        attempts++;
+        if (attempts > 10) clearInterval(interval);
+    }, 500);
+}
 
 /**
  * Sincroniza dados do usuário logado na tabela 'profiles'
@@ -120,31 +134,31 @@ async function syncUserProfile(user) {
  * Atualiza elementos da interface com base no estado do usuário
  */
 function updateUI(user) {
-    const actionBtns = document.querySelectorAll('.action-btn');
-    actionBtns.forEach(btn => {
-        const span = btn.querySelector('span');
-        if (!span) return;
+    if (!user) return;
 
-        // Verifica se é o botão de login (pelo texto ou href)
-        const isLoginBtn = span.getAttribute('data-pt') === 'Login' || 
-                          span.textContent.trim() === 'Login' || 
-                          btn.getAttribute('href') === 'login.html';
+    // Procura todos os botões que levam para a página de login ou têm a classe action-btn
+    const authElements = document.querySelectorAll('.action-btn, a[href*="login.html"]');
+    
+    authElements.forEach(btn => {
+        const span = btn.querySelector('span') || btn;
+        const displayName = user.user_metadata?.full_name || user.email.split('@')[0];
+        const firstName = displayName.split(' ')[0];
 
-        if (user && isLoginBtn) {
+        // Só atualiza se ainda não estiver com o nome ou se for um botão de login
+        if (span.textContent.trim() === 'Login' || span.getAttribute('data-pt') === 'Login' || btn.getAttribute('href') === 'login.html') {
             btn.setAttribute('href', '#');
-            const displayName = user.user_metadata?.full_name || user.email.split('@')[0];
-            span.textContent = displayName.split(' ')[0];
+            span.textContent = firstName;
+            
+            // Remove atributos de tradução para que o i18n não mude de volta
             span.removeAttribute('data-pt');
             span.removeAttribute('data-en');
             
-            if (!document.getElementById('logout-trigger')) {
+            // Adiciona evento de logout se não tiver
+            if (btn.id !== 'logout-trigger') {
                 btn.id = 'logout-trigger';
-                btn.title = 'Clique para sair';
                 btn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    if (confirm('Deseja sair da sua conta?')) {
-                        handleLogout();
-                    }
+                    if (confirm('Deseja sair da sua conta?')) handleLogout();
                 });
             }
         }
@@ -160,10 +174,8 @@ function updateUI(user) {
  */
 async function updateCourseButtons(user) {
     if (!user) return;
-
     const socialMasterId = "3155650";
-    
-    const { data, error } = await supabaseClient
+    const { data } = await supabaseClient
         .from('profiles')
         .select('courses')
         .eq('id', user.id)
