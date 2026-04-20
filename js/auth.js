@@ -27,7 +27,7 @@ async function handleEmailLogin() {
     const { data, error } = await supabase.auth.signInWithOtp({
         email: emailInput.value,
         options: {
-            emailRedirectTo: window.location.origin + '/index.html'
+            emailRedirectTo: window.location.href.replace('login.html', 'index.html')
         }
     });
 
