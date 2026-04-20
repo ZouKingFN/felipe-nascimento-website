@@ -2,7 +2,7 @@
 
 const supabaseUrl = 'https://pcoiecuuwkrzrfptmkcu.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBjb2llY3V1d2tyenJmcHRta2N1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY2OTYxMDksImV4cCI6MjA5MjI3MjEwOX0.-39TA3dCE8xpYiZtcuYobUR2hXiAcGzF2vVK9IXSr0U';
-const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
 /**
  * Função para lidar com o login por E-mail (Magic Link)
@@ -24,7 +24,7 @@ async function handleEmailLogin() {
 
     if (errorMsg) errorMsg.style.display = 'none';
 
-    const { data, error } = await supabase.auth.signInWithOtp({
+    const { data, error } = await supabaseClient.auth.signInWithOtp({
         email: emailInput.value,
         options: {
             emailRedirectTo: window.location.href.replace('login.html', 'index.html')
@@ -43,7 +43,7 @@ async function handleEmailLogin() {
  * Função para Logout
  */
 async function handleLogout() {
-    const { error } = await supabase.auth.signOut();
+    const { error } = await supabaseClient.auth.signOut();
     if (!error) {
         localStorage.removeItem('fnz_user');
         window.location.href = 'index.html';
@@ -55,7 +55,7 @@ async function handleLogout() {
 /**
  * Observador de estado de autenticação
  */
-supabase.auth.onAuthStateChanged((event, session) => {
+supabaseClient.auth.onAuthStateChanged((event, session) => {
     const user = session?.user;
     updateUI(user);
     
@@ -74,12 +74,12 @@ async function syncUserProfile(user) {
     const name = user.user_metadata?.full_name || user.email.split('@')[0];
     const avatar = user.user_metadata?.avatar_url || "";
 
-    const { error } = await supabase
+    const { error } = await supabaseClient
         .from('profiles')
         .upsert({ 
             id: user.id, 
             email: user.email, 
-            full_name: name,
+            full_name: name, 
             avatar_url: avatar,
             updated_at: new Date()
         }, { onConflict: 'id' });
@@ -131,7 +131,7 @@ async function updateCourseButtons(user) {
 
     const socialMasterId = "3155650";
     
-    const { data, error } = await supabase
+    const { data, error } = await supabaseClient
         .from('profiles')
         .select('courses')
         .eq('id', user.id)
