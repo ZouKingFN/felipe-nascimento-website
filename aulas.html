@@ -56,6 +56,7 @@
             <div class="loader-logo">FNZ</div>
         </div>
     </div>
+
     <header class="header">
         <div class="container navbar">
             <div class="nav-left">
@@ -93,8 +94,8 @@
             <li><a href="aulas.html" data-pt="Aulas Particulares" data-en="Private Lessons">Aulas Particulares</a></li>
             <li><a href="dj.html" data-pt="Sets de DJ" data-en="DJ Sets">Sets de DJ</a></li>
             <li><a href="sobre.html" data-pt="Sobre" data-en="About">Sobre mim</a></li>
-                        <li><a href="contrate-me.html" style="color: var(--color-secondary); font-weight: 800;" data-pt="Contrate-me" data-en="Hire Me">Contrate-me</a></li>
-            <li class="mobile-auth-item" style="margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1.5rem; list-style: none;">
+            <li><a href="contrate-me.html" style="color: var(--color-secondary); font-weight: 800;" data-pt="Contrate-me" data-en="Hire Me">Contrate-me</a></li>
+            <li class="mobile-auth-item">
                 <a href="login.html" class="action-btn" style="display: flex; align-items: center; gap: 10px; justify-content: center;">
                     <i class="ph ph-user" style="font-size: 1.5rem;"></i> <span data-pt="Login" data-en="Log In">Login</span>
                 </a>
@@ -126,7 +127,6 @@
             <p style="text-align: center; max-width: 600px; margin: 0 auto 3rem;" data-pt="Tudo o que você precisa saber sobre as aulas particulares." data-en="Everything you need to know about private lessons.">Tudo o que você precisa saber sobre as aulas particulares.</p>
             
             <div class="faq-container">
-                <!-- FAQ 1 -->
                 <div class="faq-item">
                     <div class="faq-question">
                         <span data-pt="As aulas são para iniciantes?" data-en="Are the classes for beginners?">As aulas são para iniciantes?</span>
@@ -137,7 +137,6 @@
                     </div>
                 </div>
 
-                <!-- FAQ 2 -->
                 <div class="faq-item">
                     <div class="faq-question">
                         <span data-pt="Como funciona o agendamento?" data-en="How does scheduling work?">Como funciona o agendamento?</span>
@@ -148,7 +147,6 @@
                     </div>
                 </div>
 
-                <!-- FAQ 3 -->
                 <div class="faq-item">
                     <div class="faq-question">
                         <span data-pt="Qual o local das aulas?" data-en="Where do the classes take place?">Qual o local das aulas?</span>
@@ -159,7 +157,6 @@
                     </div>
                 </div>
 
-                <!-- FAQ 4 -->
                 <div class="faq-item">
                     <div class="faq-question">
                         <span data-pt="Posso fazer aulas em dupla?" data-en="Can I take classes as a couple?">Posso fazer aulas em dupla?</span>
@@ -173,9 +170,34 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-bottom" style="border: none; padding-top: 0;">
+            <div class="footer-content fade-in-section">
+                <div>
+                    <a href="index.html" class="footer-logo">FNZ</a>
+                    <p>Transformando a maneira como você se expressa através da dança e da música.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="cursos.html">Cursos</a></li>
+                        <li><a href="loja.html">Loja</a></li>
+                        <li><a href="aulas.html">Aulas Particulares</a></li>
+                        <li><a href="dj.html">Sets de DJ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><a href="mailto:fmachadonascimento@gmail.com">fmachadonascimento@gmail.com</a></li>
+                        <li><a href="https://www.instagram.com/felipenascimento_zouk/" target="_blank">Instagram</a></li>
+                        <li><a href="https://www.youtube.com/@FelipeNascimentozouk" target="_blank">YouTube</a></li>
+                        <li><a href="https://open.spotify.com/user/22nzji5jmqee4u5tgceipxi3y?si=08b86d07da2f4d62" target="_blank">Spotify</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
                 <p>&copy; 2026 Felipe Nascimento. Todos os direitos reservados.</p>
             </div>
         </div>
@@ -186,14 +208,10 @@
         <i class="ph ph-whatsapp-logo"></i>
     </a>
 
-    <!-- Lenis Library -->
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-    
-
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/auth.js"></script>
     <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
-
