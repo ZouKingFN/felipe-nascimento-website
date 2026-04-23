@@ -51,22 +51,27 @@ function updateLoginButton(user) {
 
 // Inicialização — espera o DOM estar pronto
 document.addEventListener('DOMContentLoaded', async () => {
-    // Verifica sessão ativa via SDK v2 (método correto: onAuthStateChange sem "d")
-    supabaseClient.auth.onAuthStateChange(async (_event, session) => {
+
+    // Escuta mudanças de sessão (login via magic link)
+    supabaseClient.auth.onAuthStateChange((_event, session) => {
         if (session?.user) {
-            await syncProfile(session.user);
+            // Atualiza o botão IMEDIATAMENTE com os dados já disponíveis
             updateLoginButton(session.user);
+            // Sincroniza com o banco em segundo plano (não bloqueia a UI)
+            syncProfile(session.user);
             if (window.location.pathname.includes('login.html')) {
-                window.location.href = '/';
+                setTimeout(() => { window.location.href = '/'; }, 300);
             }
         }
     });
 
-    // Também verifica sessão já existente ao carregar
+    // Verifica sessão existente ao carregar a página
     const { data: { session } } = await supabaseClient.auth.getSession();
     if (session?.user) {
-        await syncProfile(session.user);
+        // Atualiza imediatamente
         updateLoginButton(session.user);
+        // Sincroniza com o banco em segundo plano
+        syncProfile(session.user);
     }
 });
 
