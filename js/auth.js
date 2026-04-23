@@ -34,16 +34,12 @@ function updateLoginButton(user) {
     document.querySelectorAll('a[href*="login.html"], .action-btn').forEach(link => {
         const content = link.textContent.toLowerCase();
         // Só altera o botão de Login, não o de Carrinho
-        if (link.href?.includes('login.html') || content.includes('login') || content.includes('log in')) {
+        if (link.getAttribute('href')?.includes('login.html') || content.includes('login') || content.includes('log in')) {
             if (firstName) {
-                // Atualiza apenas o texto do span, preservando o ícone e o estilo original
-                const span = link.querySelector('span');
-                if (span) {
-                    span.textContent = firstName;
-                    span.removeAttribute('data-pt');
-                    span.removeAttribute('data-en');
-                }
-                link.href = '#';
+                // Preserva o ícone e substitui apenas o texto — sem alterar estilos
+                const icon = link.querySelector('i')?.outerHTML || '<i class="ph ph-user"></i>';
+                link.innerHTML = `${icon} <span>${firstName}</span>`;
+                link.removeAttribute('href'); // Remove href para evitar navegação
                 link.onclick = (e) => {
                     e.preventDefault();
                     if (confirm(`Sair da conta de ${firstName}?`)) handleLogout();
