@@ -36,12 +36,18 @@ function updateLoginButton(user) {
         // Só altera o botão de Login, não o de Carrinho
         if (link.href?.includes('login.html') || content.includes('login') || content.includes('log in')) {
             if (firstName) {
-                // Logado: mostra nome
-                const icon = link.querySelector('i')?.outerHTML || '<i class="ph ph-user"></i>';
-                link.innerHTML = `${icon} <span>${firstName}</span>`;
-                link.removeAttribute('href');
-                link.style.cssText += 'color:var(--color-secondary);font-weight:bold;cursor:pointer;';
-                link.onclick = (e) => { e.preventDefault(); if (confirm(`Sair da conta de ${firstName}?`)) handleLogout(); };
+                // Atualiza apenas o texto do span, preservando o ícone e o estilo original
+                const span = link.querySelector('span');
+                if (span) {
+                    span.textContent = firstName;
+                    span.removeAttribute('data-pt');
+                    span.removeAttribute('data-en');
+                }
+                link.href = '#';
+                link.onclick = (e) => {
+                    e.preventDefault();
+                    if (confirm(`Sair da conta de ${firstName}?`)) handleLogout();
+                };
             }
         }
     });
