@@ -256,6 +256,14 @@ p {
     border-radius: 50px;
     background-color: rgba(255,255,255,0.05);
     transition: all var(--transition-fast);
+    max-width: 120px; /* Garante que o botão não expanda com nomes longos */
+    overflow: hidden;
+}
+
+.nav-actions .action-btn span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .nav-actions .action-btn:hover {

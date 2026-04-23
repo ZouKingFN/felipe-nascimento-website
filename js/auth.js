@@ -27,9 +27,14 @@ async function handleLogout() {
 
 // Atualiza botão de login com nome do usuário
 function updateLoginButton(user) {
-    const firstName = user
-        ? (user.user_metadata?.full_name || user.email.split('@')[0]).split(' ')[0]
-        : null;
+    // Extrai nome curto: pega a primeira parte do email (antes de . _ - números)
+    // Ex: "felipe.nascimento@..." → "felipe", "fmachadonascimento@..." → "fmachado"
+    const rawName = user?.user_metadata?.full_name || user?.email?.split('@')[0] || '';
+    const firstName = rawName
+        .split(/[\s._\-+0-9]/)[0]  // pega só a primeira parte
+        .substring(0, 8)           // limita a 8 caracteres
+        .toLowerCase()             // deixa minúsculo para caber melhor
+        || null;
 
     document.querySelectorAll('a[href*="login.html"], .action-btn').forEach(link => {
         const content = link.textContent.toLowerCase();
