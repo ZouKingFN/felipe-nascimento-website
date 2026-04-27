@@ -15,11 +15,12 @@ create table if not exists public.profiles (
 alter table public.profiles enable row level security;
 
 -- 3. Criar Políticas de Acesso (RLS)
--- Política: Qualquer um pode ver perfis básicos (opcional, dependendo da privacidade)
+-- 🔒 SEGURANÇA [VULN-2]: Restringe a leitura para que o usuário só consiga ver seu próprio perfil. Evita dump do banco de dados (CWE-200).
 drop policy if exists "Public profiles are viewable by everyone" on public.profiles;
-create policy "Public profiles are viewable by everyone" 
+drop policy if exists "Users can view own profile" on public.profiles;
+create policy "Users can view own profile" 
   on public.profiles for select 
-  using (true);
+  using (auth.uid() = id);
 
 -- Política: Usuários podem inserir seu próprio perfil
 drop policy if exists "Users can insert their own profile" on public.profiles;
@@ -49,6 +50,7 @@ begin
 end;
 $$ language plpgsql;
 
+drop trigger if exists set_profiles_updated_at on public.profiles;
 create trigger set_profiles_updated_at
 before update on public.profiles
 for each row
@@ -57,3 +59,33 @@ execute procedure handle_updated_at();
 -- COMENTÁRIO:
 -- Para adicionar um curso a um usuário via SQL:
 -- update public.profiles set courses = array_append(courses, 'ID_DO_CURSO') where id = 'UUID_DO_USUARIO';
+
+-- ==========================================
+-- 🔒 CORREÇÃO SEGURANÇA [VULN-1]
+-- 6. Tabela Segura de Links VIP (Course Links)
+-- ==========================================
+create table if not exists public.course_links (
+  id uuid default gen_random_uuid() primary key,
+  course_id text not null unique,
+  sale_token text not null,
+  access_link text not null
+);
+
+alter table public.course_links enable row level security;
+
+-- Política RLS: Usuário só pode ver o link se possuir o curso
+drop policy if exists "Users can view links of owned courses" on public.course_links;
+create policy "Users can view links of owned courses"
+  on public.course_links for select
+  using (
+    course_id = any (
+      array(select unnest(courses) from public.profiles where id = auth.uid())
+    )
+  );
+
+-- Inserir os links da Hotmart de forma segura (O backend os guarda, não o client)
+insert into public.course_links (course_id, sale_token, access_link)
+values ('3155650', 'pay.hotmart.com/B85068976H', 'https://app-vlc.hotmart.com/products/3155650')
+on conflict (course_id) do update set 
+  sale_token = excluded.sale_token, 
+  access_link = excluded.access_link;

@@ -93,22 +93,27 @@ async function syncProfile(user) {
 
 // Verifica cursos (página cursos.html)
 async function checkCourseAccess(userId) {
-    const { data } = await supabaseClient.from('profiles').select('courses').eq('id', userId).single();
-    if (!data?.courses) return;
+    const { data: profile } = await supabaseClient.from('profiles').select('courses').eq('id', userId).single();
+    if (!profile?.courses || profile.courses.length === 0) return;
 
-    const courseMap = [
-        ["3155650", "pay.hotmart.com/B85068976H", "https://app-vlc.hotmart.com/products/3155650"],
-        // Para adicionar novo curso: ["ID_DO_CURSO", "trecho_do_link_de_venda", "link_de_acesso"]
-    ];
+    // 🔒 SEGURANÇA [VULN-1]: Busca links dinamicamente do banco de dados, protegidos por RLS.
+    // O backend do Supabase só vai retornar a linha se o usuário possuir o curso.
+    const { data: accessibleCourses, error } = await supabaseClient
+        .from('course_links')
+        .select('course_id, sale_token, access_link')
+        .in('course_id', profile.courses);
 
-    courseMap.forEach(([id, saleToken, accessLink]) => {
-        if (data.courses.includes(id)) {
-            document.querySelectorAll(`a[href*="${saleToken}"]`).forEach(btn => {
-                btn.textContent = "Acessar Curso";
-                btn.style.background = 'var(--color-secondary)';
-                btn.style.color = '#000';
-                btn.href = accessLink;
-            });
-        }
+    if (error || !accessibleCourses) {
+        console.warn("Erro ao buscar links de curso:", error?.message);
+        return;
+    }
+
+    accessibleCourses.forEach(({ course_id, sale_token, access_link }) => {
+        document.querySelectorAll(`a[href*="${sale_token}"]`).forEach(btn => {
+            btn.textContent = "Acessar Curso";
+            btn.style.background = 'var(--color-secondary)';
+            btn.style.color = '#000';
+            btn.href = access_link;
+        });
     });
 }
