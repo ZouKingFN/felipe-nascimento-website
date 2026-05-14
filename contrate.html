@@ -189,8 +189,8 @@
     <!-- Page Header -->
     <section class="page-header">
         <div class="container fade-in-section">
-            <h1>Leve o Evento a Outro Nível</h1>
-            <p>Experiência técnica e entrega artística completa para a sua pista ou congresso.</p>
+            <h1 id="page-title">Minhas Especialidades</h1>
+            <p id="page-subtitle">Como multicriador, atuo de ponta a ponta na engrenagem dos eventos.</p>
         </div>
     </section>
 
@@ -204,9 +204,6 @@
                 </div>
                 
                 <div id="tab-felipe" class="tab-content active">
-                    <h2 style="text-align: center; color: var(--color-secondary);">Minhas Especialidades</h2>
-                    <p style="text-align: center; max-width: 600px; margin: 0 auto;">Como multicriador, atuo de ponta a ponta na engrenagem dos eventos.</p>
-                    
                     <div class="services-grid">
                 <div class="service-card">
                     <i class="ph-fill ph-chalkboard-teacher"></i>
@@ -235,9 +232,6 @@
                 </div>
                 
                 <div id="tab-felipenina" class="tab-content">
-                    <h2 style="text-align: center; color: var(--color-secondary);">Nossas Especialidades</h2>
-                    <p style="text-align: center; max-width: 600px; margin: 0 auto;">Leve a energia, conexão e técnica do Urban Zouk para o seu evento.</p>
-                    
                     <div class="services-grid">
                         <div class="service-card">
                             <i class="ph-fill ph-users-three"></i>
@@ -348,6 +342,19 @@
             
             event.target.classList.add('active');
             document.getElementById('tab-' + tabId).classList.add('active');
+            
+            const pageTitle = document.getElementById('page-title');
+            const pageSubtitle = document.getElementById('page-subtitle');
+            
+            if (pageTitle && pageSubtitle) {
+                if (tabId === 'felipenina') {
+                    pageTitle.innerText = 'Nossas Especialidades';
+                    pageSubtitle.innerText = 'Leve a energia, conexão e técnica do Urban Zouk para o seu evento.';
+                } else {
+                    pageTitle.innerText = 'Minhas Especialidades';
+                    pageSubtitle.innerText = 'Como multicriador, atuo de ponta a ponta na engrenagem dos eventos.';
+                }
+            }
         }
     </script>
 </body>
