@@ -1155,7 +1155,7 @@ h2[style*="--color-secondary"] {
     color: transparent !important;
     text-shadow: 0px 4px 15px rgba(212, 175, 55, 0.4) !important;
     animation: goldShine 6s linear infinite !important;
-    font-size: clamp(2.5rem, 5vw, 4.5rem) !important;
+    font-size: clamp(2rem, 4vw, 3.2rem) !important;
 }
 
 @keyframes goldShine {
