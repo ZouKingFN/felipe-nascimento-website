@@ -162,7 +162,7 @@
 
     <section class="page-header">
         <div class="container fade-in-section">
-            <h1>Conheça Felipe Nascimento</h1>
+            <h1 id="page-title">Conheça Felipe Nascimento</h1>
         </div>
     </section>
 
@@ -307,6 +307,15 @@
             
             event.target.classList.add('active');
             document.getElementById('tab-' + tabId).classList.add('active');
+            
+            const pageTitle = document.getElementById('page-title');
+            if (pageTitle) {
+                if (tabId === 'felipenina') {
+                    pageTitle.innerText = 'Felipe & Nina';
+                } else {
+                    pageTitle.innerText = 'Conheça Felipe Nascimento';
+                }
+            }
         }
     </script>
 </body>
