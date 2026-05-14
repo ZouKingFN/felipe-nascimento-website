@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/logo.PNG">
+    <title>Login | Felipe Nascimento - Zouk Brasileiro e Lambada</title>
+    <meta name="description" content="Acesse sua área restrita no site de Felipe Nascimento. Cursos de Zouk Brasileiro e Lambada.">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Login | Felipe Nascimento - Zouk Brasileiro e Lambada">
+    <meta property="og:image" content="assets/logo.PNG">
+    <meta property="og:url" content="https://fnzouk.com.br/login.html">
+    <link rel="canonical" href="https://fnzouk.com.br/login.html">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .auth-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--color-bg);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Background decor elements for premium feel */
+        .auth-section::before {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--color-secondary);
+            filter: blur(150px);
+            opacity: 0.1;
+            top: -100px;
+            right: -100px;
+            z-index: 0;
+        }
+
+        .auth-container {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 450px;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .auth-logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--color-secondary);
+            margin-bottom: 2rem;
+            display: inline-block;
+            letter-spacing: -1px;
+            text-decoration: none;
+        }
+
+        .auth-container h2 {
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .auth-container p {
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            color: var(--color-text-muted);
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-text-muted);
+            font-size: 1.2rem;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 1.1rem 1.1rem 1.1rem 3.2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--color-secondary);
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+        }
+
+        .legal-check {
+            display: flex;
+            align-items: flex-start;
+            text-align: left;
+            gap: 12px;
+            margin-bottom: 1rem;
+            padding: 0 0.5rem;
+        }
+
+        .legal-check input {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: var(--color-secondary);
+        }
+
+        .legal-check label {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+            cursor: pointer;
+        }
+
+        .legal-check a {
+            color: var(--color-secondary);
+            text-decoration: underline;
+            transition: opacity 0.2s;
+        }
+
+        .legal-check a:hover { opacity: 0.8; }
+
+        .back-link {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--color-text-muted);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .back-link:hover {
+            color: var(--color-secondary);
+            transform: translateX(-5px);
+        }
+
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 480px) {
+            .auth-section { padding: 1rem; }
+            .auth-container { padding: 2.5rem 1.5rem; border-radius: 20px; }
+            .back-link { top: 1.5rem; left: 1.5rem; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader Premium -->
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="loader-logo">FNZ</div>
+        </div>
+    </div>
+    
+    <section class="auth-section">
+        <a href="index.html" class="back-link"><i class="ph ph-arrow-left"></i> Voltar</a>
+        
+        <div class="auth-container">
+            <a href="index.html" class="auth-logo">FNZ</a>
+            <h2>Bem-vindo(a)</h2>
+            <p>Acesse o portal exclusivo de alunos e assinantes.</p>
+
+            <form id="loginForm">
+                <div id="inputState">
+                    <div class="input-group">
+                        <i class="ph ph-envelope-simple"></i>
+                        <input type="email" id="userEmail" placeholder="Seu e-mail" required>
+                    </div>
+
+                    <div class="legal-check">
+                        <input type="checkbox" id="termsCheck" required>
+                        <label for="termsCheck">Li e concordo com os <a href="#">Termos de Uso</a> e a <a href="#">Política de Privacidade</a>.</label>
+                    </div>
+                    
+                    <div class="legal-check" style="margin-bottom: 2rem;">
+                        <input type="checkbox" id="marketingCheck">
+                        <label for="marketingCheck">Aceito receber promoções e conteúdo VIP (Opcional).</label>
+                    </div>
+
+                    <button type="button" class="btn btn-primary" style="width: 100%; padding: 1.1rem; border-radius: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px;" onclick="handleEmailLogin()">
+                        Enviar Link de Acesso
+                    </button>
+                    
+                    <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 1.5rem; line-height: 1.4;">
+                        Você receberá um link mágico no seu e-mail.<br>Sem senhas, acesso rápido e seguro.
+                    </p>
+                </div>
+
+                <div id="successState" style="display: none; padding: 1rem 0; text-align: center; animation: slideUp 0.5s ease;">
+                    <div style="width: 80px; height: 80px; background: rgba(212, 175, 55, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                        <i class="ph ph-paper-plane-tilt" style="font-size: 2.5rem; color: var(--color-secondary);"></i>
+                    </div>
+                    <h3 style="color: var(--color-secondary); margin-bottom: 0.5rem; font-size: 1.5rem;">Link Enviado!</h3>
+                    <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 2rem;">Verifique sua caixa de entrada e clique no link para entrar.</p>
+                    
+                    <button type="button" class="btn-outline" style="padding: 0.7rem 1.5rem; border-radius: 12px; font-size: 0.85rem;" onclick="location.reload()">
+                        Usar outro e-mail
+                    </button>
+                </div>
+            </form>
+            
+            <p id="errorMsg" style="color: #ff5555; font-size: 0.85rem; display: none; margin-top: 1.5rem; padding: 0.8rem; background: rgba(255,85,85,0.1); border-radius: 10px;">
+                <i class="ph ph-warning-circle"></i> Você precisa aceitar os Termos de Uso.
+            </p>
+        </div>
+    </section>
+
+    <!-- Lenis Browser Scroll -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script>
+        const lenis = new Lenis();
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/i18n.js"></script>
+    <script src="../js/main.js"></script>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/5561981266368?text=Olá%20Felipe!%20Vim%20pelo%20site%20e%20gostaria de%20mais%20informações." class="whatsapp-float" target="_blank" aria-label="Falar no WhatsApp">
+        <i class="ph ph-whatsapp-logo"></i>
+    </a>
+</body>
+</html>

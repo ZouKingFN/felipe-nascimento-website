@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../assets/logo.PNG">
+    <title>About | Felipe Nascimento – Brazilian Zouk Artist</title>
+    <meta name="description" content="Learn more about Felipe Nascimento, Brazilian Zouk teacher, DJ, and international artist. Also about the partnership Felipe & Nina.">
+    <link rel="canonical" href="https://fnzouk.com.br/en/sobre.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .page-header { padding-top: 7rem; padding-bottom: 4rem; background-color: var(--color-bg-alt); text-align: center; }
+        .page-header h1 { color: var(--color-secondary); }
+        .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: flex-start; margin-top: 2rem; }
+        .about-image { width: 100%; border-radius: 12px; }
+        .about-text h2 { font-size: 2rem; margin-bottom: 1.5rem; }
+        .about-text p { color: var(--color-text-muted); line-height: 1.9; margin-bottom: 1rem; }
+        .about-text .highlight { color: var(--color-secondary); font-weight: 700; }
+        @media (max-width: 768px) { .about-content { grid-template-columns: 1fr; gap: 2rem; } .about-text { order: -1; } }
+        @media (max-width: 480px) { .page-header { padding-top: 7rem; padding-bottom: 2rem; } .about-content { gap: 1.5rem; } .about-text p { font-size: 1rem; } }
+        .tabs-container { margin-top: 1rem; }
+        .tabs-header { display: flex; gap: 1rem; margin-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0; }
+        .tab-btn { background: none; border: none; color: var(--color-text-muted); font-family: var(--font-primary); font-size: 1rem; font-weight: 600; padding: 0.75rem 1.5rem; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; }
+        .tab-btn.active { color: var(--color-secondary); border-bottom-color: var(--color-secondary); }
+        .tab-content { display: none; animation: fadeIn 0.4s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .world-section { position: relative; padding: 6rem 0; background: var(--color-bg); overflow: hidden; }
+        .world-watermark { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: clamp(4rem, 15vw, 12rem); font-weight: 800; color: rgba(255,255,255,0.02); white-space: nowrap; pointer-events: none; letter-spacing: 0.1em; }
+        .marquee-container { overflow: hidden; width: 100%; display: flex; }
+        .marquee-content { display: flex; gap: 3rem; animation: marquee 30s linear infinite; white-space: nowrap; }
+        .marquee-item { font-size: clamp(1.2rem, 2vw, 1.8rem); font-weight: 700; color: var(--color-text-muted); padding: 0.5rem 2rem; border: 1px solid rgba(255,255,255,0.05); border-radius: 100px; flex-shrink: 0; }
+        @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    </style>
+</head>
+<body>
+    <div id="preloader"><div class="loader-content"><div class="loader-logo">FNZ</div></div></div>
+    <header class="header">
+        <div class="container navbar">
+            <div class="nav-left">
+                <div class="menu-toggle"><span></span><span></span><span></span></div>
+                <a href="index.html" class="logo">
+                    <img src="../assets/logo.PNG" alt="FNZ Logo" onerror="this.src=''; this.alt='FNZ'; this.style.fontSize='1.8rem'; this.style.color='var(--color-secondary)';">
+                </a>
+            </div>
+            <div class="nav-right">
+                <nav class="desktop-menu">
+                    <ul>
+                        <li><a href="index.html">Home</a></li><li><a href="lab.html">LAB</a></li>
+                        <li><a href="cursos.html">Courses</a></li>
+                        <li><a href="loja.html">Store</a></li>
+                        <li><a href="aulas.html">Private Lessons</a></li>
+                        <li><a href="dj.html">DJ Sets</a></li>
+                        <li><a href="sobre.html">About</a></li>
+                        <li><a href="contrate.html" style="color: var(--color-secondary); font-weight: 800;">Hire Us</a></li>
+                    </ul>
+                </nav>
+                <div class="nav-actions">
+                    <a href="../sobre.html" class="lang-btn"><i class="ph ph-globe"></i> PT</a>
+                    <a href="login.html" class="action-btn"><i class="ph ph-user"></i> Login</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav class="fullscreen-menu">
+        <ul>
+            <li><a href="index.html">Home</a></li><li><a href="lab.html">LAB</a></li>
+            <li><a href="cursos.html">Courses</a></li>
+            <li><a href="loja.html">Store</a></li>
+            <li><a href="aulas.html">Private Lessons</a></li>
+            <li><a href="dj.html">DJ Sets</a></li>
+            <li><a href="sobre.html">About</a></li>
+            <li><a href="contrate.html" style="color: var(--color-secondary); font-weight: 800;">Hire Us</a></li>
+            <li class="mobile-auth-item" style="margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1.5rem; list-style: none;">
+                <a href="login.html" class="action-btn" style="display: flex; align-items: center; gap: 10px; justify-content: center;">
+                    <i class="ph ph-user" style="font-size: 1.5rem;"></i> Login
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <section class="page-header">
+        <div class="container fade-in-section">
+            <h1 id="page-title">Meet Felipe Nascimento</h1>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container fade-in-section">
+            <div class="tabs-container">
+                <div class="tabs-header">
+                    <button class="tab-btn active" onclick="switchTab('felipe', event)">Felipe Nascimento</button>
+                    <button class="tab-btn" onclick="switchTab('felipenina', event)">Felipe & Nina</button>
+                </div>
+
+                <div id="tab-felipe" class="tab-content active">
+                    <div class="about-content">
+                        <div class="about-text">
+                            <h2>Who is <span class="highlight">Felipe Nascimento?</span></h2>
+                            <p>Felipe Nascimento is a Brazilian Zouk teacher, DJ, Jack & Jill judge, and content creator based in Brasília, DF. With over 10 years of experience in the dance world, he has built a unique artistic identity that combines technique, musicality, and emotional connection.</p>
+                            <p>His teaching methodology focuses on three pillars: <strong>body awareness</strong>, <strong>musical interpretation</strong>, and <strong>authentic communication between partners</strong>. Felipe believes that dance is a universal language — and that everyone has something powerful to express through it.</p>
+                            <p>Internationally recognized, he has taught at some of the most prestigious congresses in Europe, the USA, and Latin America, including the Dutch Zouk Congress, Zurich Zouk Congress, ZoukMX, Atlanta Zouk, and Ireland Zouk Family.</p>
+                            <p>As a DJ, he carries a technical and emotional approach to curating sets that serve both social dancing and Jack & Jill competitions, always balancing energy, musicality, and crowd connection.</p>
+                            <p><strong style="color: var(--color-secondary); font-size: 1.2rem;">Dance is freedom. And freedom is for everyone.</strong></p>
+                        </div>
+                        <div>
+                            <img src="../assets/felipe.jpeg" alt="Felipe Nascimento" class="about-image">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-felipenina" class="tab-content">
+                    <div class="about-content">
+                        <div class="about-text">
+                            <h2>About Us</h2>
+                            <p>The meeting of two dance universes created something greater than a partnership: a shared purpose was born.</p>
+                            <p>Felipe Nascimento and Nina Santos joined their paths to develop, strengthen, and spread Urban Zouk across Brazil and the world. Coming from different backgrounds, but connected by the same artistic vision, they share a passion for music, freedom of expression, and constant evolution within dance.</p>
+                            <p>Felipe brings his experience as a teacher, content creator, and Brazilian Zouk artist, with a focus on musicality, connection, and communication through movement. Nina, from Porto Alegre, carries a solid foundation in urban dance styles, combining technique, presence, and authenticity with her deep connection to Brazilian Zouk.</p>
+                            <p>Together, they created a proposal that blends the essence of Zouk with urban influences, exploring musicality, dynamics, texture, intention, and artistic identity in a modern and accessible way. More than teaching steps, the partnership's goal is to inspire people to find their own expression within dance.</p>
+                            <p>We believe Urban Zouk goes beyond a style: it is a language. A bridge between cultures, music, and people.</p>
+                            <p><strong style="color: var(--color-secondary); font-size: 1.2rem;">And this is only the first phase of the journey.</strong></p>
+                        </div>
+                        <div>
+                            <img src="../assets/felipe-nina.jpg" alt="Felipe & Nina" class="about-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="world-section">
+        <div class="world-watermark">World Tour</div>
+        <div class="container fade-in-section" style="position: relative; z-index: 2;">
+            <h2 style="text-align: center; color: var(--color-secondary); margin-bottom: 1rem;">Around the World</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 4rem;">International experience as a teacher, DJ, and judge at the planet's biggest Brazilian Zouk and Lambada events.</p>
+        </div>
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <span class="marquee-item">Dutch Zouk Congress</span>
+                <span class="marquee-item">ZoukMX</span>
+                <span class="marquee-item">Zurich Zouk Congress</span>
+                <span class="marquee-item">Aliança Zouk</span>
+                <span class="marquee-item">Ireland Zouk Family</span>
+                <span class="marquee-item">Hello Bachata</span>
+                <span class="marquee-item">Atlanta Zouk</span>
+                <span class="marquee-item">And many more...</span>
+            </div>
+            <div class="marquee-content" aria-hidden="true">
+                <span class="marquee-item">Dutch Zouk Congress</span>
+                <span class="marquee-item">ZoukMX</span>
+                <span class="marquee-item">Zurich Zouk Congress</span>
+                <span class="marquee-item">Aliança Zouk</span>
+                <span class="marquee-item">Ireland Zouk Family</span>
+                <span class="marquee-item">Hello Bachata</span>
+                <span class="marquee-item">Atlanta Zouk</span>
+                <span class="marquee-item">And many more...</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content fade-in-section">
+                <div>
+                    <a href="index.html" class="footer-logo">FNZ</a>
+                    <p>Transforming the way you express yourself through dance and music.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="cursos.html">Courses</a></li>
+                        <li><a href="loja.html">Store</a></li>
+                        <li><a href="aulas.html">Private Lessons</a></li>
+                        <li><a href="dj.html">DJ Sets</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:fmachadonascimento@gmail.com">fmachadonascimento@gmail.com</a></li>
+                        <li><a href="https://www.instagram.com/felipenascimento_zouk/" target="_blank">Instagram</a></li>
+                        <li><a href="https://www.youtube.com/@FelipeNascimentozouk" target="_blank">YouTube</a></li>
+                        <li><a href="https://open.spotify.com/user/22nzji5jmqee4u5tgceipxi3y?si=08b86d07da2f4d62" target="_blank">Spotify</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Felipe Nascimento. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5561981266368?text=Hi%20Felipe!%20I%20found%20your%20website%20and%20would%20like%20more%20information." class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <i class="ph ph-whatsapp-logo"></i>
+    </a>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        function switchTab(tabId, event) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById('tab-' + tabId).classList.add('active');
+            const pageTitle = document.getElementById('page-title');
+            if (pageTitle) {
+                pageTitle.innerText = tabId === 'felipenina' ? 'Felipe & Nina' : 'Meet Felipe Nascimento';
+            }
+        }
+    </script>
+</body>
+</html>
