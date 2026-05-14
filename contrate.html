@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="assets/logo.PNG">
-    <title>Contrate-me | Felipe Nascimento - Zouk Brasileiro e Lambada</title>
+    <title>Contrate | Felipe Nascimento - Zouk Brasileiro e Lambada</title>
     <meta name="description" content="Leve Felipe Nascimento para o seu evento. Workshops de Zouk Brasileiro, Lambada e apresentações de DJ.">
     
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Contrate-me | Felipe Nascimento - Zouk Brasileiro e Lambada">
+    <meta property="og:title" content="Contrate | Felipe Nascimento - Zouk Brasileiro e Lambada">
     <meta property="og:description" content="Saiba como contratar Felipe Nascimento para workshops e performances.">
     <meta property="og:image" content="assets/felipe.jpeg">
-    <meta property="og:url" content="https://fnzouk.com.br/contrate-me.html">
-    <link rel="canonical" href="https://fnzouk.com.br/contrate-me.html">
+    <meta property="og:url" content="https://fnzouk.com.br/contrate.html">
+    <link rel="canonical" href="https://fnzouk.com.br/contrate.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -92,6 +92,45 @@
             .contact-actions { flex-direction: column; align-items: stretch; }
             .contact-actions .btn { justify-content: center; }
         }
+        .tabs-container {
+            margin-top: 1rem;
+        }
+        .tabs-header {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        .tab-btn {
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid var(--color-secondary);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Outfit', sans-serif;
+        }
+        .tab-btn:hover {
+            background-color: rgba(212, 175, 55, 0.1);
+        }
+        .tab-btn.active {
+            background-color: var(--color-secondary);
+            color: #000;
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
@@ -118,7 +157,7 @@
                         <li><a href="aulas.html" data-pt="Aulas Particulares" data-en="Private Lessons">Aulas Particulares</a></li>
                         <li><a href="dj.html" data-pt="Sets de DJ" data-en="DJ Sets">Sets de DJ</a></li>
                         <li><a href="sobre.html" data-pt="Sobre" data-en="About">Sobre mim</a></li>
-                        <li><a href="contrate-me.html" style="color: var(--color-secondary);">Contrate-me</a></li>
+                        <li><a href="contrate.html" style="color: var(--color-secondary);">Contrate</a></li>
                     </ul>
                 </nav>
                 <div class="nav-actions">
@@ -138,7 +177,7 @@
             <li><a href="aulas.html" data-pt="Aulas Particulares" data-en="Private Lessons">Aulas Particulares</a></li>
             <li><a href="dj.html" data-pt="Sets de DJ" data-en="DJ Sets">Sets de DJ</a></li>
             <li><a href="sobre.html" data-pt="Sobre" data-en="About">Sobre mim</a></li>
-                        <li><a href="contrate-me.html" style="color: var(--color-secondary); font-weight: 800;" data-pt="Contrate-me" data-en="Hire Me">Contrate-me</a></li>
+                        <li><a href="contrate.html" style="color: var(--color-secondary); font-weight: 800;" data-pt="Contrate" data-en="Hire Me">Contrate</a></li>
             <li class="mobile-auth-item" style="margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1.5rem; list-style: none;">
                 <a href="login.html" class="action-btn" style="display: flex; align-items: center; gap: 10px; justify-content: center;">
                     <i class="ph ph-user" style="font-size: 1.5rem;"></i> <span data-pt="Login" data-en="Log In">Login</span>
@@ -158,10 +197,17 @@
     <!-- Serviços -->
     <section class="section">
         <div class="container fade-in-section">
-            <h2 style="text-align: center; color: var(--color-secondary);">Minhas Especialidades</h2>
-            <p style="text-align: center; max-width: 600px; margin: 0 auto;">Como multicriador, atuo de ponta a ponta na engrenagem dos eventos.</p>
-            
-            <div class="services-grid">
+            <div class="tabs-container">
+                <div class="tabs-header">
+                    <button class="tab-btn active" onclick="switchTab('felipe', event)">Felipe Nascimento</button>
+                    <button class="tab-btn" onclick="switchTab('felipenina', event)">Felipe & Nina</button>
+                </div>
+                
+                <div id="tab-felipe" class="tab-content active">
+                    <h2 style="text-align: center; color: var(--color-secondary);">Minhas Especialidades</h2>
+                    <p style="text-align: center; max-width: 600px; margin: 0 auto;">Como multicriador, atuo de ponta a ponta na engrenagem dos eventos.</p>
+                    
+                    <div class="services-grid">
                 <div class="service-card">
                     <i class="ph-fill ph-chalkboard-teacher"></i>
                     <h3>Professor de Zouk Brasileiro</h3>
@@ -184,6 +230,26 @@
                     <i class="ph-fill ph-medal"></i>
                     <h3>Organizador J&J</h3>
                     <p>Planejamento de chaves, heat lists e coordenação oficial do campeonato no seu próprio evento.</p>
+                </div>
+                    </div>
+                </div>
+                
+                <div id="tab-felipenina" class="tab-content">
+                    <h2 style="text-align: center; color: var(--color-secondary);">Nossas Especialidades</h2>
+                    <p style="text-align: center; max-width: 600px; margin: 0 auto;">Leve a energia, conexão e técnica do Urban Zouk para o seu evento.</p>
+                    
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <i class="ph-fill ph-users-three"></i>
+                            <h3>Workshops de Urban Zouk</h3>
+                            <p>Aulas focadas em musicalidade, dinâmica, textura e intenção para transformar a dança dos seus alunos.</p>
+                        </div>
+                        <div class="service-card">
+                            <i class="ph-fill ph-star"></i>
+                            <h3>Apresentações e Shows</h3>
+                            <p>Performances marcantes que misturam a essência do Zouk com a atitude das danças urbanas.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -272,6 +338,18 @@
     <script src="js/auth.js"></script>
     <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        function switchTab(tabId, event) {
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById('tab-' + tabId).classList.add('active');
+        }
+    </script>
 </body>
 </html>
 

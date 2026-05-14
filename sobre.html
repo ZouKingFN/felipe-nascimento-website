@@ -66,6 +66,45 @@
             .about-content { gap: 1.5rem; }
             .about-text p { font-size: 1rem; }
         }
+        .tabs-container {
+            margin-top: 1rem;
+        }
+        .tabs-header {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        .tab-btn {
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid var(--color-secondary);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Outfit', sans-serif;
+        }
+        .tab-btn:hover {
+            background-color: rgba(212, 175, 55, 0.1);
+        }
+        .tab-btn.active {
+            background-color: var(--color-secondary);
+            color: #000;
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
@@ -92,7 +131,7 @@
                         <li><a href="aulas.html" data-pt="Aulas Particulares" data-en="Private Lessons">Aulas Particulares</a></li>
                         <li><a href="dj.html" data-pt="Sets de DJ" data-en="DJ Sets">Sets de DJ</a></li>
                         <li><a href="sobre.html" data-pt="Sobre" data-en="About">Sobre mim</a></li>
-                        <li><a href="contrate-me.html" style="color: var(--color-secondary); font-weight: 800;" data-pt="Contrate-me" data-en="Hire Me">Contrate-me</a></li>
+                        <li><a href="contrate.html" style="color: var(--color-secondary); font-weight: 800;" data-pt="Contrate" data-en="Hire Me">Contrate</a></li>
                     </ul>
                 </nav>
                 <div class="nav-actions">
@@ -112,7 +151,7 @@
             <li><a href="aulas.html" data-pt="Aulas Particulares" data-en="Private Lessons">Aulas Particulares</a></li>
             <li><a href="dj.html" data-pt="Sets de DJ" data-en="DJ Sets">Sets de DJ</a></li>
             <li><a href="sobre.html" data-pt="Sobre" data-en="About">Sobre mim</a></li>
-                        <li><a href="contrate-me.html" style="color: var(--color-secondary); font-weight: 800;" data-pt="Contrate-me" data-en="Hire Me">Contrate-me</a></li>
+                        <li><a href="contrate.html" style="color: var(--color-secondary); font-weight: 800;" data-pt="Contrate" data-en="Hire Me">Contrate</a></li>
             <li class="mobile-auth-item" style="margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1.5rem; list-style: none;">
                 <a href="login.html" class="action-btn" style="display: flex; align-items: center; gap: 10px; justify-content: center;">
                     <i class="ph ph-user" style="font-size: 1.5rem;"></i> <span data-pt="Login" data-en="Log In">Login</span>
@@ -129,7 +168,14 @@
 
     <section class="section">
         <div class="container fade-in-section">
-            <div class="about-content">
+            <div class="tabs-container">
+                <div class="tabs-header">
+                    <button class="tab-btn active" onclick="switchTab('felipe', event)">Felipe Nascimento</button>
+                    <button class="tab-btn" onclick="switchTab('felipenina', event)">Felipe & Nina</button>
+                </div>
+                
+                <div id="tab-felipe" class="tab-content active">
+                    <div class="about-content">
                 <div class="about-text">
                     <h2>Felipe Nascimento</h2>
                     <p>Felipe Nascimento é professor de dança, educador físico e uma das referências mundiais em Urban Zouk e musicalidade.</p>
@@ -149,6 +195,25 @@
                 <div>
                     <!-- Imagem atualizada para o formato exato que foi salvo -->
                     <img src="assets/felipe.jpeg" alt="Felipe Nascimento" class="about-image">
+                </div>
+                    </div>
+                </div>
+                
+                <div id="tab-felipenina" class="tab-content">
+                    <div class="about-content">
+                        <div class="about-text">
+                            <h2>Sobre Nós</h2>
+                            <p>O encontro entre dois universos da dança criou algo maior do que uma parceria: nasceu um propósito em comum.</p>
+                            <p>Felipe Nascimento e Nina Santos uniram suas trajetórias para desenvolver, fortalecer e espalhar o Urban Zouk pelo Brasil e pelo mundo. Vindos de realidades diferentes, mas conectados pela mesma visão artística, os dois compartilham a paixão pela música, pela liberdade de expressão e pela evolução constante dentro da dança.</p>
+                            <p>Felipe traz sua experiência como professor, criador de conteúdo e artista do Zouk Brasileiro, com foco em musicalidade, conexão e comunicação através do movimento. Nina, diretamente de Porto Alegre, carrega uma formação sólida nas danças urbanas, combinando técnica, presença e autenticidade com sua forte conexão com o Zouk Brasileiro.</p>
+                            <p>Juntos, criaram uma proposta que mistura a essência do Zouk com influências urbanas, explorando musicalidade, dinâmica, textura, intenção e identidade artística de forma moderna e acessível. Mais do que ensinar passos, o objetivo da parceria é inspirar pessoas a encontrarem sua própria expressão dentro da dança.</p>
+                            <p>Acreditamos que o Urban Zouk vai além de um estilo: é uma linguagem. Uma ponte entre culturas, músicas e pessoas.</p>
+                            <p><strong style="color: var(--color-secondary); font-size: 1.2rem;">E essa é apenas a primeira fase da jornada.</strong></p>
+                        </div>
+                        <div>
+                            <img src="assets/felipe-nina.jpg" alt="Felipe & Nina" class="about-image">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -232,6 +297,18 @@
     <script src="js/auth.js"></script>
     <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        function switchTab(tabId, event) {
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById('tab-' + tabId).classList.add('active');
+        }
+    </script>
 </body>
 </html>
 
