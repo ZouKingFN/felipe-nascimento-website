@@ -3,159 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="assets/logo.PNG">
-    <title>Loja | Felipe Nascimento - Zouk Brasileiro e Lambada</title>
-    <meta name="description" content="Produtos exclusivos de Zouk Brasileiro e Lambada. Roupas, acessórios e muito mais.">
-    
-    <!-- Open Graph / Social Media -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Loja | Felipe Nascimento - Zouk Brasileiro e Lambada">
-    <meta property="og:description" content="Confira os produtos oficiais de Felipe Nascimento.">
-    <meta property="og:image" content="assets/logo.PNG">
-    <meta property="og:url" content="https://fnzouk.com.br/loja.html">
-    <link rel="canonical" href="https://fnzouk.com.br/loja.html">
+    <link rel="icon" type="image/png" href="../assets/logo.PNG">
+    <title>Digital Products | Felipe Nascimento – Brazilian Zouk</title>
+    <meta name="description" content="E-books, playlists, and exclusive study materials by Felipe Nascimento. Level up your Brazilian Zouk knowledge.">
+    <link rel="canonical" href="https://fnzouk.com.br/en/loja.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
-        .page-header {
-            padding-top: 7rem;
-            padding-bottom: 4rem;
-            background-color: var(--color-bg-alt);
-            text-align: center;
-        }
-        .page-header h1 {
-            color: var(--color-secondary);
-            font-size: clamp(1.8rem, 6vw, 3rem);
-        }
-        .store-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        @media (max-width: 480px) {
-            .page-header { padding-top: 7rem; padding-bottom: 2rem; }
-            .store-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-            .product-info h3 { font-size: 1rem; }
-            .btn-cart { padding: 0.5rem 1.2rem; font-size: 0.8rem; }
-        }
-        .product-card {
-            text-align: center;
-            transition: transform var(--transition-fast);
-        }
-        .product-card:hover {
-            transform: translateY(-8px);
-        }
-        .product-image-container {
-            background-color: #111;
-            aspect-ratio: 1;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(212, 175, 55, 0.1);
-        }
-        .product-image-container i {
-            font-size: 5rem;
-            color: var(--color-secondary);
-            opacity: 0.8;
-            transition: transform var(--transition-smooth);
-        }
-        .product-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform var(--transition-smooth);
-        }
-        .product-card:hover .product-image-container i,
-        .product-card:hover .product-image-container img {
-            transform: scale(1.1);
-        }
-        .product-info h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-        .product-price {
-            color: var(--color-text-muted);
-            font-weight: 400;
-            margin-bottom: 1rem;
-        }
-        .btn-cart {
-            border: 1px solid var(--color-secondary);
-            color: var(--color-secondary);
-            background: transparent;
-            padding: 0.6rem 2rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-        }
-        .btn-cart:hover {
-            background-color: var(--color-secondary);
-            color: #000;
-        }
+        .page-header { padding-top: 8rem; padding-bottom: 2rem; background-color: var(--color-bg-alt); text-align: center; }
+        .page-header h1 { color: var(--color-secondary); }
+        .store-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+        .product-card { background: var(--color-surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; overflow: hidden; transition: transform 0.3s ease, border-color 0.3s ease; }
+        .product-card:hover { transform: translateY(-6px); border-color: var(--color-secondary); }
+        .product-image-container img { width: 100%; height: 220px; object-fit: cover; display: block; }
+        .product-info { padding: 1.5rem; }
+        .product-info h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+        .product-price { color: var(--color-secondary); font-weight: 700; font-size: 1.1rem; margin-bottom: 1rem; }
+        .btn-cart { display: inline-block; background: var(--color-secondary); color: #000; font-weight: 700; padding: 0.7rem 1.4rem; border-radius: 8px; font-size: 0.9rem; transition: opacity 0.2s; }
+        .btn-cart:hover { opacity: 0.85; }
+        @media (max-width: 480px) { .page-header { padding-top: 6rem; } }
     </style>
 </head>
 <body>
-    <!-- Preloader Premium -->
-    <div id="preloader">
-        <div class="loader-content">
-            <div class="loader-logo">FNZ</div>
-        </div>
-    </div>
+    <div id="preloader"><div class="loader-content"><div class="loader-logo">FNZ</div></div></div>
     <header class="header">
         <div class="container navbar">
             <div class="nav-left">
                 <div class="menu-toggle"><span></span><span></span><span></span></div>
                 <a href="index.html" class="logo">
-                    <img src="../assets/logo.PNG" alt="FNZ Logo" onerror="this.src='../assets/logo.PNG'; this.alt='FNZ'; this.style.fontSize='1.8rem'; this.style.color='var(--color-secondary)';">
+                    <img src="../assets/logo.PNG" alt="FNZ Logo" onerror="this.src=''; this.alt='FNZ'; this.style.fontSize='1.8rem'; this.style.color='var(--color-secondary)';">
                 </a>
             </div>
             <div class="nav-right">
-                <nav class="desktop-menu">
-                    <ul>
-                        <li><a href="index.html">Home</a></li><li><a href="lab.html">LAB</a></li>
-                        <li><a href="cursos.html" data-pt="Cursos" data-en="Courses">Courses</a></li>
-                        <li><a href="loja.html" data-pt="Loja" data-en="Store">Store</a></li>
-                        <li><a href="aulas.html" data-pt="Aulas Particulares" data-en="Private Lessons">Private Lessons</a></li>
-                        <li><a href="dj.html" data-pt="Sets de DJ" data-en="DJ Sets">DJ Sets</a></li>
-                        <li><a href="sobre.html" data-pt="Sobre" data-en="About">About</a></li>
-                        <li><a href="contrate.html" style="color: var(--color-secondary); font-weight: 800;" data-pt="Contrate" data-en="Hire Me">Hire Us</a></li>
-                    </ul>
-                </nav>
+                <nav class="desktop-menu"><ul>
+                    <li><a href="index.html">Home</a></li><li><a href="lab.html">LAB</a></li>
+                    <li><a href="cursos.html">Courses</a></li><li><a href="loja.html">Store</a></li>
+                    <li><a href="aulas.html">Private Lessons</a></li><li><a href="dj.html">DJ Sets</a></li>
+                    <li><a href="sobre.html">About</a></li>
+                    <li><a href="contrate.html" style="color:var(--color-secondary);font-weight:800;">Hire Us</a></li>
+                </ul></nav>
                 <div class="nav-actions">
                     <a href="../loja.html" class="lang-btn"><i class="ph ph-globe"></i> PT</a>
-                    <a href="login.html" class="action-btn"><i class="ph ph-user"></i> <span data-pt="Login" data-en="Log In">Login</span></a>
-                    <a href="#" class="action-btn"><i class="ph ph-shopping-cart"></i> <span data-pt="Carrinho" data-en="Cart">Cart</span></a>
+                    <a href="login.html" class="action-btn"><i class="ph ph-user"></i> Login</a>
                 </div>
             </div>
         </div>
     </header>
-
-    <nav class="fullscreen-menu">
-        <ul>
-            <li><a href="index.html">Home</a></li><li><a href="lab.html">LAB</a></li>
-            <li><a href="cursos.html" data-pt="Cursos" data-en="Courses">Courses</a></li>
-            <li><a href="loja.html" data-pt="Loja" data-en="Store">Store</a></li>
-            <li><a href="aulas.html" data-pt="Aulas Particulares" data-en="Private Lessons">Private Lessons</a></li>
-            <li><a href="dj.html" data-pt="Sets de DJ" data-en="DJ Sets">DJ Sets</a></li>
-            <li><a href="sobre.html" data-pt="Sobre" data-en="About">About</a></li>
-                        <li><a href="contrate.html" style="color: var(--color-secondary); font-weight: 800;" data-pt="Contrate" data-en="Hire Me">Hire Us</a></li>
-            <li class="mobile-auth-item" style="margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1.5rem; list-style: none;">
-                <a href="login.html" class="action-btn" style="display: flex; align-items: center; gap: 10px; justify-content: center;">
-                    <i class="ph ph-user" style="font-size: 1.5rem;"></i> <span data-pt="Login" data-en="Log In">Login</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+    <nav class="fullscreen-menu"><ul>
+        <li><a href="index.html">Home</a></li><li><a href="lab.html">LAB</a></li>
+        <li><a href="cursos.html">Courses</a></li><li><a href="loja.html">Store</a></li>
+        <li><a href="aulas.html">Private Lessons</a></li><li><a href="dj.html">DJ Sets</a></li>
+        <li><a href="sobre.html">About</a></li>
+        <li><a href="contrate.html" style="color:var(--color-secondary);font-weight:800;">Hire Us</a></li>
+        <li class="mobile-auth-item" style="margin-top:1.5rem;border-top:1px solid rgba(255,255,255,0.05);padding-top:1.5rem;list-style:none;">
+            <a href="login.html" class="action-btn" style="display:flex;align-items:center;gap:10px;justify-content:center;">
+                <i class="ph ph-user" style="font-size:1.5rem;"></i> Login
+            </a>
+        </li>
+    </ul></nav>
 
     <section class="page-header">
         <div class="container fade-in-section">
@@ -167,91 +75,62 @@
     <section class="section">
         <div class="container fade-in-section">
             <div class="store-grid">
-                <!-- Produto 1 -->
                 <div class="product-card">
                     <div class="product-image-container">
                         <img src="../assets/Volme 1.png" alt="E-book Volume 1">
                     </div>
                     <div class="product-info">
-                        <h3>E-book: Fundamentos Avançados</h3>
+                        <h3>E-book: Advanced Fundamentals</h3>
                         <p class="product-price">Hotmart</p>
-                        <a href="https://pay.hotmart.com/F95098293S" target="_blank" class="btn-cart" style="display:inline-block; text-decoration:none;">Comprar Agora</a>
+                        <a href="https://pay.hotmart.com/F95098293S" target="_blank" class="btn-cart">Buy Now</a>
                     </div>
                 </div>
-
-                <!-- Produto 2 -->
                 <div class="product-card">
                     <div class="product-image-container">
                         <img src="../assets/Volume 2.png" alt="E-book Volume 2">
                     </div>
                     <div class="product-info">
-                        <h3>E-book: Controle e Consciência</h3>
+                        <h3>E-book: Control & Awareness</h3>
                         <p class="product-price">Hotmart</p>
-                        <a href="https://pay.hotmart.com/F95098346M" target="_blank" class="btn-cart" style="display:inline-block; text-decoration:none;">Comprar Agora</a>
+                        <a href="https://pay.hotmart.com/F95098346M" target="_blank" class="btn-cart">Buy Now</a>
                     </div>
                 </div>
-
-                <!-- Produto 3 -->
                 <div class="product-card">
                     <div class="product-image-container">
                         <img src="../assets/Volume 3.png" alt="E-book Volume 3">
                     </div>
                     <div class="product-info">
-                        <h3>E-book: Flow e Identidade</h3>
+                        <h3>E-book: Flow & Identity</h3>
                         <p class="product-price">Hotmart</p>
-                        <a href="https://pay.hotmart.com/D95154506M" target="_blank" class="btn-cart" style="display:inline-block; text-decoration:none;">Comprar Agora</a>
+                        <a href="https://pay.hotmart.com/D95154506M" target="_blank" class="btn-cart">Buy Now</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content fade-in-section">
-                <div>
-                    <a href="index.html" class="footer-logo">FNZ</a>
-                    <p>Transforming the way you express yourself through dance and music.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Navigation</h4>
-                    <ul>
-                        <li><a href="cursos.html" data-pt="Cursos" data-en="Courses">Courses</a></li>
-                        <li><a href="loja.html" data-pt="Loja" data-en="Store">Store</a></li>
-                        <li><a href="aulas.html" data-pt="Aulas Particulares" data-en="Private Lessons">Private Lessons</a></li>
-                        <li><a href="dj.html" data-pt="Sets de DJ" data-en="DJ Sets">DJ Sets</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li><a href="mailto:fmachadonascimento@gmail.com">fmachadonascimento@gmail.com</a></li>
-                        <li><a href="https://www.instagram.com/felipenascimento_zouk/" target="_blank">Instagram</a></li>
-                        <li><a href="https://www.youtube.com/@FelipeNascimentozouk" target="_blank">YouTube</a></li>
-                        <li><a href="https://open.spotify.com/user/22nzji5jmqee4u5tgceipxi3y?si=08b86d07da2f4d62" target="_blank">Spotify</a></li>
-                    </ul>
-                </div>
+                <div><a href="index.html" class="footer-logo">FNZ</a><p>Transforming the way you express yourself through dance and music.</p></div>
+                <div class="footer-links"><h4>Navigation</h4><ul>
+                    <li><a href="cursos.html">Courses</a></li><li><a href="loja.html">Store</a></li>
+                    <li><a href="aulas.html">Private Lessons</a></li><li><a href="dj.html">DJ Sets</a></li>
+                </ul></div>
+                <div class="footer-links"><h4>Contact</h4><ul>
+                    <li><a href="mailto:fmachadonascimento@gmail.com">fmachadonascimento@gmail.com</a></li>
+                    <li><a href="https://www.instagram.com/felipenascimento_zouk/" target="_blank">Instagram</a></li>
+                    <li><a href="https://www.youtube.com/@FelipeNascimentozouk" target="_blank">YouTube</a></li>
+                    <li><a href="https://open.spotify.com/user/22nzji5jmqee4u5tgceipxi3y?si=08b86d07da2f4d62" target="_blank">Spotify</a></li>
+                </ul></div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Felipe Nascimento. All rights reserved.</p>
-            </div>
+            <div class="footer-bottom"><p>&copy; 2026 Felipe Nascimento. All rights reserved.</p></div>
         </div>
     </footer>
-
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/5561981266368?text=Hi%20Felipe!%20I%20found%20your%20website%20and%20would%20like%20more%20information." class="whatsapp-float" target="_blank" aria-label="WhatsApp">
-        <i class="ph ph-whatsapp-logo"></i>
-    </a>
-
-    <!-- Lenis Library -->
+    <a href="https://wa.me/5561981266368?text=Hi%20Felipe!%20I%20found%20your%20website%20and%20would%20like%20more%20information." class="whatsapp-float" target="_blank" aria-label="WhatsApp"><i class="ph ph-whatsapp-logo"></i></a>
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-    
-
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../js/auth.js"></script>
-    <script src="../js/i18n.js"></script>
     <script src="../js/main.js"></script>
 </body>
 </html>
-

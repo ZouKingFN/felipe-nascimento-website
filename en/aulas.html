@@ -3,106 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="assets/logo.PNG">
+    <link rel="icon" type="image/png" href="../assets/logo.PNG">
     <title>Private Lessons | Felipe Nascimento – Brazilian Zouk</title>
-    <meta name="description" content="Evolução personalizada em Zouk Brasileiro e Lambada. Agende sua sessão VIP com Felipe Nascimento.">
-    
-    <!-- Open Graph / Social Media -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Private Lessons | Felipe Nascimento – Brazilian Zouk">
-    <meta property="og:description" content="Agende sua aula personalizada e eleve sua dança para o próximo nível.">
-    <meta property="og:image" content="assets/felipe.jpeg">
-    <meta property="og:url" content="https://fnzouk.com.br/aulas.html">
-    <link rel="canonical" href="https://fnzouk.com.br/aulas.html">
+    <meta name="description" content="Book a private lesson with Felipe Nascimento. Personalized, online or in-person. Brazilian Zouk for all levels.">
+    <link rel="canonical" href="https://fnzouk.com.br/en/aulas.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
-        .page-header {
-            padding-top: 7rem;
-            padding-bottom: 4rem;
-            background-color: var(--color-bg-alt);
-            text-align: center;
-        }
-        .page-header h1 {
-            color: var(--color-secondary);
-        }
-        .booking-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: var(--color-bg-alt);
-            padding: 2.5rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.05);
-            text-align: center;
-        }
-        .booking-icon {
-            font-size: 3rem;
-            color: var(--color-secondary);
-            margin-bottom: 1rem;
-        }
-        @media (max-width: 480px) {
-            .page-header { padding-top: 7rem; padding-bottom: 2rem; }
-            .booking-container { padding: 1.5rem 1rem; }
-            .booking-container .btn { width: 100%; text-align: center; }
-        }
+        .page-header { padding-top: 8rem; padding-bottom: 2rem; background-color: var(--color-bg-alt); text-align: center; }
+        .page-header h1 { color: var(--color-secondary); }
+        .booking-container { background: var(--color-surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto; }
+        .booking-icon { font-size: 4rem; color: var(--color-secondary); display: block; margin-bottom: 1.5rem; }
+        .booking-container h3 { font-size: 1.8rem; margin-bottom: 1rem; }
+        .booking-container p { color: var(--color-text-muted); margin-bottom: 2rem; }
+        .faq-container { display: flex; flex-direction: column; gap: 1rem; max-width: 750px; margin: 0 auto; }
+        .faq-item { background: var(--color-surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; overflow: hidden; }
+        .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 1.5rem; cursor: pointer; font-weight: 600; }
+        .faq-question i { transition: transform 0.3s ease; flex-shrink: 0; }
+        .faq-item.open .faq-question i { transform: rotate(180deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; padding: 0 1.5rem; }
+        .faq-answer p { padding-bottom: 1.25rem; color: var(--color-text-muted); }
+        .faq-item.open .faq-answer { max-height: 200px; }
+        @media (max-width: 480px) { .page-header { padding-top: 6rem; } }
     </style>
 </head>
 <body>
-    <!-- Preloader Premium -->
-    <div id="preloader">
-        <div class="loader-content">
-            <div class="loader-logo">FNZ</div>
-        </div>
-    </div>
-
+    <div id="preloader"><div class="loader-content"><div class="loader-logo">FNZ</div></div></div>
     <header class="header">
         <div class="container navbar">
             <div class="nav-left">
                 <div class="menu-toggle"><span></span><span></span><span></span></div>
                 <a href="index.html" class="logo">
-                    <img src="../assets/logo.PNG" alt="FNZ Logo" onerror="this.src='../assets/logo.PNG'; this.alt='FNZ'; this.style.fontSize='1.8rem'; this.style.color='var(--color-secondary)';">
+                    <img src="../assets/logo.PNG" alt="FNZ Logo" onerror="this.src=''; this.alt='FNZ'; this.style.fontSize='1.8rem'; this.style.color='var(--color-secondary)';">
                 </a>
             </div>
             <div class="nav-right">
-                <nav class="desktop-menu">
-                    <ul>
-                        <li><a href="index.html">Home</a></li><li><a href="lab.html">LAB</a></li>
-                        <li><a href="cursos.html" data-pt="Cursos" data-en="Courses">Courses</a></li>
-                        <li><a href="loja.html" data-pt="Loja" data-en="Store">Store</a></li>
-                        <li><a href="aulas.html" data-pt="Aulas Particulares" data-en="Private Lessons">Private Lessons</a></li>
-                        <li><a href="dj.html" data-pt="Sets de DJ" data-en="DJ Sets">DJ Sets</a></li>
-                        <li><a href="sobre.html" data-pt="Sobre" data-en="About">About</a></li>
-                        <li><a href="contrate.html" style="color: var(--color-secondary); font-weight: 800;" data-pt="Contrate" data-en="Hire Me">Hire Us</a></li>
-                    </ul>
-                </nav>
+                <nav class="desktop-menu"><ul>
+                    <li><a href="index.html">Home</a></li><li><a href="lab.html">LAB</a></li>
+                    <li><a href="cursos.html">Courses</a></li><li><a href="loja.html">Store</a></li>
+                    <li><a href="aulas.html">Private Lessons</a></li><li><a href="dj.html">DJ Sets</a></li>
+                    <li><a href="sobre.html">About</a></li>
+                    <li><a href="contrate.html" style="color:var(--color-secondary);font-weight:800;">Hire Us</a></li>
+                </ul></nav>
                 <div class="nav-actions">
                     <a href="../aulas.html" class="lang-btn"><i class="ph ph-globe"></i> PT</a>
-                    <a href="login.html" class="action-btn"><i class="ph ph-user"></i> <span data-pt="Login" data-en="Log In">Login</span></a>
-                    <a href="#" class="action-btn"><i class="ph ph-shopping-cart"></i> <span data-pt="Carrinho" data-en="Cart">Cart</span></a>
+                    <a href="login.html" class="action-btn"><i class="ph ph-user"></i> Login</a>
                 </div>
             </div>
         </div>
     </header>
-
-    <nav class="fullscreen-menu">
-        <ul>
-            <li><a href="index.html">Home</a></li><li><a href="lab.html">LAB</a></li>
-            <li><a href="cursos.html" data-pt="Cursos" data-en="Courses">Courses</a></li>
-            <li><a href="loja.html" data-pt="Loja" data-en="Store">Store</a></li>
-            <li><a href="aulas.html" data-pt="Aulas Particulares" data-en="Private Lessons">Private Lessons</a></li>
-            <li><a href="dj.html" data-pt="Sets de DJ" data-en="DJ Sets">DJ Sets</a></li>
-            <li><a href="sobre.html" data-pt="Sobre" data-en="About">About</a></li>
-            <li><a href="contrate.html" style="color: var(--color-secondary); font-weight: 800;" data-pt="Contrate" data-en="Hire Me">Hire Us</a></li>
-            <li class="mobile-auth-item">
-                <a href="login.html" class="action-btn" style="display: flex; align-items: center; gap: 10px; justify-content: center;">
-                    <i class="ph ph-user" style="font-size: 1.5rem;"></i> <span data-pt="Login" data-en="Log In">Login</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+    <nav class="fullscreen-menu"><ul>
+        <li><a href="index.html">Home</a></li><li><a href="lab.html">LAB</a></li>
+        <li><a href="cursos.html">Courses</a></li><li><a href="loja.html">Store</a></li>
+        <li><a href="aulas.html">Private Lessons</a></li><li><a href="dj.html">DJ Sets</a></li>
+        <li><a href="sobre.html">About</a></li>
+        <li><a href="contrate.html" style="color:var(--color-secondary);font-weight:800;">Hire Us</a></li>
+        <li class="mobile-auth-item" style="margin-top:1.5rem;border-top:1px solid rgba(255,255,255,0.05);padding-top:1.5rem;list-style:none;">
+            <a href="login.html" class="action-btn" style="display:flex;align-items:center;gap:10px;justify-content:center;">
+                <i class="ph ph-user" style="font-size:1.5rem;"></i> Login
+            </a>
+        </li>
+    </ul></nav>
 
     <section class="page-header">
         <div class="container fade-in-section">
@@ -116,7 +80,7 @@
             <div class="booking-container">
                 <i class="ph ph-calendar-check booking-icon"></i>
                 <h3>Booking Open</h3>
-                <p>Private lessons have limited spots. Click the button below to check availability.</p>
+                <p>Private lessons have limited spots. Click the button below to check available time slots.</p>
                 <a href="https://calendar.app.google/4XLAHD9tPNmzUPz97" target="_blank" class="btn btn-primary">Book a Slot</a>
             </div>
         </div>
@@ -124,95 +88,71 @@
 
     <section class="section section-dark">
         <div class="container fade-in-section">
-            <h2 style="text-align: center; color: var(--color-secondary); margin-bottom: 1rem;" data-pt="Dúvidas Frequentes" data-en="FAQ">Frequently Asked Questions</h2>
-            <p style="text-align: center; max-width: 600px; margin: 0 auto 3rem;" data-pt="Everything you need to know about private lessons." data-en="Everything you need to know about private lessons.">Everything you need to know about private lessons.</p>
-            
+            <h2 style="text-align:center;color:var(--color-secondary);margin-bottom:1rem;">Frequently Asked Questions</h2>
+            <p style="text-align:center;max-width:600px;margin:0 auto 3rem;">Everything you need to know about private lessons.</p>
             <div class="faq-container">
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span data-pt="As aulas são para iniciantes?" data-en="Are the classes for beginners?">As aulas são para iniciantes?</span>
+                        <span>Are the classes for beginners?</span>
                         <i class="ph ph-caret-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p data-pt="Sim! As aulas são 100% personalizadas para o seu nível atual, desde o primeiro passo até a lapidação profissional." data-en="Yes! The classes are 100% customized for your current level, from the first step to professional refinement.">Sim! As aulas são 100% personalizadas para o seu nível atual, desde o primeiro passo até a lapidação profissional.</p>
+                        <p>Yes! The classes are 100% customized for your current level, from the very first step to professional refinement.</p>
                     </div>
                 </div>
-
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span data-pt="Como funciona o agendamento?" data-en="How does scheduling work?">Como funciona o agendamento?</span>
+                        <span>How does scheduling work?</span>
                         <i class="ph ph-caret-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p data-pt="O agendamento é feito de forma prática via Google Calendar. Você reserva seu horário, ele é bloqueado automaticamente e você recebe as instruções de acesso por e-mail." data-en="Scheduling is done practically via Google Calendar. You reserve your slot, it's automatically blocked, and you receive access instructions by email.">O agendamento é feito de forma prática via Google Calendar. Você reserva seu horário, ele é bloqueado automaticamente e você recebe as instruções de acesso por e-mail.</p>
+                        <p>Scheduling is done via Google Calendar. You reserve your slot, it's automatically blocked, and you receive access instructions by email.</p>
                     </div>
                 </div>
-
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span data-pt="Qual o local das aulas?" data-en="Where do the classes take place?">Qual o local das aulas?</span>
+                        <span>Where do the classes take place?</span>
                         <i class="ph ph-caret-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p data-pt="As aulas ocorrem Online via Google Meet ou presencialmente, dependendo de onde eu estiver no mundo no momento." data-en="Classes take place Online via Google Meet or in-person, depending on where I am in the world at the moment.">As aulas ocorrem Online via Google Meet ou presencialmente, dependendo de onde eu estiver no mundo no momento.</p>
+                        <p>Classes take place online via Google Meet or in-person, depending on where I am in the world at the time.</p>
                     </div>
                 </div>
-
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span data-pt="Posso fazer aulas em dupla?" data-en="Can I take classes as a couple?">Posso fazer aulas em dupla?</span>
+                        <span>Can I take classes as a couple?</span>
                         <i class="ph ph-caret-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p data-pt="Com certeza! O valor da aula particular cobre até duas pessoas, sendo uma ótima opção para casais ou parceiros de treino dividirem a experiência." data-en="Certainly! The price of a private class covers up to two people, making it a great option for couples or training partners to share the experience.">Com certeza! O valor da aula particular cobre até duas pessoas, sendo uma ótima opção para casais ou parceiros de treino dividirem a experiência.</p>
+                        <p>Certainly! The price of a private lesson covers up to two people, making it a great option for couples or training partners to share the experience.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content fade-in-section">
-                <div>
-                    <a href="index.html" class="footer-logo">FNZ</a>
-                    <p>Transforming the way you express yourself through dance and music.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Navigation</h4>
-                    <ul>
-                        <li><a href="cursos.html">Courses</a></li>
-                        <li><a href="loja.html">Store</a></li>
-                        <li><a href="aulas.html">Private Lessons</a></li>
-                        <li><a href="dj.html">DJ Sets</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li><a href="mailto:fmachadonascimento@gmail.com">fmachadonascimento@gmail.com</a></li>
-                        <li><a href="https://www.instagram.com/felipenascimento_zouk/" target="_blank">Instagram</a></li>
-                        <li><a href="https://www.youtube.com/@FelipeNascimentozouk" target="_blank">YouTube</a></li>
-                        <li><a href="https://open.spotify.com/user/22nzji5jmqee4u5tgceipxi3y?si=08b86d07da2f4d62" target="_blank">Spotify</a></li>
-                    </ul>
-                </div>
+                <div><a href="index.html" class="footer-logo">FNZ</a><p>Transforming the way you express yourself through dance and music.</p></div>
+                <div class="footer-links"><h4>Navigation</h4><ul>
+                    <li><a href="cursos.html">Courses</a></li><li><a href="loja.html">Store</a></li>
+                    <li><a href="aulas.html">Private Lessons</a></li><li><a href="dj.html">DJ Sets</a></li>
+                </ul></div>
+                <div class="footer-links"><h4>Contact</h4><ul>
+                    <li><a href="mailto:fmachadonascimento@gmail.com">fmachadonascimento@gmail.com</a></li>
+                    <li><a href="https://www.instagram.com/felipenascimento_zouk/" target="_blank">Instagram</a></li>
+                    <li><a href="https://www.youtube.com/@FelipeNascimentozouk" target="_blank">YouTube</a></li>
+                    <li><a href="https://open.spotify.com/user/22nzji5jmqee4u5tgceipxi3y?si=08b86d07da2f4d62" target="_blank">Spotify</a></li>
+                </ul></div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Felipe Nascimento. All rights reserved.</p>
-            </div>
+            <div class="footer-bottom"><p>&copy; 2026 Felipe Nascimento. All rights reserved.</p></div>
         </div>
     </footer>
-
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/5561981266368?text=Hi%20Felipe!%20I%20found%20your%20website%20and%20would%20like%20more%20information." class="whatsapp-float" target="_blank" aria-label="WhatsApp">
-        <i class="ph ph-whatsapp-logo"></i>
-    </a>
-
+    <a href="https://wa.me/5561981266368?text=Hi%20Felipe!%20I%20found%20your%20website%20and%20would%20like%20more%20information." class="whatsapp-float" target="_blank" aria-label="WhatsApp"><i class="ph ph-whatsapp-logo"></i></a>
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../js/auth.js"></script>
-    <script src="../js/i18n.js"></script>
     <script src="../js/main.js"></script>
 </body>
 </html>
