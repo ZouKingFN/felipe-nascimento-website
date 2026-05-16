@@ -11,6 +11,13 @@
     --font-main: 'Outfit', sans-serif;
     --transition-fast: 0.3s ease;
     --transition-smooth: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    
+    /* Premium Design Tokens */
+    --premium-glass: rgba(255, 255, 255, 0.05);
+    --premium-glass-hover: rgba(255, 255, 255, 0.08);
+    --premium-border: rgba(255, 255, 255, 0.1);
+    --premium-border-hover: rgba(212, 175, 55, 0.3);
+    --premium-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 * {
@@ -460,6 +467,23 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+@keyframes rotateVinyl {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+}
+
+@keyframes floatBackground {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(-20px, 30px); }
+    100% { transform: translate(0, 0); }
 }
 
 .fade-in-section {
