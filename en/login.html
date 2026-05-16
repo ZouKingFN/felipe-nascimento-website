@@ -1,24 +1,26 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="assets/logo.PNG">
-    <title>Login | Felipe Nascimento - Zouk Brasileiro e Lambada</title>
-    <meta name="description" content="Acesse sua área restrita no site de Felipe Nascimento. Cursos de Zouk Brasileiro e Lambada.">
+    <link rel="icon" type="image/png" href="../assets/logo.PNG">
+    <title>Login | Felipe Nascimento - Brazilian Zouk and Lambada</title>
+    <meta name="description" content="Access your exclusive area on Felipe Nascimento's website. Brazilian Zouk and Lambada courses.">
     
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Login | Felipe Nascimento - Zouk Brasileiro e Lambada">
-    <meta property="og:image" content="assets/logo.PNG">
-    <meta property="og:url" content="https://fnzouk.com.br/login.html">
-    <link rel="canonical" href="https://fnzouk.com.br/login.html">
+    <meta property="og:title" content="Login | Felipe Nascimento - Brazilian Zouk and Lambada">
+    <meta property="og:image" content="../assets/logo.PNG">
+    <meta property="og:url" content="https://fnzouk.com.br/en/login.html">
+    <link rel="canonical" href="https://fnzouk.com.br/en/login.html">
     <meta name="robots" content="noindex, nofollow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- reCAPTCHA v3 - Replace SUA_CHAVE_SITE_RECAPTCHA with your actual site key -->
+    <script src="https://www.google.com/recaptcha/api.js?render=6LcOo-wsAAAAADyXHNLfu2HuDSI5wVkWuO4ePIZ4"></script>
     <style>
         .auth-section {
             min-height: 100vh;
@@ -31,7 +33,6 @@
             overflow: hidden;
         }
         
-        /* Background decor elements for premium feel */
         .auth-section::before {
             content: "";
             position: absolute;
@@ -171,15 +172,6 @@
             transform: translateX(-5px);
         }
 
-        .animate-spin {
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
         @media (max-width: 480px) {
             .auth-section { padding: 1rem; }
             .auth-container { padding: 2.5rem 1.5rem; border-radius: 20px; }
@@ -188,7 +180,6 @@
     </style>
 </head>
 <body>
-    <!-- Preloader Premium -->
     <div id="preloader">
         <div class="loader-content">
             <div class="loader-logo">FNZ</div>
@@ -196,36 +187,36 @@
     </div>
     
     <section class="auth-section">
-        <a href="index.html" class="back-link"><i class="ph ph-arrow-left"></i> Voltar</a>
+        <a href="index.html" class="back-link"><i class="ph ph-arrow-left"></i> Back</a>
         
         <div class="auth-container">
             <a href="index.html" class="auth-logo">FNZ</a>
-            <h2>Bem-vindo(a)</h2>
-            <p>Acesse o portal exclusivo de alunos e assinantes.</p>
+            <h2>Welcome</h2>
+            <p>Access the exclusive student and subscriber portal.</p>
 
             <form id="loginForm">
                 <div id="inputState">
                     <div class="input-group">
                         <i class="ph ph-envelope-simple"></i>
-                        <input type="email" id="userEmail" placeholder="Seu e-mail" required>
+                        <input type="email" id="userEmail" placeholder="Your email" required>
                     </div>
 
                     <div class="legal-check">
                         <input type="checkbox" id="termsCheck" required>
-                        <label for="termsCheck">Li e concordo com os <a href="#">Termos de Uso</a> e a <a href="#">Política de Privacidade</a>.</label>
+                        <label for="termsCheck">I have read and agree to the <a href="terms-of-use.html">Terms of Use</a> and <a href="privacy-policy.html">Privacy Policy</a>.</label>
                     </div>
                     
                     <div class="legal-check" style="margin-bottom: 2rem;">
                         <input type="checkbox" id="marketingCheck">
-                        <label for="marketingCheck">Aceito receber promoções e conteúdo VIP (Opcional).</label>
+                        <label for="marketingCheck">I agree to receive promotions and VIP content (Optional).</label>
                     </div>
 
                     <button type="button" class="btn btn-primary" style="width: 100%; padding: 1.1rem; border-radius: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px;" onclick="handleEmailLogin()">
-                        Enviar Link de Acesso
+                        Send Access Link
                     </button>
                     
                     <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 1.5rem; line-height: 1.4;">
-                        Você receberá um link mágico no seu e-mail.<br>Sem senhas, acesso rápido e seguro.
+                        You will receive a magic link in your email.<br>No passwords, fast and secure access.
                     </p>
                 </div>
 
@@ -233,40 +224,90 @@
                     <div style="width: 80px; height: 80px; background: rgba(212, 175, 55, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
                         <i class="ph ph-paper-plane-tilt" style="font-size: 2.5rem; color: var(--color-secondary);"></i>
                     </div>
-                    <h3 style="color: var(--color-secondary); margin-bottom: 0.5rem; font-size: 1.5rem;">Link Enviado!</h3>
-                    <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 2rem;">Verifique sua caixa de entrada e clique no link para entrar.</p>
+                    <h3 style="color: var(--color-secondary); margin-bottom: 0.5rem; font-size: 1.5rem;">Link Sent!</h3>
+                    <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 2rem;">Check your inbox and click the link to log in.</p>
                     
                     <button type="button" class="btn-outline" style="padding: 0.7rem 1.5rem; border-radius: 12px; font-size: 0.85rem;" onclick="location.reload()">
-                        Usar outro e-mail
+                        Use another email
                     </button>
                 </div>
             </form>
-            
-            <p id="errorMsg" style="color: #ff5555; font-size: 0.85rem; display: none; margin-top: 1.5rem; padding: 0.8rem; background: rgba(255,85,85,0.1); border-radius: 10px;">
-                <i class="ph ph-warning-circle"></i> Você precisa aceitar os Termos de Uso.
-            </p>
         </div>
     </section>
 
-    <!-- Lenis Browser Scroll -->
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-    <script>
-        const lenis = new Lenis();
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
-    </script>
+    <footer style="padding: 2rem 0; background: var(--color-bg); border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container" style="text-align: center;">
+            <div style="display: flex; gap: 1.5rem; justify-content: center; font-size: 0.8rem; margin-bottom: 1rem;">
+                <a href="privacy-policy.html">Privacy</a>
+                <a href="cookie-policy.html">Cookies</a>
+                <a href="terms-of-use.html">Terms</a>
+            </div>
+            <p style="font-size: 0.75rem; color: var(--color-text-muted);">&copy; 2026 Felipe Nascimento. All rights reserved.</p>
+        </div>
+    </footer>
 
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../js/auth.js"></script>
     <script src="../js/i18n.js"></script>
+    <script src="../js/cookie-consent.js"></script>
     <script src="../js/main.js"></script>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/5561981266368?text=Olá%20Felipe!%20Vim%20pelo%20site%20e%20gostaria de%20mais%20informações." class="whatsapp-float" target="_blank" aria-label="Falar no WhatsApp">
-        <i class="ph ph-whatsapp-logo"></i>
-    </a>
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-container">
+            <div class="cookie-text">
+                <p>We value your privacy. We use cookies to improve your experience, analyze site traffic, and personalize content. By clicking "Accept", you agree to the use of all cookies. Learn more in our <a href="cookie-policy.html">Cookie Policy</a>.</p>
+            </div>
+            <div class="cookie-actions">
+                <button id="customize-cookies" class="btn btn-ghost">Customize</button>
+                <button id="reject-all-cookies" class="btn btn-outline">Decline</button>
+                <button id="accept-all-cookies" class="btn btn-primary">Accept</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Settings Modal -->
+    <div id="cookie-settings-modal" class="cookie-settings-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Cookie Preferences</h3>
+                <button class="close-cookie-settings">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h4>Essential</h4>
+                        <p>Necessary for the basic functioning of the site. Cannot be disabled.</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" checked disabled>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h4>Analytics</h4>
+                        <p>Help us understand how visitors interact with the site.</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="cookie-analytics">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h4>Marketing</h4>
+                        <p>Used to deliver more relevant advertisements to you.</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="cookie-marketing">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <button id="save-cookie-settings" class="btn btn-primary" style="width: 100%; margin-top: 2rem;">Save Preferences</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

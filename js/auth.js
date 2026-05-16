@@ -4,17 +4,54 @@ const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
 // Login via Magic Link
+// Login via Magic Link
 async function handleEmailLogin() {
     const emailInput = document.getElementById('userEmail');
     const termsCheck = document.getElementById('termsCheck');
-    if (termsCheck && !termsCheck.checked) { alert("Aceite os termos."); return; }
-    const { error } = await supabaseClient.auth.signInWithOtp({
-        email: emailInput.value,
-        options: { emailRedirectTo: window.location.origin + '/' }
-    });
-    if (error) { alert("Erro: " + error.message); return; }
-    document.getElementById('inputState').style.display = 'none';
-    document.getElementById('successState').style.display = 'block';
+    
+    if (termsCheck && !termsCheck.checked) { 
+        alert("Você precisa aceitar os termos de uso."); 
+        return; 
+    }
+
+    // reCAPTCHA v3 Integration
+    // Nota: O usuário deve substituir 'SUA_CHAVE_SITE_RECAPTCHA' no HTML para funcionar.
+    if (typeof grecaptcha !== 'undefined') {
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LcOo-wsAAAAADyXHNLfu2HuDSI5wVkWuO4ePIZ4', {action: 'login'}).then(async function(token) {
+                // Aqui você enviaria o token para o backend se necessário.
+                // Para o Supabase Magic Link, o reCAPTCHA é opcional no frontend, 
+                // mas ajuda a prevenir disparos de bots no botão.
+                
+                const { error } = await supabaseClient.auth.signInWithOtp({
+                    email: emailInput.value,
+                    options: { emailRedirectTo: window.location.origin + '/' }
+                });
+                
+                if (error) { 
+                    alert("Erro: " + error.message); 
+                    return; 
+                }
+                
+                document.getElementById('inputState').style.display = 'none';
+                document.getElementById('successState').style.display = 'block';
+            });
+        });
+    } else {
+        // Fallback se o reCAPTCHA não carregar
+        const { error } = await supabaseClient.auth.signInWithOtp({
+            email: emailInput.value,
+            options: { emailRedirectTo: window.location.origin + '/' }
+        });
+        
+        if (error) { 
+            alert("Erro: " + error.message); 
+            return; 
+        }
+        
+        document.getElementById('inputState').style.display = 'none';
+        document.getElementById('successState').style.display = 'block';
+    }
 }
 
 // Logout

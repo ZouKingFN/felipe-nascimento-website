@@ -112,6 +112,15 @@
                     <li><a href="cursos.html">Courses</a></li><li><a href="loja.html">Store</a></li>
                     <li><a href="aulas.html">Private Lessons</a></li><li><a href="dj.html">DJ Sets</a></li>
                 </ul></div>
+                
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+                        <li><a href="terms-of-use.html">Terms of Use</a></li>
+                    </ul>
+                </div>
                 <div class="footer-links"><h4>Contact</h4><ul>
                     <li><a href="mailto:fmachadonascimento@gmail.com">fmachadonascimento@gmail.com</a></li>
                     <li><a href="https://www.instagram.com/felipenascimento_zouk/" target="_blank">Instagram</a></li>
@@ -126,6 +135,65 @@
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../js/auth.js"></script>
+    <script src="../js/cookie-consent.js"></script>
     <script src="../js/main.js"></script>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-container">
+            <div class="cookie-text">
+                <p>We value your privacy. We use cookies to improve your experience, analyze site traffic, and personalize content. By clicking "Accept", you agree to the use of all cookies. Learn more in our <a href="cookie-policy.html">Cookie Policy</a>.</p>
+            </div>
+            <div class="cookie-actions">
+                <button id="customize-cookies" class="btn btn-ghost">Customize</button>
+                <button id="reject-all-cookies" class="btn btn-outline">Decline</button>
+                <button id="accept-all-cookies" class="btn btn-primary">Accept</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Settings Modal -->
+    <div id="cookie-settings-modal" class="cookie-settings-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Cookie Preferences</h3>
+                <button class="close-cookie-settings">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h4>Essential</h4>
+                        <p>Necessary for the basic functioning of the site. Cannot be disabled.</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" checked disabled>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h4>Analytics</h4>
+                        <p>Help us understand how visitors interact with the site.</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="cookie-analytics">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h4>Marketing</h4>
+                        <p>Used to deliver more relevant advertisements to you.</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="cookie-marketing">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <button id="save-cookie-settings" class="btn btn-primary" style="width: 100%; margin-top: 2rem;">Save Preferences</button>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

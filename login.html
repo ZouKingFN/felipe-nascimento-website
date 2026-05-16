@@ -19,6 +19,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- reCAPTCHA v3 - Substitua SUA_CHAVE_SITE_RECAPTCHA pela sua chave real -->
+    <script src="https://www.google.com/recaptcha/api.js?render=6LcOo-wsAAAAADyXHNLfu2HuDSI5wVkWuO4ePIZ4"></script>
     <style>
         .auth-section {
             min-height: 100vh;
@@ -212,7 +214,7 @@
 
                     <div class="legal-check">
                         <input type="checkbox" id="termsCheck" required>
-                        <label for="termsCheck">Li e concordo com os <a href="#">Termos de Uso</a> e a <a href="#">Política de Privacidade</a>.</label>
+                        <label for="termsCheck">Li e concordo com os <a href="termos-de-uso.html">Termos de Uso</a> e a <a href="politica-de-privacidade.html">Política de Privacidade</a>.</label>
                     </div>
                     
                     <div class="legal-check" style="margin-bottom: 2rem;">
@@ -247,6 +249,17 @@
             </p>
         </div>
     </section>
+    
+    <footer style="padding: 2rem 0; background: var(--color-bg); border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container" style="text-align: center;">
+            <div style="display: flex; gap: 1.5rem; justify-content: center; font-size: 0.8rem; margin-bottom: 1rem;">
+                <a href="politica-de-privacidade.html">Privacidade</a>
+                <a href="politica-de-cookies.html">Cookies</a>
+                <a href="termos-de-uso.html">Termos</a>
+            </div>
+            <p style="font-size: 0.75rem; color: var(--color-text-muted);">&copy; 2026 Felipe Nascimento. Todos os direitos reservados.</p>
+        </div>
+    </footer>
 
     <!-- Lenis Browser Scroll -->
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
@@ -262,11 +275,70 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/auth.js"></script>
     <script src="js/i18n.js"></script>
+    <script src="js/cookie-consent.js"></script>
     <script src="js/main.js"></script>
 
     <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/5561981266368?text=Olá%20Felipe!%20Vim%20pelo%20site%20e%20gostaria de%20mais%20informações." class="whatsapp-float" target="_blank" aria-label="Falar no WhatsApp">
         <i class="ph ph-whatsapp-logo"></i>
     </a>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-container">
+            <div class="cookie-text">
+                <p>Valorizamos sua privacidade. Utilizamos cookies para melhorar sua experiência, analisar o tráfego do site e personalizar o conteúdo. Ao clicar em "Aceitar", você concorda com o uso de todos os cookies. Saiba mais na nossa <a href="politica-de-cookies.html">Política de Cookies</a>.</p>
+            </div>
+            <div class="cookie-actions">
+                <button id="customize-cookies" class="btn btn-ghost">Personalizar</button>
+                <button id="reject-all-cookies" class="btn btn-outline">Recusar</button>
+                <button id="accept-all-cookies" class="btn btn-primary">Aceitar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Settings Modal -->
+    <div id="cookie-settings-modal" class="cookie-settings-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Preferências de Cookies</h3>
+                <button class="close-cookie-settings">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h4>Necessários</h4>
+                        <p>Essenciais para o funcionamento do site. Não podem ser desativados.</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" checked disabled>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h4>Analytics</h4>
+                        <p>Ajudam-nos a entender como os visitantes interagem com o site.</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="cookie-analytics">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h4>Marketing</h4>
+                        <p>Utilizados para oferecer anúncios mais relevantes para você.</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="cookie-marketing">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <button id="save-cookie-settings" class="btn btn-primary" style="width: 100%; margin-top: 2rem;">Salvar Preferências</button>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

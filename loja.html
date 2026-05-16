@@ -175,6 +175,9 @@
                     <div class="product-info">
                         <h3>E-book: Fundamentos Avançados</h3>
                         <p class="product-price">Hotmart</p>
+                        <p style="font-size: 0.75rem; color: var(--color-text-muted); line-height: 1.4; margin-top: 0.5rem; margin-bottom: 1rem;">
+                            Você será redirecionado para a plataforma <strong>Hotmart</strong> para finalizar sua compra com segurança.
+                        </p>
                         <a href="https://pay.hotmart.com/F95098293S" target="_blank" class="btn-cart" style="display:inline-block; text-decoration:none;">Comprar Agora</a>
                     </div>
                 </div>
@@ -187,6 +190,9 @@
                     <div class="product-info">
                         <h3>E-book: Controle e Consciência</h3>
                         <p class="product-price">Hotmart</p>
+                        <p style="font-size: 0.75rem; color: var(--color-text-muted); line-height: 1.4; margin-top: 0.5rem; margin-bottom: 1rem;">
+                            Você será redirecionado para a plataforma <strong>Hotmart</strong> para finalizar sua compra com segurança.
+                        </p>
                         <a href="https://pay.hotmart.com/F95098346M" target="_blank" class="btn-cart" style="display:inline-block; text-decoration:none;">Comprar Agora</a>
                     </div>
                 </div>
@@ -199,6 +205,9 @@
                     <div class="product-info">
                         <h3>E-book: Flow e Identidade</h3>
                         <p class="product-price">Hotmart</p>
+                        <p style="font-size: 0.75rem; color: var(--color-text-muted); line-height: 1.4; margin-top: 0.5rem; margin-bottom: 1rem;">
+                            Você será redirecionado para a plataforma <strong>Hotmart</strong> para finalizar sua compra com segurança.
+                        </p>
                         <a href="https://pay.hotmart.com/D95154506M" target="_blank" class="btn-cart" style="display:inline-block; text-decoration:none;">Comprar Agora</a>
                     </div>
                 </div>
@@ -221,6 +230,15 @@
                         <li><a href="loja.html" data-pt="Loja" data-en="Store">Loja</a></li>
                         <li><a href="aulas.html" data-pt="Aulas Particulares" data-en="Private Lessons">Aulas Particulares</a></li>
                         <li><a href="dj.html" data-pt="Sets de DJ" data-en="DJ Sets">Sets de DJ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 data-pt="Legal" data-en="Legal">Legal</h4>
+                    <ul>
+                        <li><a href="politica-de-privacidade.html" data-pt="Política de Privacidade" data-en="Privacy Policy">Política de Privacidade</a></li>
+                        <li><a href="politica-de-cookies.html" data-pt="Política de Cookies" data-en="Cookie Policy">Política de Cookies</a></li>
+                        <li><a href="termos-de-uso.html" data-pt="Termos de Uso" data-en="Terms of Use">Termos de Uso</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -251,7 +269,66 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/auth.js"></script>
     <script src="js/i18n.js"></script>
+    <script src="js/cookie-consent.js"></script>
     <script src="js/main.js"></script>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-container">
+            <div class="cookie-text">
+                <p>Valorizamos sua privacidade. Utilizamos cookies para melhorar sua experiência, analisar o tráfego do site e personalizar o conteúdo. Ao clicar em "Aceitar", você concorda com o uso de todos os cookies. Saiba mais na nossa <a href="politica-de-cookies.html">Política de Cookies</a>.</p>
+            </div>
+            <div class="cookie-actions">
+                <button id="customize-cookies" class="btn btn-ghost">Personalizar</button>
+                <button id="reject-all-cookies" class="btn btn-outline">Recusar</button>
+                <button id="accept-all-cookies" class="btn btn-primary">Aceitar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Settings Modal -->
+    <div id="cookie-settings-modal" class="cookie-settings-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Preferências de Cookies</h3>
+                <button class="close-cookie-settings">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h4>Necessários</h4>
+                        <p>Essenciais para o funcionamento do site. Não podem ser desativados.</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" checked disabled>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h4>Analytics</h4>
+                        <p>Ajudam-nos a entender como os visitantes interagem com o site.</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="cookie-analytics">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h4>Marketing</h4>
+                        <p>Utilizados para oferecer anúncios mais relevantes para você.</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="cookie-marketing">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <button id="save-cookie-settings" class="btn btn-primary" style="width: 100%; margin-top: 2rem;">Salvar Preferências</button>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
 
