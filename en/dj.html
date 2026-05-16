@@ -28,7 +28,7 @@
         /* Animated Section Background */
         .dj-section {
             position: relative;
-            overflow: hidden;
+            /* Removed overflow: hidden to allow the card to 'pop' out without being clipped */
             background-color: var(--color-bg);
         }
 
@@ -78,12 +78,14 @@
             overflow: hidden;
             transition: all var(--transition-smooth);
             position: relative;
+            z-index: 1;
         }
 
         .premium-player-card:hover {
             transform: translateY(-10px) scale(1.01);
             border-color: var(--premium-border-hover);
             box-shadow: var(--premium-shadow);
+            z-index: 10;
         }
 
         /* Cover Art Styles */

@@ -815,6 +815,7 @@ footer {
 .testimonial-card:hover {
     transform: translateY(-10px);
     border-color: var(--color-secondary);
+    z-index: 10;
 }
 
 .testimonial-text {
