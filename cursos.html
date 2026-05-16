@@ -45,86 +45,129 @@
             .course-footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
         }
         .course-card {
-            background-color: var(--color-bg-alt);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 16px;
+            background-color: #0f0f0f;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 24px;
             overflow: hidden;
             transition: all var(--transition-smooth);
             display: flex;
             flex-direction: column;
+            text-align: center;
+            position: relative;
         }
         .course-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-12px);
             border-color: var(--color-secondary);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 20px rgba(212, 175, 55, 0.1);
         }
         .course-img-wrapper {
             position: relative;
-            height: 240px;
+            height: 320px;
             overflow: hidden;
+        }
+        .course-img-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, #0f0f0f, transparent);
+            z-index: 1;
         }
         .course-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform var(--transition-smooth);
+            transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .course-card:hover .course-img {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
         .course-badge {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background-color: var(--color-secondary);
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(212, 175, 55, 0.9);
+            backdrop-filter: blur(5px);
             color: #000;
-            padding: 0.4rem 1rem;
+            padding: 0.6rem 1.5rem;
             border-radius: 50px;
             font-size: 0.75rem;
-            font-weight: 800;
+            font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            z-index: 2;
+            letter-spacing: 2px;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
         .course-info {
-            padding: 2rem;
+            padding: 3rem 2.5rem;
             display: flex;
             flex-direction: column;
+            align-items: center;
             flex-grow: 1;
+            margin-top: -60px;
+            position: relative;
+            z-index: 2;
         }
         .course-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #fff;
-        }
-        .course-features {
-            margin: 1.5rem 0;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding-top: 1rem;
-        }
-        .course-features li {
-            font-size: 0.9rem;
-            color: var(--color-text-muted);
+            font-size: 2rem;
             margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .course-features i {
-            color: var(--color-secondary);
-        }
-        .course-footer {
-            margin-top: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #fff;
+            letter-spacing: -0.5px;
         }
         .course-price {
             color: var(--color-secondary);
-            font-weight: 800;
-            font-size: 1.5rem;
+            font-weight: 400;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            display: inline-block;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 0.4rem 1.2rem;
+            border-radius: 4px;
+        }
+        .course-description {
+            font-size: 1rem;
+            color: var(--color-text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 90%;
+            line-height: 1.6;
+        }
+        .course-features {
+            margin: 0 0 3rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+            align-items: center;
+        }
+        .course-features li {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.7);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .course-features i {
+            color: var(--color-secondary);
+            font-size: 1.2rem;
+        }
+        .course-footer {
+            width: 100%;
+            margin-top: auto;
+            padding: 0 2.5rem 3rem;
+        }
+        .hotmart-notice {
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
         }
     </style>
 </head>
@@ -204,20 +247,22 @@
                     </div>
                     <div class="course-info">
                         <h3>Social Master Zouk</h3>
-                        <p>Independentemente do seu nível, torne-se um mestre na pista de dança. A essência real do Zouk Brasileiro para todos.</p>
+                        <span class="course-price">Premium</span>
+                        
+                        <p class="course-description">Independentemente do seu nível, torne-se um mestre na pista de dança. A essência real do Zouk Brasileiro para todos.</p>
+                        
                         <ul class="course-features">
-                            <li><i class="ph-fill ph-video-camera"></i> Acesso na Hotmart</li>
-                            <li><i class="ph-fill ph-users"></i> Para todos os níveis de experiência</li>
-                            <li><i class="ph-fill ph-check-circle"></i> Curso Validado e Elogiado</li>
+                            <li><i class="ph-fill ph-video-camera"></i> Acesso imediato na plataforma Hotmart</li>
+                            <li><i class="ph-fill ph-users"></i> Conteúdo para todos os níveis de experiência</li>
+                            <li><i class="ph-fill ph-check-circle"></i> Programa Validado e Altamente Elogiado</li>
                         </ul>
+
                         <div class="course-footer">
-                            <span class="course-price">Premium</span>
-                            <div style="width: 100%; margin-top: 1rem; margin-bottom: 1rem;">
-                                <p style="font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.4; margin-bottom: 1rem;">
-                                    <i class="ph ph-info" style="color: var(--color-secondary);"></i> Você será redirecionado para a plataforma <strong>Hotmart</strong> para finalizar sua compra com segurança.
-                                </p>
-                                <a href="https://pay.hotmart.com/B85068976H" target="_blank" class="btn btn-primary" style="width: 100%; padding: 0.8rem 1.5rem; font-size: 0.9rem; text-align: center;">Comprar o Curso</a>
+                            <div class="hotmart-notice">
+                                <i class="ph ph-shield-check" style="color: var(--color-secondary); font-size: 1.1rem; vertical-align: middle; margin-right: 5px;"></i>
+                                Compra segura via <strong>Hotmart</strong> com garantia de satisfação.
                             </div>
+                            <a href="https://pay.hotmart.com/B85068976H" target="_blank" class="btn btn-primary" style="width: 100%; padding: 1.25rem; font-size: 1rem; text-transform: uppercase; font-weight: 800; letter-spacing: 1px;">Garantir minha vaga</a>
                         </div>
                     </div>
                 </div>
