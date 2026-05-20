@@ -106,6 +106,58 @@
                 padding: 1rem;
             }
         }
+
+        /* Custom Volume Control */
+        .custom-volume-control {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .volume-mute-btn {
+            background: none;
+            border: none;
+            color: var(--color-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+        .volume-mute-btn:hover {
+            transform: scale(1.1);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+        .premium-range-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            outline: none;
+            transition: background 0.3s;
+        }
+        .premium-range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--color-secondary);
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+            transition: transform 0.3s ease;
+        }
+        .premium-range-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
     </style>
 </head>
 <body>
@@ -165,6 +217,10 @@
                 <div class="premium-playlist-card">
                     <div class="soundcloud-frame">
                         <iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/felipe-m-nascimento&color=%23d4af37&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                    </div>
+                    <div class="custom-volume-control">
+                        <button class="volume-mute-btn" id="sc-mute-btn" aria-label="Mute/Unmute"><i class="ph ph-speaker-high"></i></button>
+                        <input type="range" id="sc-volume-slider" class="premium-range-slider" min="0" max="100" value="100" aria-label="Volume">
                     </div>
                 </div>
             </div>
@@ -261,6 +317,61 @@
             </div>
         </div>
     </div>
+
+    <script src="https://w.soundcloud.com/player/api.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const iframe = document.querySelector('.soundcloud-frame iframe');
+            if (!iframe) return;
+            
+            iframe.id = 'sc-widget';
+            const widget = SC.Widget(iframe);
+            const volumeSlider = document.getElementById('sc-volume-slider');
+            const muteBtn = document.getElementById('sc-mute-btn');
+            const muteIcon = muteBtn.querySelector('i');
+            
+            let currentVolume = 100;
+            let isMuted = false;
+
+            widget.bind(SC.Widget.Events.READY, function() {
+                widget.setVolume(currentVolume);
+                
+                volumeSlider.addEventListener('input', function() {
+                    currentVolume = parseInt(this.value);
+                    widget.setVolume(currentVolume);
+                    updateVolumeIcon(currentVolume);
+                    isMuted = currentVolume === 0;
+                });
+
+                muteBtn.addEventListener('click', function() {
+                    if (isMuted) {
+                        let restoreVol = currentVolume > 0 ? currentVolume : 100;
+                        if (restoreVol === 0) restoreVol = 100;
+                        widget.setVolume(restoreVol);
+                        volumeSlider.value = restoreVol;
+                        currentVolume = restoreVol;
+                        isMuted = false;
+                    } else {
+                        widget.setVolume(0);
+                        volumeSlider.value = 0;
+                        isMuted = true;
+                    }
+                    updateVolumeIcon(volumeSlider.value);
+                });
+                
+                function updateVolumeIcon(vol) {
+                    vol = parseInt(vol);
+                    if (vol === 0) {
+                        muteIcon.className = 'ph ph-speaker-x';
+                    } else if (vol < 50) {
+                        muteIcon.className = 'ph ph-speaker-low';
+                    } else {
+                        muteIcon.className = 'ph ph-speaker-high';
+                    }
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
