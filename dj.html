@@ -74,9 +74,7 @@
             z-index: 1;
         }
 
-        .premium-player-card {
-            display: grid;
-            grid-template-columns: 240px 1fr;
+        .premium-playlist-card {
             background: var(--premium-glass);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
@@ -86,108 +84,33 @@
             transition: all var(--transition-smooth);
             position: relative;
             z-index: 1;
+            padding: 1.5rem;
         }
 
-        .premium-player-card:hover {
-            transform: translateY(-10px) scale(1.01);
+        .premium-playlist-card:hover {
+            transform: translateY(-5px);
             border-color: var(--premium-border-hover);
             box-shadow: var(--premium-shadow);
             z-index: 10;
         }
 
-        /* Cover Art Styles */
-        .cover-container {
-            position: relative;
-            padding: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        .set-cover {
-            width: 160px;
-            height: 160px;
+        .soundcloud-frame {
             border-radius: 15px;
-            object-fit: cover;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transition: all var(--transition-smooth);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .premium-player-card:hover .set-cover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
-            border-color: rgba(212, 175, 55, 0.4);
-        }
-
-        .player-content {
-            padding: 1.5rem 3rem 1.5rem 0rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .player-header {
-            display: flex;
-            flex-direction: column;
-            gap: 0.3rem;
-        }
-
-        .player-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            color: var(--color-secondary);
-            font-weight: 700;
-        }
-
-        .player-info p {
-            font-size: 1rem;
-            opacity: 0.7;
-            margin-bottom: 0;
-            line-height: 1.5;
-            max-width: 90%;
-        }
-
-        .player-badge {
-            background: rgba(212, 175, 55, 0.1);
-            color: var(--color-secondary);
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .mixcloud-frame {
-            border-radius: 12px;
             overflow: hidden;
-            height: 120px;
             background: rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.05);
             box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+            display: flex;
+        }
+        
+        .soundcloud-frame iframe {
+            display: block;
         }
 
         @media (max-width: 900px) {
-            .premium-player-card {
-                grid-template-columns: 1fr;
+            .premium-playlist-card {
+                padding: 1rem;
             }
-            .cover-container {
-                padding: 2rem 0;
-                background: linear-gradient(to bottom, rgba(0,0,0,0.3), transparent);
-            }
-            .player-content {
-                padding: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .player-info h3 { font-size: 1.4rem; }
-            .player-info p { font-size: 0.9rem; }
-            .set-cover { width: 140px; height: 140px; }
         }
 
     </style>
@@ -258,63 +181,10 @@
         
         <div class="container fade-in-section">
             <div class="player-list">
-                <!-- Player 1 -->
-                <div class="premium-player-card">
-                    <div class="cover-container">
-                        <img src="assets/covers/set-zouk-lambada.png" alt="Brazilian Zouk & Lambada Mix" class="set-cover">
-                    </div>
-
-                    <div class="player-content">
-                        <div class="player-header">
-                            <div class="player-info">
-                                <div class="player-badge">Hot Mix</div>
-                                <h3>Brazilian Zouk & Lambada Mix</h3>
-                                <p>Uma jornada visceral pelos ritmos brasileiros, fundindo o Zouk tradicional com a energia da Lambada.</p>
-                            </div>
-                        </div>
-                        <div class="mixcloud-frame">
-                            <iframe width="100%" height="120" src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=0&light=0&feed=%2FZouKing%2Fmix-vibes-brazilian-zouk-brazilian-funk-rb-hip-hop-traditional-lambada%2F" frameborder="0" ></iframe>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Player 2 -->
-                <div class="premium-player-card">
-                    <div class="cover-container">
-                        <img src="assets/covers/set-chill-rnb.png" alt="Chillhouse & R&B Vibes" class="set-cover">
-                    </div>
-
-                    <div class="player-content">
-                        <div class="player-header">
-                            <div class="player-info">
-                                <div class="player-badge">Chill Out</div>
-                                <h3>Chillhouse & R&B Vibes</h3>
-                                <p>Mix experimental focado em texturas suaves, perfeito para flow e conexão profunda.</p>
-                            </div>
-                        </div>
-                        <div class="mixcloud-frame">
-                            <iframe width="100%" height="120" src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=0&light=0&feed=%2FZouKing%2Fdj-zouking-zoukmx-chill-experimental-rnb-vibes%2F" frameborder="0" ></iframe>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Player 3 -->
-                <div class="premium-player-card">
-                    <div class="cover-container">
-                        <img src="assets/covers/set-zoukmx.jpg" alt="ZoukMX Beach Party Set" class="set-cover">
-                    </div>
-
-                    <div class="player-content">
-                        <div class="player-header">
-                            <div class="player-info">
-                                <div class="player-badge">Special Set</div>
-                                <h3>ZoukMX Beach Party Set</h3>
-                                <p>A energia das praias do México capturada em um set solar e contagiante.</p>
-                            </div>
-                        </div>
-                        <div class="mixcloud-frame">
-                            <iframe width="100%" height="120" src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=0&light=0&feed=%2FZouKing%2Fdj-zouking-zoukmx-2023-beach-party-set%2F" frameborder="0" ></iframe>
-                        </div>
+                <!-- SoundCloud Playlist Embed -->
+                <div class="premium-playlist-card">
+                    <div class="soundcloud-frame">
+                        <iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/felipe-m-nascimento&color=%23d4af37&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
                     </div>
                 </div>
             </div>
