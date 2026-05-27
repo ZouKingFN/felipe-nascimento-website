@@ -292,36 +292,37 @@
                     </div>
                 </div>
 
-                <!-- Suggestion Box Section -->
-                <div class="lab-suggestion-container fade-in-section">
-                    <div class="lab-suggestion-card">
-                        <div class="suggestion-icon">
-                            <i class="ph ph-lightbulb"></i>
+            </div>
+
+            <!-- Suggestion Box Section (outside grid for correct centering) -->
+            <div class="lab-suggestion-container fade-in-section">
+                <div class="lab-suggestion-card">
+                    <div class="suggestion-icon">
+                        <i class="ph ph-lightbulb"></i>
+                    </div>
+                    <h3>Suggest a Topic</h3>
+                    <p>Which content, movement, or technique would you like to see in the next LAB update? Let us know!</p>
+                    
+                    <form id="suggestionForm" class="suggestion-form" onsubmit="submitSuggestion(event)">
+                        <div class="input-group">
+                            <textarea id="suggestionInput" rows="3" placeholder="E.g., Counterbalance techniques in Zouk..." required></textarea>
                         </div>
-                        <h3>Suggest a Topic</h3>
-                        <p>Which content, movement, or technique would you like to see in the next LAB update? Let us know!</p>
-                        
-                        <form id="suggestionForm" class="suggestion-form" onsubmit="submitSuggestion(event)">
-                            <div class="input-group">
-                                <textarea id="suggestionInput" rows="3" placeholder="E.g., Counterbalance techniques in Zouk..." required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary" id="btnSubmitSuggestion">
-                                <span>Submit Suggestion</span>
-                                <i class="ph ph-paper-plane-right"></i>
-                            </button>
-                        </form>
-                        
-                        <div id="suggestionSuccess" class="suggestion-success-msg" style="display: none;">
-                            <i class="ph ph-check-circle"></i>
-                            <h4>Suggestion Sent!</h4>
-                            <p>Thank you very much! Your idea helps us constantly evolve the LAB.</p>
-                        </div>
+                        <button type="submit" class="btn btn-primary" id="btnSubmitSuggestion">
+                            <span>Submit Suggestion</span>
+                            <i class="ph ph-paper-plane-right"></i>
+                        </button>
+                    </form>
+                    
+                    <div id="suggestionSuccess" class="suggestion-success-msg" style="display: none;">
+                        <i class="ph ph-check-circle"></i>
+                        <h4>Suggestion Sent!</h4>
+                        <p>Thank you very much! Your idea helps us constantly evolve the LAB.</p>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
+
 
     <footer>
         <div class="container">
