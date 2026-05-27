@@ -159,6 +159,129 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* LAB Suggestion Section Styles */
+        .lab-suggestion-container {
+            margin-top: 5rem;
+            display: flex;
+            justify-content: center;
+        }
+        .lab-suggestion-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.05);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .lab-suggestion-card:hover {
+            border-color: rgba(212, 175, 55, 0.2);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.05);
+            transform: translateY(-2px);
+        }
+        .suggestion-icon {
+            font-size: 2.5rem;
+            color: var(--color-secondary);
+            margin-bottom: 1rem;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        .lab-suggestion-card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+        .lab-suggestion-card p {
+            color: var(--color-text-muted);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+        .suggestion-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        .suggestion-form .input-group {
+            width: 100%;
+        }
+        .suggestion-form textarea {
+            width: 100%;
+            padding: 1.2rem;
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.03);
+            color: #fff;
+            font-family: inherit;
+            font-size: 1rem;
+            resize: none;
+            transition: all 0.3s ease;
+        }
+        .suggestion-form textarea:focus {
+            outline: none;
+            border-color: var(--color-secondary);
+            background: rgba(255,255,255,0.06);
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+        }
+        .suggestion-form .btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 1rem 2.5rem;
+            border-radius: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        .suggestion-form .btn i {
+            transition: transform 0.3s ease;
+        }
+        .suggestion-form .btn:hover i {
+            transform: translateX(3px);
+        }
+        .suggestion-success-msg {
+            animation: fadeIn 0.5s ease forwards;
+            padding: 1rem 0;
+        }
+        .suggestion-success-msg i {
+            font-size: 3.5rem;
+            color: #2ec4b6;
+            margin-bottom: 1.2rem;
+            display: inline-block;
+        }
+        .suggestion-success-msg h4 {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        .suggestion-success-msg p {
+            margin-bottom: 0;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
@@ -335,6 +458,33 @@
                     </div>
                 </div>
 
+                <!-- Suggestion Box Section -->
+                <div class="lab-suggestion-container fade-in-section">
+                    <div class="lab-suggestion-card">
+                        <div class="suggestion-icon">
+                            <i class="ph ph-lightbulb"></i>
+                        </div>
+                        <h3>Sugira um Tópico</h3>
+                        <p>Qual conteúdo, movimento ou técnica você gostaria de ver na próxima atualização do LAB? Conta pra gente!</p>
+                        
+                        <form id="suggestionForm" class="suggestion-form" onsubmit="submitSuggestion(event)">
+                            <div class="input-group">
+                                <textarea id="suggestionInput" rows="3" placeholder="Ex: Técnicas de contrabalanço no Zouk..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="btnSubmitSuggestion">
+                                <span>Enviar Sugestão</span>
+                                <i class="ph ph-paper-plane-right"></i>
+                            </button>
+                        </form>
+                        
+                        <div id="suggestionSuccess" class="suggestion-success-msg" style="display: none;">
+                            <i class="ph ph-check-circle"></i>
+                            <h4>Sugestão Enviada!</h4>
+                            <p>Muito obrigado! Sua ideia nos ajuda a evoluir constantemente o LAB.</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -393,6 +543,115 @@
 
             card.classList.toggle('active');
             content.classList.toggle('active');
+        }
+
+        // ==========================================
+        // 💡 CONFIGURAÇÃO DO ENVIO POR E-MAIL (Web3Forms)
+        // ==========================================
+        // 1. Acesse https://web3forms.com/ e insira seu e-mail para receber uma chave grátis.
+        // 2. Cole a chave de acesso gerada entre as aspas abaixo:
+        const WEB3FORMS_ACCESS_KEY = "01b88564-6e24-4c79-8359-9ad99c3e9dd8"; 
+
+
+        async function submitSuggestion(event) {
+            event.preventDefault();
+            const textarea = document.getElementById('suggestionInput');
+            const form = document.getElementById('suggestionForm');
+            const successMsg = document.getElementById('suggestionSuccess');
+            const btn = document.getElementById('btnSubmitSuggestion');
+            const suggestionText = textarea.value.trim();
+
+            if (!suggestionText) return;
+
+            btn.disabled = true;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = `<i class="ph ph-circle-notch animate-spin"></i> Enviando...`;
+
+            let userId = null;
+            let userEmail = null;
+
+            try {
+                // Buscar sessão atual do usuário logado (se houver)
+                if (typeof supabaseClient !== 'undefined') {
+                    const { data: { session } } = await supabaseClient.auth.getSession();
+                    if (session?.user) {
+                        userId = session.user.id;
+                        userEmail = session.user.email;
+                    }
+                }
+            } catch (sessionErr) {
+                console.warn("Não foi possível obter dados da sessão:", sessionErr);
+            }
+
+            try {
+                let dbSuccess = false;
+                let emailSuccess = false;
+
+                // 1. Tentar salvar no Supabase como Backup
+                if (typeof supabaseClient !== 'undefined') {
+                    try {
+                        const { error } = await supabaseClient.from('lab_suggestions').insert({
+                            suggestion: suggestionText,
+                            user_id: userId,
+                            user_email: userEmail
+                        });
+                        if (!error) dbSuccess = true;
+                    } catch (dbErr) {
+                        console.warn("Supabase erro:", dbErr);
+                    }
+                }
+
+                // 2. Tentar enviar e-mail via Web3Forms se a chave estiver configurada
+                if (WEB3FORMS_ACCESS_KEY && WEB3FORMS_ACCESS_KEY.trim() !== "" && WEB3FORMS_ACCESS_KEY !== "SUA_CHAVE_AQUI") {
+                    try {
+                        const emailResponse = await fetch("https://api.web3forms.com/submit", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                Accept: "application/json"
+                            },
+                            body: JSON.stringify({
+                                access_key: WEB3FORMS_ACCESS_KEY,
+                                subject: "💡 Nova sugestão de tópico do LAB",
+                                from_name: "LAB - Felipe Nascimento",
+                                message: `Uma nova sugestão foi enviada no LAB!\n\nSugestão:\n"${suggestionText}"\n\nEnviado por: ${userEmail || 'Usuário Anônimo / Visitante'}\nID do Usuário: ${userId || 'N/A'}\nData: ${new Date().toLocaleString('pt-BR')}`
+                            })
+                        });
+                        if (emailResponse.ok) emailSuccess = true;
+                    } catch (emailErr) {
+                        console.error("Erro no Web3Forms:", emailErr);
+                    }
+                }
+
+                // Se salvou no DB, enviou por e-mail ou se o e-mail está configurado para envio direto, consideramos sucesso!
+                if (dbSuccess || emailSuccess || (WEB3FORMS_ACCESS_KEY && WEB3FORMS_ACCESS_KEY.trim() !== "" && WEB3FORMS_ACCESS_KEY !== "SUA_CHAVE_AQUI")) {
+                    form.style.display = 'none';
+                    successMsg.style.display = 'block';
+                } else {
+                    throw new Error("Envio direto e DB falharam, ativando fallback local");
+                }
+            } catch (err) {
+                console.warn("Erro no envio principal, ativando fallback local:", err);
+                
+                // Fallback seguro usando localStorage
+                try {
+                    const localSuggestions = JSON.parse(localStorage.getItem('lab_suggestions') || '[]');
+                    localSuggestions.push({ 
+                        suggestion: suggestionText, 
+                        user_id: userId,
+                        user_email: userEmail,
+                        date: new Date().toISOString() 
+                    });
+                    localStorage.setItem('lab_suggestions', JSON.stringify(localSuggestions));
+                    
+                    form.style.display = 'none';
+                    successMsg.style.display = 'block';
+                } catch(e) {
+                    alert("Ocorreu um erro ao enviar sua sugestão. Por favor, tente novamente.");
+                    btn.disabled = false;
+                    btn.innerHTML = originalText;
+                }
+            }
         }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>

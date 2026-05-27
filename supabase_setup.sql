@@ -89,3 +89,24 @@ values ('3155650', 'pay.hotmart.com/B85068976H', 'https://app-vlc.hotmart.com/pr
 on conflict (course_id) do update set 
   sale_token = excluded.sale_token, 
   access_link = excluded.access_link;
+
+-- ==========================================
+-- 💡 TABELA DE SUGESTÕES DO LAB
+-- ==========================================
+create table if not exists public.lab_suggestions (
+  id uuid default gen_random_uuid() primary key,
+  suggestion text not null,
+  user_id uuid references auth.users null,
+  user_email text null,
+  created_at timestamptz default now()
+);
+
+alter table public.lab_suggestions enable row level security;
+
+-- Política RLS: Qualquer pessoa (mesmo anônima) pode inserir sugestões.
+-- Ninguém pode ler as sugestões do frontend por segurança (somente o admin no painel Supabase).
+drop policy if exists "Anyone can insert suggestions" on public.lab_suggestions;
+create policy "Anyone can insert suggestions"
+  on public.lab_suggestions for insert
+  with check (true);
+
