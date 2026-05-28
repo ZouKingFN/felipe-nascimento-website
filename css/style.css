@@ -806,10 +806,13 @@ footer {
 .testimonial-card {
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 3rem 2rem;
+    padding: 2.5rem 2rem 2rem;
     border-radius: 20px;
     text-align: center;
     transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    height: 320px; /* Altura fixa padronizada */
 }
 
 .testimonial-card:hover {
@@ -818,11 +821,37 @@ footer {
     z-index: 10;
 }
 
+.testimonial-text-wrapper {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 1.5rem;
+    padding-right: 4px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(212, 175, 55, 0.4) transparent;
+}
+
+.testimonial-text-wrapper::-webkit-scrollbar {
+    width: 4px;
+}
+
+.testimonial-text-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.testimonial-text-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, 0.4);
+    border-radius: 10px;
+}
+
+.testimonial-text-wrapper::-webkit-scrollbar-thumb:hover {
+    background: rgba(212, 175, 55, 0.7);
+}
+
 .testimonial-text {
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.8;
     font-style: italic;
-    margin-bottom: 2rem;
+    margin: 0;
     opacity: 0.9;
 }
 
@@ -832,11 +861,17 @@ footer {
     font-weight: 600;
     font-size: 0.9rem;
     letter-spacing: 1px;
+    flex-shrink: 0;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
 }
 
 @media (max-width: 768px) {
     .testimonials-grid {
         gap: 1.5rem;
+    }
+    .testimonial-card {
+        height: 280px;
     }
 }
 
