@@ -1,3 +1,7 @@
 RewriteEngine On
+
+# Redirect old contrate-me.html URLs to contrate.html
+RewriteRule ^(en/)?contrate-me\.html$ /$1contrate.html [R=301,L]
+
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
