@@ -200,7 +200,7 @@
             <div class="tabs-container">
                 <div class="tabs-header">
                     <button class="tab-btn active" onclick="switchTab('felipe', event)">Felipe Nascimento</button>
-                    <button class="tab-btn" onclick="switchTab('felipenina', event)">Felipe & Nina</button>
+                    <button class="tab-btn" onclick="switchTab('felipenina', event)">Collab</button>
                 </div>
                 
                 <div id="tab-felipe" class="tab-content active">
@@ -233,15 +233,16 @@
                 
                 <div id="tab-felipenina" class="tab-content">
                     <div class="services-grid">
-                        <div class="service-card">
-                            <i class="ph-fill ph-users-three"></i>
-                            <h3>Workshops de Urban Zouk</h3>
-                            <p>Aulas focadas em musicalidade, dinâmica, textura e intenção para transformar a dança dos seus alunos.</p>
-                        </div>
-                        <div class="service-card">
-                            <i class="ph-fill ph-star"></i>
-                            <h3>Apresentações e Shows</h3>
-                            <p>Performances marcantes que misturam a essência do Zouk com a atitude das danças urbanas.</p>
+                        <div class="service-card" style="grid-column: 1 / -1; text-align: center;">
+                            <i class="ph-fill ph-handshake"></i>
+                            <h3>Collab & Parcerias</h3>
+                            <p>Estou aberto a parcerias para turnês, workshops, congressos e trabalhos isolados.</p>
+                            <form action="mailto:fmachadonascimento@gmail.com" method="post" enctype="text/plain" style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem; align-items: center;">
+                                <input type="text" name="Nome" placeholder="Seu Nome" required style="padding: 0.8rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); color: white; width: 100%; max-width: 400px;">
+                                <input type="email" name="Email" placeholder="Seu E-mail" required style="padding: 0.8rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); color: white; width: 100%; max-width: 400px;">
+                                <textarea name="Mensagem" placeholder="Como podemos colaborar?" required style="padding: 0.8rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); color: white; width: 100%; max-width: 400px; min-height: 100px;"></textarea>
+                                <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -357,13 +358,7 @@
             const pageSubtitle = document.getElementById('page-subtitle');
             
             if (pageTitle && pageSubtitle) {
-                if (tabId === 'felipenina') {
-                    pageTitle.innerText = 'Nossas Especialidades';
-                    pageSubtitle.innerText = 'Leve a energia, conexão e técnica do Urban Zouk para o seu evento.';
-                } else {
-                    pageTitle.innerText = 'Minhas Especialidades';
-                    pageSubtitle.innerText = 'Como multicriador, atuo de ponta a ponta na engrenagem dos eventos.';
-                }
+                if (tabId === \'felipenina\') { pageTitle.innerText = \'Collab\'; } else { pageTitle.innerText = 'Minhas Especialidades'; }
             }
         }
     </script>

@@ -171,8 +171,7 @@
             <div class="tabs-container">
                 <div class="tabs-header">
                     <button class="tab-btn active" onclick="switchTab('felipe', event)">Felipe Nascimento</button>
-                    <button class="tab-btn" onclick="switchTab('felipenina', event)">Felipe & Nina</button>
-                </div>
+                    </div>
                 
                 <div id="tab-felipe" class="tab-content active">
                     <div class="about-content">
@@ -199,22 +198,7 @@
                     </div>
                 </div>
                 
-                <div id="tab-felipenina" class="tab-content">
-                    <div class="about-content">
-                        <div class="about-text">
-                            <h2>Sobre Nós</h2>
-                            <p>O encontro entre dois universos da dança criou algo maior do que uma parceria: nasceu um propósito em comum.</p>
-                            <p>Felipe Nascimento e Nina Santos uniram suas trajetórias para desenvolver, fortalecer e espalhar o Urban Zouk pelo Brasil e pelo mundo. Vindos de realidades diferentes, mas conectados pela mesma visão artística, os dois compartilham a paixão pela música, pela liberdade de expressão e pela evolução constante dentro da dança.</p>
-                            <p>Felipe traz sua experiência como professor, criador de conteúdo e artista do Zouk Brasileiro, com foco em musicalidade, conexão e comunicação através do movimento. Nina, diretamente de Porto Alegre, carrega uma formação sólida nas danças urbanas, combinando técnica, presença e autenticidade com sua forte conexão com o Zouk Brasileiro.</p>
-                            <p>Juntos, criaram uma proposta que mistura a essência do Zouk com influências urbanas, explorando musicalidade, dinâmica, textura, intenção e identidade artística de forma moderna e acessível. Mais do que ensinar passos, o objetivo da parceria é inspirar pessoas a encontrarem sua própria expressão dentro da dança.</p>
-                            <p>Acreditamos que o Urban Zouk vai além de um estilo: é uma linguagem. Uma ponte entre culturas, músicas e pessoas.</p>
-                            <p><strong style="color: var(--color-secondary); font-size: 1.2rem;">E essa é apenas a primeira fase da jornada.</strong></p>
-                        </div>
-                        <div>
-                            <img src="assets/felipe-nina.jpg" alt="Felipe & Nina" class="about-image">
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </section>
@@ -377,11 +361,7 @@
             
             const pageTitle = document.getElementById('page-title');
             if (pageTitle) {
-                if (tabId === 'felipenina') {
-                    pageTitle.innerText = 'Felipe & Nina';
-                } else {
-                    pageTitle.innerText = 'Conheça Felipe Nascimento';
-                }
+                pageTitle.innerText = 'Conheça Felipe Nascimento';
             }
         }
     </script>
