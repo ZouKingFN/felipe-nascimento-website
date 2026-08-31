@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/logo.PNG">
+    <title>Footworks Applied to Brazilian Zouk | Felipe & Evellyn</title>
+    <meta name="description" content="Curso de Footworks aplicados ao Zouk Brasileiro com Felipe & Evellyn. Mais de 15 aulas e 16 footworks de Zouk e Hip Hop.">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Footworks Applied to Brazilian Zouk | Felipe & Evellyn">
+    <meta property="og:description" content="Domine a aplicação prática de footworks de Zouk e Hip Hop com direcionamento técnico para Leaders e Followers.">
+    <meta property="og:image" content="assets/footworks.jpg">
+    <meta property="og:url" content="https://fnzouk.com.br/footworks.html">
+    <link rel="canonical" href="https://fnzouk.com.br/footworks.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .lp-hero {
+            padding-top: 8rem;
+            padding-bottom: 5rem;
+            background: linear-gradient(180deg, rgba(15,15,15,0.85) 0%, rgba(15,15,15,0.98) 100%), url('assets/footwork-banner.jpg') center/cover no-repeat;
+            position: relative;
+            text-align: center;
+        }
+        .lp-badge {
+            display: inline-block;
+            background: var(--color-secondary);
+            color: #000;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+        }
+        .lp-title {
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            color: #fff;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            font-weight: 800;
+        }
+        .lp-subtitle {
+            font-size: 1.2rem;
+            color: var(--color-secondary);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+        .lp-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem;
+            text-align: left;
+        }
+        @media (max-width: 900px) {
+            .lp-grid { grid-template-columns: 1fr; text-align: center; }
+        }
+        .lp-poster {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 24px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.8), 0 0 30px rgba(212, 175, 55, 0.15);
+            margin: 0 auto;
+        }
+        .lp-waitlist-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+        }
+        .lp-waitlist-box h3 {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 0.8rem;
+        }
+        .lp-waitlist-box p {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+        .discount-banner {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px dashed var(--color-secondary);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .feature-card {
+            background: #0f0f0f;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--color-secondary);
+        }
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--color-secondary);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .feature-card h4 {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        .feature-card p {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .instructors-section {
+            background: var(--color-bg-alt);
+            padding: 5rem 0;
+        }
+        .instructors-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        @media (max-width: 850px) {
+            .instructors-grid { grid-template-columns: 1fr; }
+        }
+        .instructors-img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .pricing-box {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(0,0,0,0.8) 100%);
+            border: 1px solid var(--color-secondary);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            text-align: center;
+            max-width: 650px;
+            margin: 4rem auto 0;
+            position: relative;
+        }
+        .price-tag {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin: 1rem 0;
+        }
+        .price-tag span {
+            color: var(--color-secondary);
+        }
+        .sticky-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 1rem;
+            z-index: 999;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        @media (min-width: 769px) {
+            .sticky-bar { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-content"><div class="loader-logo">FNZ</div></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container navbar">
+            <div class="nav-left">
+                <div class="menu-toggle"><span></span><span></span><span></span></div>
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.PNG" alt="FNZ Logo" onerror="this.src=''; this.alt='FNZ'; this.style.fontSize='1.8rem'; this.style.color='var(--color-secondary)';">
+                </a>
+            </div>
+            <div class="nav-right">
+                <nav class="desktop-menu">
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="cursos.html">Cursos</a></li>
+                        <li><a href="lab.html">LAB</a></li>
+                        <li><a href="sobre.html">Sobre mim</a></li>
+                        <li><a href="contrate.html" style="color: var(--color-secondary); font-weight: 800;">Contrate</a></li>
+                    </ul>
+                </nav>
+                <div class="nav-actions">
+                    <a href="en/footworks.html" class="lang-btn"><i class="ph ph-globe"></i> EN</a>
+                    <a href="login.html" class="action-btn"><i class="ph ph-user"></i> Login</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="fullscreen-menu">
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="cursos.html">Cursos</a></li>
+            <li><a href="lab.html">LAB</a></li>
+            <li><a href="sobre.html">Sobre mim</a></li>
+            <li><a href="contrate.html" style="color: var(--color-secondary); font-weight: 800;">Contrate</a></li>
+        </ul>
+    </nav>
+
+    <!-- LP Hero Section -->
+    <section class="lp-hero" id="lp-hero">
+        <div class="container fade-in-section">
+            <span class="lp-badge">Em Breve • Lista de Espera VIP</span>
+            <h1 class="lp-title">Footworks Applied to Brazilian Zouk</h1>
+            <p class="lp-subtitle">Evellyn and Felipe presents</p>
+            
+            <div class="lp-grid">
+                <div>
+                    <img src="assets/footworks.jpg" alt="Footworks Course Cover" class="lp-poster">
+                </div>
+                
+                <div class="lp-waitlist-box">
+                    <h3>Garanta seu Acesso VIP & Desconto Especial</h3>
+                    <p>Inscreva-se na lista de espera para ser notificado em primeira mão assim que as vagas abrirem!</p>
+                    
+                    <div class="discount-banner">
+                        <i class="ph-fill ph-tag"></i> <strong>Desconto Exclusivo de 35%</strong> para residentes do Brasil e Colômbia!
+                    </div>
+
+                    <form action="https://api.web3forms.com/submit" method="POST" style="display: flex; flex-direction: column; gap: 1rem;">
+                        <input type="hidden" name="access_key" value="01b88564-6e24-4c79-8359-9ad99c3e9dd8">
+                        <input type="hidden" name="subject" value="Pré-Inscrição VIP - Curso de Footworks">
+                        <input type="hidden" name="redirect" value="https://fnzouk.com.br/footworks.html?success=true">
+                        
+                        <input type="text" name="Nome" placeholder="Seu Nome Completo" required style="padding: 0.9rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.6); color: white; width: 100%;">
+                        <input type="email" name="Email" placeholder="Seu Melhor E-mail" required style="padding: 0.9rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.6); color: white; width: 100%;">
+                        <input type="tel" name="WhatsApp" placeholder="Seu WhatsApp com DDD" required style="padding: 0.9rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.6); color: white; width: 100%;">
+                        
+                        <button type="submit" class="btn btn-primary" style="padding: 1.1rem; font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; width: 100%;">Quero Entrar na Lista VIP</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You Will Learn -->
+    <section class="section">
+        <div class="container fade-in-section">
+            <h2 style="text-align: center; color: var(--color-secondary); margin-bottom: 0.5rem;">O que você vai aprender</h2>
+            <p style="text-align: center; color: var(--color-text-muted); max-width: 600px; margin: 0 auto 3rem;">Um programa prático projetado para transformar a sua dinâmica e presença na pista de dança.</p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="ph-fill ph-video-camera"></i>
+                    <h4>+15 Aulas Curtas & Objetivas</h4>
+                    <p>Aulas direto ao ponto para você assistir, aprender e aplicar imediatamente na sua dança.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="ph-fill ph-footprints"></i>
+                    <h4>Zouk & Hip Hop Fusion</h4>
+                    <p>Aplicação prática de footworks de Zouk com elementos urbanos de Hip Hop adaptados com técnica para o Zouk.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="ph-fill ph-users-three"></i>
+                    <h4>Leaders & Followers</h4>
+                    <p>Direcionamento e explicações individuais focadas nas necessidades específicas de conduzidos e condutores.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="ph-fill ph-sparkle"></i>
+                    <h4>+16 Footworks Variados</h4>
+                    <p>Repertório rico com mais de 16 variações para destravar sua criatividade e estilo próprio na pista.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="ph-fill ph-medal"></i>
+                    <h4>Certificado Oficial</h4>
+                    <p>Receba o certificado de conclusão ao finalizar todas as aulas do treinamento.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="ph-fill ph-device-mobile"></i>
+                    <h4>Acesso em Qualquer Lugar</h4>
+                    <p>Estude no seu ritmo pelo celular, tablet ou computador quando e onde quiser.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing & Offer Section -->
+    <section class="section" style="background: rgba(255,255,255,0.01); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <div class="container fade-in-section">
+            <div class="pricing-box">
+                <span class="lp-badge" style="margin-bottom: 1rem;">Oportunidade Exclusiva</span>
+                <h2 style="color: #fff; font-size: 2rem;">Investimento & Condição Especial</h2>
+                <p style="color: var(--color-text-muted); margin-top: 0.5rem;">Preço Oficial Internacional: <strong>$159,90 USD</strong></p>
+                
+                <div class="price-tag">
+                    <span>35% OFF</span> no Lançamento
+                </div>
+
+                <div class="discount-banner" style="text-align: center; margin: 1.5rem auto; max-width: 90%;">
+                    🇧🇷 🇨🇴 <strong>Condição Especial para o Brasil e Colômbia:</strong> Desconto automático garantido de 35% para residentes!
+                </div>
+
+                <a href="#lp-hero" class="btn btn-primary" style="padding: 1.1rem 2.5rem; font-size: 1rem; font-weight: 800; text-transform: uppercase;">Cadastrar na Lista de Espera</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructors Section -->
+    <section class="instructors-section">
+        <div class="container fade-in-section">
+            <div class="instructors-grid">
+                <div>
+                    <img src="assets/felipe-evellyn.jpg" alt="Felipe & Evellyn" class="instructors-img">
+                </div>
+                <div>
+                    <span style="color: var(--color-secondary); letter-spacing: 2px; text-transform: uppercase; font-weight: 700; font-size: 0.9rem;">Seus Mentores</span>
+                    <h2 style="color: #fff; font-size: 2.2rem; margin: 0.5rem 0 1.5rem;">Felipe & Evellyn</h2>
+                    <p style="color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem;">
+                        Conectados pela paixão pelo Zouk Brasileiro e pelas Danças Urbanas, Felipe Nascimento e Evellyn Santos desenvolveram uma metodologia focada na consciência corporal, controle de peso, dinâmica de pés e musicalidade.
+                    </p>
+                    <p style="color: var(--color-text-muted); line-height: 1.7;">
+                        Neste curso, eles unem experiência técnica internacional e aplicação prática para ensinar footworks modernos que funcionam de verdade no social dance.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content fade-in-section">
+                <div>
+                    <a href="index.html" class="footer-logo">FNZ</a>
+                    <p>Transformando a maneira como você se expressa através da dança e da música.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="cursos.html">Cursos</a></li>
+                        <li><a href="lab.html">LAB</a></li>
+                        <li><a href="sobre.html">Sobre mim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><a href="mailto:fmachadonascimento@gmail.com">fmachadonascimento@gmail.com</a></li>
+                        <li><a href="https://www.instagram.com/felipenascimento_zouk/" target="_blank">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Felipe Nascimento. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Bar Mobile -->
+    <div class="sticky-bar">
+        <span style="color: #fff; font-size: 0.9rem; font-weight: 600;">Footworks Course</span>
+        <a href="#lp-hero" class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.85rem; text-transform: uppercase;">Lista VIP</a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="js/cookie-consent.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
