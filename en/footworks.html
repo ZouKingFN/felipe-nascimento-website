@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         .lp-hero {
             padding-top: 8rem;
             padding-bottom: 5rem;
@@ -76,13 +79,15 @@
         }
         .lp-waitlist-box {
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 24px;
             padding: 2.5rem;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 25px rgba(212,175,55,0.12);
+            transition: transform 0.3s ease;
         }
         .lp-waitlist-box h3 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: #fff;
             margin-bottom: 0.8rem;
         }
@@ -102,35 +107,67 @@
             font-size: 0.9rem;
             font-weight: 600;
         }
+        /* Ultra Premium Benefit Cards */
         .benefit-block {
-            padding: 4rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 5rem 0;
+            background: linear-gradient(180deg, #090909 0%, #121212 100%);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            position: relative;
         }
-        .benefit-block:nth-child(even) {
-            background: rgba(255,255,255,0.01);
-        }
-        .benefit-content {
-            max-width: 800px;
+        .benefit-card-premium {
+            background: rgba(18, 18, 18, 0.7);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 28px;
+            padding: 3.5rem 3rem;
+            max-width: 900px;
             margin: 0 auto;
             text-align: center;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.8), 0 0 20px rgba(212, 175, 55, 0.08);
+            position: relative;
+            overflow: hidden;
         }
-        .benefit-icon {
-            font-size: 3rem;
+        .benefit-card-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--color-secondary), transparent);
+        }
+        .benefit-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+        }
+        .benefit-icon-wrapper i {
+            font-size: 2.5rem;
             color: var(--color-secondary);
-            margin-bottom: 1rem;
-            display: inline-block;
         }
-        .benefit-content h3 {
-            font-size: 2rem;
+        .benefit-card-premium h3 {
+            font-size: clamp(1.8rem, 3.5vw, 2.3rem);
             color: #fff;
-            margin-bottom: 1rem;
-            font-weight: 700;
+            margin-bottom: 1.2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
-        .benefit-content p {
-            color: var(--color-text-muted);
-            font-size: 1.1rem;
+        .benefit-card-premium p {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.15rem;
             line-height: 1.8;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            max-width: 760px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .instructors-section {
             background: var(--color-bg-alt);
@@ -144,6 +181,7 @@
         }
         @media (max-width: 850px) {
             .instructors-grid { grid-template-columns: 1fr; }
+            .benefit-card-premium { padding: 2.5rem 1.5rem; }
         }
         .instructors-img {
             width: 100%;
@@ -233,7 +271,7 @@
     </nav>
 
     <!-- LP Hero Section -->
-    <section class="lp-hero" id="lp-hero">
+    <section class="lp-hero">
         <div class="container fade-in-section">
             <span class="lp-badge">Coming Soon • VIP Waitlist</span>
             <h1 class="lp-title">Footworks Applied to Brazilian Zouk</h1>
@@ -244,7 +282,7 @@
                     <img src="../assets/footworks.jpg" alt="Footworks Course Cover" class="lp-poster">
                 </div>
                 
-                <div class="lp-waitlist-box">
+                <div class="lp-waitlist-box" id="cadastro-vip">
                     <h3>Get VIP Access & Special Discount</h3>
                     <p>Join the waitlist to be notified first as soon as enrollment opens!</p>
                     
@@ -271,13 +309,15 @@
     <!-- Infoproduct Benefit Storytelling Section 1 -->
     <section class="benefit-block">
         <div class="container fade-in-section">
-            <div class="benefit-content">
-                <i class="ph-fill ph-video-camera benefit-icon"></i>
+            <div class="benefit-card-premium">
+                <div class="benefit-icon-wrapper">
+                    <i class="ph-fill ph-video-camera"></i>
+                </div>
                 <h3>Short, Practical & Direct Lessons</h3>
                 <p>
                     Forget long, tedious theoretical videos. The program is structured into over 15 short, laser-focused video lessons. You watch the technical breakdown, understand the mechanics of the movement, and immediately practice it in your body. It is the ideal method to learn fast and progress at your own pace without wasting time.
                 </p>
-                <a href="#lp-hero" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 0.95rem; font-weight: 800; text-transform: uppercase;">Get VIP Access with 35% OFF</a>
+                <a href="#cadastro-vip" onclick="scrollToCadastro(event)" class="btn btn-primary" style="padding: 1.1rem 2.2rem; font-size: 0.95rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Get VIP Access with 35% OFF</a>
             </div>
         </div>
     </section>
@@ -285,13 +325,15 @@
     <!-- Infoproduct Benefit Storytelling Section 2 -->
     <section class="benefit-block">
         <div class="container fade-in-section">
-            <div class="benefit-content">
-                <i class="ph-fill ph-footprints benefit-icon"></i>
+            <div class="benefit-card-premium">
+                <div class="benefit-icon-wrapper">
+                    <i class="ph-fill ph-footprints"></i>
+                </div>
                 <h3>Unique Fusion: Zouk & Hip Hop Adapted for the Floor</h3>
                 <p>
                     Many dancers try to bring urban elements into Zouk, but end up losing weight transfer or disrupting connection. In this course, Felipe & Evellyn Lethicia teach you how to extract the groove and footwork patterns from Hip Hop while adapting them with refined technique specifically for Brazilian Zouk mechanics. The result is stylish, modern, and fluid dancing.
                 </p>
-                <a href="#lp-hero" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 0.95rem; font-weight: 800; text-transform: uppercase;">Unlock Your Style on the Floor</a>
+                <a href="#cadastro-vip" onclick="scrollToCadastro(event)" class="btn btn-primary" style="padding: 1.1rem 2.2rem; font-size: 0.95rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Unlock Your Style on the Floor</a>
             </div>
         </div>
     </section>
@@ -299,13 +341,15 @@
     <!-- Infoproduct Benefit Storytelling Section 3 -->
     <section class="benefit-block">
         <div class="container fade-in-section">
-            <div class="benefit-content">
-                <i class="ph-fill ph-users-three benefit-icon"></i>
+            <div class="benefit-card-premium">
+                <div class="benefit-icon-wrapper">
+                    <i class="ph-fill ph-users-three"></i>
+                </div>
                 <h3>Tailored Guidance for Both Leaders & Followers</h3>
                 <p>
                     Partner dancing demands clarity in each role. Every single footwork comes with dedicated explanations for leaders and followers. Leaders learn to keep clear signals and stable grounding, while Followers learn ornamentation, timing, and balance without compromising connection.
                 </p>
-                <a href="#lp-hero" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 0.95rem; font-weight: 800; text-transform: uppercase;">Elevate Your Partner Dance Skills</a>
+                <a href="#cadastro-vip" onclick="scrollToCadastro(event)" class="btn btn-primary" style="padding: 1.1rem 2.2rem; font-size: 0.95rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Elevate Your Partner Dance Skills</a>
             </div>
         </div>
     </section>
@@ -313,13 +357,15 @@
     <!-- Infoproduct Benefit Storytelling Section 4 -->
     <section class="benefit-block">
         <div class="container fade-in-section">
-            <div class="benefit-content">
-                <i class="ph-fill ph-sparkle benefit-icon"></i>
+            <div class="benefit-card-premium">
+                <div class="benefit-icon-wrapper">
+                    <i class="ph-fill ph-sparkle"></i>
+                </div>
                 <h3>Rich Repertoire with 16+ Footwork Variations</h3>
                 <p>
                     Never feel stuck or repetitive on the social dance floor again. With over 16 complete footwork variations taught step-by-step, you will gain a versatile arsenal of practical movements to enrich your musicality and amaze your partners on every track.
                 </p>
-                <a href="#lp-hero" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 0.95rem; font-weight: 800; text-transform: uppercase;">Join the VIP Launch Waitlist</a>
+                <a href="#cadastro-vip" onclick="scrollToCadastro(event)" class="btn btn-primary" style="padding: 1.1rem 2.2rem; font-size: 0.95rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Join the VIP Launch Waitlist</a>
             </div>
         </div>
     </section>
@@ -327,13 +373,15 @@
     <!-- Infoproduct Benefit Storytelling Section 5 -->
     <section class="benefit-block">
         <div class="container fade-in-section">
-            <div class="benefit-content">
-                <i class="ph-fill ph-medal benefit-icon"></i>
+            <div class="benefit-card-premium">
+                <div class="benefit-icon-wrapper">
+                    <i class="ph-fill ph-medal"></i>
+                </div>
                 <h3>Official Certificate of Completion</h3>
                 <p>
                     We value your commitment to growth. Upon completing all lessons and modules of the program, you will receive an Official Certificate issued and signed by Felipe Nascimento & Evellyn Lethicia validating your technical progress.
                 </p>
-                <a href="#lp-hero" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 0.95rem; font-weight: 800; text-transform: uppercase;">Claim Your VIP Spot & Certificate</a>
+                <a href="#cadastro-vip" onclick="scrollToCadastro(event)" class="btn btn-primary" style="padding: 1.1rem 2.2rem; font-size: 0.95rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Claim Your VIP Spot & Certificate</a>
             </div>
         </div>
     </section>
@@ -354,7 +402,7 @@
                     🇧🇷 🇨🇴 <strong>Special Regional Discount:</strong> Automatic 35% discount for residents of Brazil and Colombia!
                 </div>
 
-                <a href="#lp-hero" class="btn btn-primary" style="padding: 1.1rem 2.5rem; font-size: 1rem; font-weight: 800; text-transform: uppercase;">Join the VIP Waitlist</a>
+                <a href="#cadastro-vip" onclick="scrollToCadastro(event)" class="btn btn-primary" style="padding: 1.1rem 2.5rem; font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Join the VIP Waitlist</a>
             </div>
         </div>
     </section>
@@ -413,12 +461,21 @@
     <!-- Sticky Bar Mobile -->
     <div class="sticky-bar">
         <span style="color: #fff; font-size: 0.9rem; font-weight: 600;">Footworks Course</span>
-        <a href="#lp-hero" class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.85rem; text-transform: uppercase;">VIP Waitlist</a>
+        <a href="#cadastro-vip" onclick="scrollToCadastro(event)" class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.85rem; text-transform: uppercase;">VIP Waitlist</a>
     </div>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <script src="../js/cookie-consent.js"></script>
     <script src="../js/main.js"></script>
+    <script>
+        function scrollToCadastro(e) {
+            e.preventDefault();
+            const target = document.getElementById('cadastro-vip');
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+    </script>
 </body>
 </html>
